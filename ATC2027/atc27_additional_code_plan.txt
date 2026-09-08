@@ -1,0 +1,26 @@
+IAircraftCollectionRing(AirportCode-3digit?=null, AirportCode-4digit?=null)
+	+ AddAircraft(IAircraft)
+	+ RemoveAircraft(IAircraft)
+	+ RemoveAircraft(index)
+	+ ApplyClearanceToAircraft(IAircraft, IClearance)
+	
+IToAircraftCollectionRingRecord
+	+ DGVItem toDGVItem();
+		+ getFlightNumber()
+		+ getAltitudeAsString();
+		+ getSpeedAsString();
+		+ getHeadingAsString();
+		+ getRelationToAirfield();
+
+Clearance : IClearance
+	IHeading?
+	IAltitude?
+	ISpeed?
+
+	Clearance(IHeading?=null,IAltitude?=null,ISpeed?=null)
+
+	ApplyHeading(IHeading):this
+	ApplyAltitude(IAltitude):this
+	ApplySpeed(ISpeed):this
+
+

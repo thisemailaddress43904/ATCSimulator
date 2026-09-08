@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <SourceFile>C:/Users/danUser/Desktop/ATC2027/ATC2027/ATC2027/Content/Arial_12.spritefont</SourceFile>
+  <SourceTime>2026-03-06T11:45:15.0664542+00:00</SourceTime>
+  <DestFile>C:/Users/danUser/Desktop/ATC2027/ATC2027/ATC2027/Content/bin/Windows/Arial_12.xnb</DestFile>
+  <DestTime>2026-03-07T09:07:21.7444798+00:00</DestTime>
+  <Importer>FontDescriptionImporter</Importer>
+  <ImporterTime>2025-06-02T11:31:02+01:00</ImporterTime>
+  <Processor>LocalizedFontProcessor</Processor>
+  <ProcessorTime>2025-06-02T11:31:02+01:00</ProcessorTime>
+  <Parameters>
+    <Key>PremultiplyAlpha</Key>
+    <Value>True</Value>
+  </Parameters>
+  <Parameters>
+    <Key>TextureFormat</Key>
+    <Value>Compressed</Value>
+  </Parameters>
+  <Dependencies />
+  <BuildAsset />
+  <BuildOutput />
+</PipelineBuildEvent>
