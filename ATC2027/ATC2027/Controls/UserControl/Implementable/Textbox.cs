@@ -4,7 +4,6 @@ using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace ATC2027.Controls.UserControl.Implementable
@@ -13,8 +12,29 @@ namespace ATC2027.Controls.UserControl.Implementable
     {
         bool isSelected;
         bool previousIsSelected;
+        event Action? SelectionChanged;
+        private static ICollection<Keys> keysToBeListenedTo = [Keys.Escape,
+                Keys.Q, Keys.W, Keys.E, Keys.R, Keys.T, Keys.Y, Keys.U, Keys.I, Keys.O, Keys.P,
+                Keys.A, Keys.S, Keys.D, Keys.F, Keys.G, Keys.H, Keys.J, Keys.K, Keys.L,
+                Keys.Z, Keys.X, Keys.C, Keys.V, Keys.B, Keys.N, Keys.M,
 
-        
+                Keys.NumPad0, Keys.NumPad1, Keys.NumPad2, Keys.NumPad3, Keys.NumPad4, Keys.NumPad5, Keys.NumPad6, Keys.NumPad7, Keys.NumPad8, Keys.NumPad9,
+        ];
+        private ICollection<Task> keyListeningTasks;
+
+        private ICollection<Task> setKeyListeningTasks()
+        {
+            KeyboardState ks = Keyboard.GetState();
+            List<Task> tasks = new List<Task>();
+
+            foreach (Keys key in keysToBeListenedTo)
+            {
+                tasks.Add(new Task(() => OnButtonPress(key)));
+            }
+
+            return tasks;
+        }
+
         /// <summary>
         /// Accepts a character set of a-z0-9. No other characters will be accepted
         /// </summary>
@@ -27,8 +47,10 @@ namespace ATC2027.Controls.UserControl.Implementable
         {
             previousIsSelected = false;
             isSelected = false;
+            keyListeningTasks = setKeyListeningTasks();
+            
+            SelectionChanged += OnSelectionChanged;
         }
-
         public override void Update(GameTime gameTime)
         {
 
@@ -38,13 +60,14 @@ namespace ATC2027.Controls.UserControl.Implementable
                 {
                     isSelected = false;
                 }
-            } else {
+            }
+            else
+            {
                 if (base.outerRectangle.Contains(Mouse.GetState().Position) && Mouse.GetState().LeftButton == ButtonState.Pressed)
                 {
                     isSelected = true;
                 }
             }
-            
 
             if (isSelected != previousIsSelected)
             {
@@ -52,22 +75,57 @@ namespace ATC2027.Controls.UserControl.Implementable
                 base.SetPrimaryColor(GetSecondaryColor());
                 base.SetSecondaryColor(oldPromaryColor);
 
-                if (isSelected)
-                {
-                    //subscribe key board clicks
+                previousIsSelected = isSelected;
 
-                }
-                else
-                {
-                    //unsubscribe key board clicks
-
-                }
+                SelectionChanged?.Invoke();
             }
 
-            previousIsSelected = isSelected;
+
             base.Update(gameTime);
         }
+        public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
+        {
+            base.Draw(gameTime, spriteBatch);
+        }
 
+        public void OnButtonPress(Keys key)
+        {
+            if (Keyboard.GetState().IsKeyDown(key))
+                base.SetContent(base.GetContent() + key.ToString());
+        }
 
+        public void OnSelectionChanged()
+        {
+            if (!isSelected)
+                return;
+
+            
+            var keyboardState = Keyboard.GetState();
+
+            if (keyboardState.IsKeyDown(Keys.Escape)) {
+                isSelected = false;
+                return;
+            }
+            if (keyboardState.IsKeyDown(Keys.Back))
+            {
+                base.SetContent(base.GetContent().Substring(0, base.GetContent().Length-2));
+            }
+
+            keyListeningTasks.All(t =>
+            {
+                t.Start();
+                return true;
+            });
+
+            Task.WaitAll(keyListeningTasks.ToArray());
+
+            /*
+             * //this is procedural and could be done in parallel, this would be much quicker
+            foreach (var key in Textbox.keysToBeListenedTo)
+                OnButtonPress(ref keyboardState, key);
+             * 
+             */
+
+        }
     }
 }

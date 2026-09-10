@@ -34,7 +34,7 @@ namespace ATC2027.Controls.UserControl.Implementable
         }
 
 
-        public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
+        public virtual void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
             if (!shouldBeDrawn)
                 return;
