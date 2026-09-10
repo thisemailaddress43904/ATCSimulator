@@ -111,6 +111,7 @@ namespace ATC2027.Controls.UserControl.Implementable
                 base.SetContent(base.GetContent().Substring(0, base.GetContent().Length-2));
             }
 
+            //all button clicks are listened to in parallel, this is much quicker than procedural
             keyListeningTasks.All(t =>
             {
                 t.Start();
