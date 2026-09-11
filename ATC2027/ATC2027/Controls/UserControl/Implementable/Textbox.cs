@@ -108,10 +108,12 @@ namespace ATC2027.Controls.UserControl.Implementable
             }
             if (keyboardState.IsKeyDown(Keys.Back))
             {
-                base.SetContent(base.GetContent().Substring(0, base.GetContent().Length-2));
+                string content = base.GetContent();
+                base.SetContent(content.Substring(0, content.Length-2));
             }
 
             //all button clicks are listened to in parallel, this is much quicker than procedural
+            //assuming that the foreach loop is not executed in parallel
             keyListeningTasks.All(t =>
             {
                 t.Start();

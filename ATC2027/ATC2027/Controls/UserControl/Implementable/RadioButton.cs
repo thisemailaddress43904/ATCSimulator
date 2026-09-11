@@ -42,9 +42,9 @@ namespace ATC2027.Controls.UserControl.Implementable
             bool isSelected;
 
 
-            public RadioButtonItem(string text, SpriteFont sf, Vector2 centre, Vector2 size, Tuple<Color, Color, Color> colorTuple, Texture2D on, Texture2D off)
+            public RadioButtonItem(string text, SpriteFont sf, Vector2 centre, Vector2 size, ColourScheme colourScheme, Texture2D on, Texture2D off)
             {
-                this.label = new Label(text, sf, centre, size, ref colorTuple);
+                this.label = new Label(text, sf, centre, size, ref colourScheme);
                 this.on = on;
                 this.off = off;
                 this.isSelected = false;

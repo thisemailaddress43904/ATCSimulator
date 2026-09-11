@@ -19,17 +19,15 @@ namespace ATC2027.Controls.UserControl.Implementable
         Text text;
         private Vector2 centre;
 
-        private Color primaryColor, secondaryColor, tertiaryColor;
+        private ColourScheme colourScheme;
 
-        public Label(string label, SpriteFont sf, Vector2 centre, Vector2 size, ref Tuple<Color, Color, Color> colors)
+        public Label(string label, SpriteFont sf, Vector2 centre, Vector2 size, ref ColourScheme colourScheme)
         {
 
-            this.primaryColor = colors.Item1;
-            this.secondaryColor = colors.Item2;
-            this.tertiaryColor = colors.Item3;
+            this.colourScheme = colourScheme;
 
             this.centre = centre;
-            this.text = new Text(label, sf, centre, tertiaryColor);
+            this.text = new Text(label, sf, centre, ref colourScheme, 3);
 
         }
 
@@ -39,8 +37,8 @@ namespace ATC2027.Controls.UserControl.Implementable
             if (!shouldBeDrawn)
                 return;
 
-            spriteBatch.Draw(outerRectangleTexture, outerRectangle, primaryColor);
-            spriteBatch.Draw(innerRectangleTexture, innerRectangle, secondaryColor);
+            spriteBatch.Draw(outerRectangleTexture, outerRectangle, colourScheme.PrimaryColor);
+            spriteBatch.Draw(innerRectangleTexture, innerRectangle, colourScheme.SecondaryColor);
             text.Draw(gameTime, spriteBatch);
 
         }
@@ -57,17 +55,17 @@ namespace ATC2027.Controls.UserControl.Implementable
 
         public Color GetPrimaryColor()
         {
-            return primaryColor;
+            return colourScheme.PrimaryColor;
         }
 
         public Color GetSecondaryColor()
         {
-            return secondaryColor;
+            return colourScheme.SecondaryColor;
         }
 
         public Color GetTertiaryColor()
         {
-            return tertiaryColor;
+            return colourScheme.TertiaryColor;
         }
 
         public bool IsActive()
@@ -94,16 +92,6 @@ namespace ATC2027.Controls.UserControl.Implementable
         {
             if (!shouldBeDrawn)
                 return;
-        }
-
-        internal void SetPrimaryColor(Color color)
-        {
-            this.primaryColor = color;
-        }
-
-        internal void SetSecondaryColor(Color oldPromaryColor)
-        {
-            this.secondaryColor = oldPromaryColor;
         }
     }
 }
