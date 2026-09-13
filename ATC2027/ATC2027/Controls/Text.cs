@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework;
 
 using IDrawable = ATC2027.Interfaces.IDrawable;
+using System;
 
 namespace ATC2027.Controls
 {
@@ -15,15 +16,14 @@ namespace ATC2027.Controls
     /// <param name="spriteFont">The font used to render the text.</param>
     /// <param name="location">The position, in screen coordinates, where the text will be drawn. If not specified, defaults to (35, 35).</param>
     /// <param name="color">The color used to render the text. If not specified, defaults to black with half opacity.</param>
-    public class Text(string text, SpriteFont spriteFont, Vector2 location, ref ColourScheme colourScheme, int colourSchemeIndex) : IDrawable
+    public class Text(string text, SpriteFont spriteFont, Vector2 location) : IDrawable
     {
+        private ColourScheme colourScheme => Constants.getColourScheme();
 
         string text = text;
         SpriteFont spriteFont = spriteFont;
         Vector2 location = location;
-        Color? color = colourSchemeIndex >= ColourScheme.minNumberOfColours && colourSchemeIndex < ColourScheme.maxNumberOfColours ? colourScheme.ItemAt(colourSchemeIndex) : new Color(0f,0f,0f,0.5f);
         
-
 
         public void setText(string newText) => this.text = newText;
         public string getText() => this.text;
@@ -31,12 +31,9 @@ namespace ATC2027.Controls
         public void setSpriteFont(SpriteFont spriteFont) => this.spriteFont = spriteFont;
         public SpriteFont getSpriteFont() => this.spriteFont;
 
-        public void setTextColor(Color color) => this.color = color;
-
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
-            if (color != null)
-                spriteBatch.DrawString(spriteFont, text, location, (Color)color);
+            spriteBatch.DrawString(spriteFont, text, location, this.colourScheme.PrimaryColor);
         }
         /// <summary>
         /// Draws text with the given parameters. If location or color are not given, they will default to (35,35) and black respectively.

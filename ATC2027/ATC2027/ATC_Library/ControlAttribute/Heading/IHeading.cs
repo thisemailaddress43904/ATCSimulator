@@ -5,7 +5,7 @@ using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ATC2027.ATC_Library.Heading
+namespace ATC2027.ATC_Library.ControlAttribute.Heading
 {
     public interface IHeading
     {

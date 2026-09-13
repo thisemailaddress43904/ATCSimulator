@@ -2,7 +2,7 @@
 
 namespace ATC2027.Controls.UserControl.Abstract
 {
-    public interface IMonogameControl : IHasColorSet, IComponent
+    public interface IMonogameControl : IComponent
     {
         public bool IsActive();
         public bool IsVisible();

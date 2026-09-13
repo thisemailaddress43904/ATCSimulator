@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Collections.Concurrent;
 using ATC2027.ATC_Library.Clearance;
 using ATC2027.Forms;
+using ATC2027.Clearance;
 
 namespace ATC2027.ATC_Library.CollectionRing
 {

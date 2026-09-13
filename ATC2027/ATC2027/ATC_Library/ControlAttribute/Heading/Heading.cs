@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Schema;
 
-namespace ATC2027.ATC_Library.Heading
+namespace ATC2027.ATC_Library.ControlAttribute.Heading
 {
     public class Heading : IHeading
     {

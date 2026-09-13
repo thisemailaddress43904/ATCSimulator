@@ -1,15 +1,16 @@
 ﻿using ATC2027.ATC_Library.CollectionRing;
-using ATC2027.ATC_Library.Heading;
+using ATC2027.ATC_Library.ControlAttribute.Altitude;
+using ATC2027.ATC_Library.ControlAttribute.Heading;
+using ATC2027.ATC_Library.ControlAttribute.Speed;
 using ATC2027.ExtensionClasses;
-using ATC2027.Library.Altitude;
 using ATC2027.Library.FlightNumber;
-using ATC2027.Library.Speed;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Numerics;
 using System.Windows.Forms;
+using static ATC2027.ATC_Library.ControlAttribute.Altitude.AltitudeType;
 
 namespace ATC2027.Forms
 {

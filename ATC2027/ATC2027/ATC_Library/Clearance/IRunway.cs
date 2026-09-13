@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ATC2027.Controls.UserControl.Abstract
+namespace ATC2027.ATC_Library.Clearance
 {
-    public interface ICheckBoxSet : IMonogameControl, IHasModifiableCandidateItems
+    public interface IRunway
     {
+        public string getShorthandName();
     }
 }

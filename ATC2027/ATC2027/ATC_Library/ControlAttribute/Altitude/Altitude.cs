@@ -1,24 +1,22 @@
 ﻿using ATC2027.ExtensionClasses;
-using Microsoft.Xna.Framework.Content;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using static ATC2027.ATC_Library.ControlAttribute.Altitude.AltitudeType;
 
-namespace ATC2027.Library.Altitude
+
+namespace ATC2027.ATC_Library.ControlAttribute.Altitude
 {
     public class Altitude : IAltitude
     {
         private float feet;
         private bool hasChanged;
         private string memoizedToString;
+        private float v;
+        private AltitudeTypeEnum flightLevel;
 
-        public Altitude(float feet)
+        public Altitude(float numericValue, AltitudeTypeEnum altitudeTypeEnum = AltitudeTypeEnum.Feet)
         {
-            this.feet = feet;
+            this.feet = numericValue;
             this.hasChanged = true;
             memoizedToString = ToString();
             this.hasChanged = false;
@@ -190,11 +188,4 @@ namespace ATC2027.Library.Altitude
             }
         }
     }
-        public enum AltitudeTypeEnum
-        {
-            FlightLevel,
-            Feet,
-        }
-    }
-
-    
+}    

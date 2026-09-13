@@ -9,6 +9,7 @@ namespace ATC2027.Controls.UserControl.Implementable
 {
     public class Label : ILabel
     {
+        ColourScheme colourScheme => Constants.getColourScheme();
         bool isActive;
         bool isSelected;
         bool isVisible;
@@ -19,16 +20,10 @@ namespace ATC2027.Controls.UserControl.Implementable
         Text text;
         private Vector2 centre;
 
-        private ColourScheme colourScheme;
-
-        public Label(string label, SpriteFont sf, Vector2 centre, Vector2 size, ref ColourScheme colourScheme)
+        public Label(string label, SpriteFont sf, Vector2 centre, Vector2 size)
         {
-
-            this.colourScheme = colourScheme;
-
             this.centre = centre;
-            this.text = new Text(label, sf, centre, ref colourScheme, 3);
-
+            this.text = new Text(label, sf, centre);
         }
 
 
@@ -92,6 +87,16 @@ namespace ATC2027.Controls.UserControl.Implementable
         {
             if (!shouldBeDrawn)
                 return;
+        }
+
+        internal void SetPrimaryColor(Color secondaryColor)
+        {
+            throw new NotImplementedException();
+        }
+
+        internal void SetSecondaryColor(Color oldPromaryColor)
+        {
+            throw new NotImplementedException();
         }
     }
 }

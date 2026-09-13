@@ -12,10 +12,10 @@ namespace ATC2027.Controls.UserControl.Implementable
 {
     public class RadioButton : IRadioButton
     {
+        ColourScheme colourScheme;
         SpriteFont spriteFont;
         Vector2 firstItemCentre;
         Vector2 size;
-        Tuple<Color, Color, Color> colorTuple;
         private IList<RadioButtonItem> items;
         
         public string? getLabelContentOfSelectedRadioButton()
@@ -40,14 +40,15 @@ namespace ATC2027.Controls.UserControl.Implementable
             int widthOfTexture = 25;
             Label label;
             bool isSelected;
+            ColourScheme colourScheme;
 
-
-            public RadioButtonItem(string text, SpriteFont sf, Vector2 centre, Vector2 size, ColourScheme colourScheme, Texture2D on, Texture2D off)
+            public RadioButtonItem(string text, SpriteFont sf, Vector2 centre, Vector2 size, Texture2D on, Texture2D off)
             {
-                this.label = new Label(text, sf, centre, size, ref colourScheme);
+                this.label = new Label(text, sf, centre, size);
                 this.on = on;
                 this.off = off;
                 this.isSelected = false;
+                this.colourScheme = colourScheme;
             }
 
             public void ToggleSelection()
@@ -81,17 +82,18 @@ namespace ATC2027.Controls.UserControl.Implementable
             }
         }
 
-        public RadioButton(ICollection<string> strings, Texture2D on, Texture2D off, SpriteFont spriteFont, Vector2 firstItemCentre, Vector2 sizeOfLabel, Tuple<Color, Color, Color> colorTuple)
+        public RadioButton(ICollection<string> strings, Texture2D on, Texture2D off, SpriteFont spriteFont, Vector2 firstItemCentre, Vector2 sizeOfLabel, ref ColourScheme colourScheme)
         {
             this.firstItemCentre = firstItemCentre;
             this.size = sizeOfLabel;
-            this.colorTuple = colorTuple;
+            this.colourScheme = colourScheme;
 
             items = new List<RadioButtonItem>();
 
+            ColourScheme cs = Constants.getColourScheme();
             foreach (string s in strings)
             {
-                items.Add(new RadioButtonItem(s, spriteFont, new Vector2(firstItemCentre.X * (items.Count * getSpacing()), firstItemCentre.Y), sizeOfLabel, colorTuple, on, off));
+                items.Add(new RadioButtonItem(s, spriteFont, new Vector2(firstItemCentre.X * (items.Count * getSpacing()), firstItemCentre.Y), sizeOfLabel, on, off));
             }
         }
         
@@ -139,21 +141,6 @@ namespace ATC2027.Controls.UserControl.Implementable
         public bool IsSelected()
         {
             return true;
-        }
-
-        public Color GetPrimaryColor()
-        {
-            return colorTuple.Item1;
-        }
-
-        public Color GetSecondaryColor()
-        {
-            return colorTuple.Item2;
-        }
-
-        public Color GetTertiaryColor()
-        {
-            return colorTuple.Item3;
         }
 
         public void Update(GameTime gameTime)

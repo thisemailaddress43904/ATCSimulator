@@ -1,12 +1,14 @@
 ﻿#pragma warning disable IDE1006 // Naming Styles
 
 using ATC2027.ATC_Library.Clearance;
+using ATC2027.ATC_Library.Clearance.DirectControl;
 using ATC2027.ATC_Library.CollectionRing;
-using ATC2027.ATC_Library.Heading;
-using ATC2027.DataStructures;
-using ATC2027.Library.Altitude;
+using ATC2027.ATC_Library.ControlAttribute.Altitude;
+using ATC2027.ATC_Library.ControlAttribute.Heading;
+using ATC2027.ATC_Library.ControlAttribute.Speed;
+using ATC2027.Clearance;
+using ATC2027.Clearance.DirectControl;
 using ATC2027.Library.FlightNumber;
-using ATC2027.Library.Speed;
 using SharpDX.DirectWrite;
 using System;
 using System.Collections.Generic;
@@ -118,8 +120,8 @@ namespace ATC2027.Forms
             }
             else
             {
-                IClearance clearance = Clearance.getEmptyClearance();
-
+                ADirectControl clearance = MutableDirectControl.getEmptyClearance();
+                
                 if (txtBoxHeading.Text != "")
                     clearance.ApplyHeading(new Heading(txtBoxHeading.Text));
                 if (txtBoxSpeed.Text != "")

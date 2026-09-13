@@ -10,6 +10,7 @@ namespace ATC2027.Controls.UserControl.Implementable
 {
     public class Textbox : Label
     {
+        private ColourScheme colourScheme => Constants.getColourScheme();
         bool isSelected;
         bool previousIsSelected;
         event Action? SelectionChanged;
@@ -43,7 +44,7 @@ namespace ATC2027.Controls.UserControl.Implementable
         /// <param name="size">size</param>
         /// <param name="colors">colors</param>
         /// <param name="defaultValue">default value</param>
-        public Textbox(SpriteFont sf, Vector2 centre, Vector2 size, ref Tuple<Color, Color, Color> colors, string defaultValue = "text") : base(defaultValue, sf, centre, size, ref colors)
+        public Textbox(SpriteFont sf, Vector2 centre, Vector2 size, ref Tuple<Color, Color, Color> colors, string defaultValue = "text") : base(defaultValue, sf, centre, size)
         {
             previousIsSelected = false;
             isSelected = false;
@@ -71,8 +72,8 @@ namespace ATC2027.Controls.UserControl.Implementable
 
             if (isSelected != previousIsSelected)
             {
-                Color oldPromaryColor = GetPrimaryColor();
-                base.SetPrimaryColor(GetSecondaryColor());
+                Color oldPromaryColor = colourScheme.PrimaryColor;
+                base.SetPrimaryColor(colourScheme.SecondaryColor);
                 base.SetSecondaryColor(oldPromaryColor);
 
                 previousIsSelected = isSelected;

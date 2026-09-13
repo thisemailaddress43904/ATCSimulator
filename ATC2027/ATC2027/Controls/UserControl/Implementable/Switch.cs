@@ -16,9 +16,9 @@ namespace ATC2027.Controls.UserControl.Implementable
         private Rectangle outerRectangle;
         private Texture2D outerRectangleTexture;
 
-        public Switch(Texture2D on, Texture2D off, bool isOn, string labelContent, SpriteFont spriteFont, Tuple<Color, Color, Color> colorTuple, Vector2 topLeftCornerOfOuterRectangle)
+        public Switch(Texture2D on, Texture2D off, bool isOn, string labelContent, SpriteFont spriteFont, Vector2 topLeftCornerOfOuterRectangle)
         {
-            this.label = new Label(labelContent, spriteFont, new Vector2(), new Vector2(40, 225), ref colorTuple);
+            this.label = new Label(labelContent, spriteFont, new Vector2(), new Vector2(40, 225));
             this.isOn = isOn;
             this.on = on;
             this.off = off;
