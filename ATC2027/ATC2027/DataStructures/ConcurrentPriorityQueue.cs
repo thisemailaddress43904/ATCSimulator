@@ -3,18 +3,18 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
-
 namespace ATC2027.DataStructures
 {
     public class ConcurrentPriorityQueue<T> : IEnumerable<T>, ICollection
     {
         private String itemsLock;
         private IList<Tuple<T, int>> items;
-        public ConcurrentPriorityQueue(ICollection<Tuple<T, int>> collection)
+        public ConcurrentPriorityQueue(ICollection<Tuple<T, int>>? collection = null)
         {
             lock (itemsLock)
             {
                 items = [.. collection];
+                items ??= [];
                 items = items.OrderBy(x => x.Item2).ToList();
             }
         }
@@ -53,6 +53,8 @@ namespace ATC2027.DataStructures
         public bool IsSynchronized => false; //false for now as locking has not yet been implemented
 
         public object SyncRoot => itemsLock;
+
+        public bool IsEmpty => items.Count == 0;
 
         public void CopyTo(Array array, int index)
         {
@@ -93,6 +95,21 @@ namespace ATC2027.DataStructures
         {
             return GetEnumerator();
         }
+
+        public bool TryDequeue(out T data)
+        {
+            try
+            {
+                data = items[0].Item1;
+                return true;
+            }
+            catch (Exception)
+            {
+                // If the queue is empty, return false and set data to default value
+                data = default!;
+                return false;
+
+            }
+        }
     }
 }
-
