@@ -1,7 +1,11 @@
 ﻿using ATC2027.ATC_Library;
 using ATC2027.ATC_Library.Clearance;
+using ATC2027.ATC_Library.Clearance.Interfaces;
 using ATC2027.ATC_Library.CollectionRing;
-using ATC2027.ATC_Library.Heading;
+using ATC2027.ATC_Library.ControlAttribute.Altitude;
+using ATC2027.ATC_Library.ControlAttribute.Heading;
+using ATC2027.ATC_Library.ControlAttribute.Speed;
+using ATC2027.Clearance;
 using ATC2027.Controls;
 using ATC2027.Controls.Shape;
 using ATC2027.DataStructures;
@@ -18,8 +22,11 @@ using System.Drawing.Text;
 
 namespace ATC2027
 {
-    public class Plane : MoveableItem, IHasDevModeDrawableString
+    public class Plane : MoveableItem, IHasDevModeDrawableString, IHasClearance
     {
+        INonMutableClearance? clearance;
+        IDepartureClearance? departureClearance;
+        IArrivalClearance? arrivalClearance;
         bool attributesHaveBeenUpdated;
 
         Vector2 location;
@@ -491,6 +498,16 @@ namespace ATC2027
         internal void SetIsSelected(bool value)
         {
             this.isSelected = value;
+        }
+
+        public Dictionary<string, string> clearanceAttributesAsDictionary()
+        {
+            throw new NotImplementedException();
+        }
+
+        internal void setClearance(ref IClearance clearance)
+        {
+            throw new NotImplementedException();
         }
     }
 }
