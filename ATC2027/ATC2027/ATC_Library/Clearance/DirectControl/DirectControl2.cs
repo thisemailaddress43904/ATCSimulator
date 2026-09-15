@@ -13,12 +13,12 @@ namespace ATC2027.Clearance
 {
     public abstract class DirectControl2 : ADirectControl
     {
-        private IRunway? expectedRunway;
-        private FlightNumber? FlightNumber;
-        private string? AreaControllerIdentifier;
-        private ISpeed? speed;
-        private IAltitude? altitude;
-        private IHeading? heading;
+        protected IRunway? expectedRunway;
+        protected FlightNumber? FlightNumber;
+        protected string? AreaControllerIdentifier;
+        protected ISpeed? speed;
+        protected IAltitude? altitude;
+        protected IHeading? heading;
 
         public DirectControl2()
         {

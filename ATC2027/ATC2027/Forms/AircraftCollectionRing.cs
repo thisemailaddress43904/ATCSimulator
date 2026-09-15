@@ -163,7 +163,7 @@ namespace ATC2027.Forms
                     return;
                 }
 
-                this.cr.ApplyClearance(clearance, ref plane);
+                this.cr.ApplyClearance(NonMutableClearanceFactory.BuildNonMutableControl(clearance), ref plane);
 
                 //clear text boxes and combo boxes
                 lblResult.Text = "clearance applied";

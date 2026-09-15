@@ -17,6 +17,13 @@ namespace ATC2027.ATC_Library.Clearance.DirectControl
         public abstract IClearance FromAirTrafficControllerDescription(string description, bool isMutable);
         public abstract FlightNumber GetFlightNo();
         public abstract string GetAirTrafficControllingTowerIdentifier();
-        
+
+        public abstract IAltitude GetAltitude();
+
+        public abstract IHeading GetHeading();
+
+        public abstract ISpeed GetSpeed();
+
+        public abstract IRunway GetExpectedRunway();
     }
 }

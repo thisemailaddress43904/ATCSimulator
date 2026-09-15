@@ -14,24 +14,47 @@ namespace ATC2027.Clearance.DirectControl
         {
         }
 
-        public NonMutableDirectControl(ADirectControl aDirectControl)
+        public NonMutableDirectControl(ADirectControl aDirectControl) : base(aDirectControl.GetFlightNo(), aDirectControl.GetAirTrafficControllingTowerIdentifier(), aDirectControl.GetAltitude(), aDirectControl.GetHeading(), aDirectControl.GetSpeed(), aDirectControl.GetExpectedRunway())
         {
-
+            
         }
 
         public override ADirectControl ApplyAltitude(IAltitude altitude)
         {
-            throw new System.NotImplementedException();
+            base.altitude = altitude;
+            return this;
         }
 
         public override ADirectControl ApplyHeading(IHeading heading)
         {
-            throw new System.NotImplementedException();
+            base.heading = heading; 
+            return this;
         }
 
         public override ADirectControl ApplySpeed(ISpeed speed)
         {
-            throw new System.NotImplementedException();
+            base.speed = speed;
+            return this;
+        }
+
+        public override IAltitude GetAltitude()
+        {
+            return base.altitude;
+        }
+
+        public override IHeading GetHeading()
+        {
+            return base.heading;
+        }
+
+        public override ISpeed GetSpeed()
+        {
+            return base.speed;
+        }
+
+        public override IRunway GetExpectedRunway()
+        {
+            return base.expectedRunway;
         }
     }
 }

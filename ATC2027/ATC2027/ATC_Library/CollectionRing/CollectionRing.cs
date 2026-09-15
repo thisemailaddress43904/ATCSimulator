@@ -1,4 +1,5 @@
 ﻿using ATC2027.ATC_Library.Clearance;
+using ATC2027.ATC_Library.Clearance.Interfaces;
 using ATC2027.Clearance;
 using ATC2027.Forms;
 using ATC2027.Interfaces;
@@ -31,7 +32,7 @@ namespace ATC2027.ATC_Library.CollectionRing
             planeCollection.Add(plane.flightNoAsStr(), plane);
         }
 
-        public void ApplyClearance(IClearance clearance, ref Plane plane)
+        public void ApplyClearance(INonMutableClearance clearance, ref Plane plane)
         {
             plane.setClearance(ref clearance);
         }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ATC2027.ATC_Library.Clearance.Interfaces
 {
-    internal interface INonMutableClearance : IClearance
+    public interface INonMutableClearance : IClearance
     {
     }
 }

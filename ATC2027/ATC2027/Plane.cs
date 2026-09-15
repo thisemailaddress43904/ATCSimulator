@@ -381,9 +381,9 @@ namespace ATC2027
             throw new NotImplementedException();
         }
 
-        internal void setClearance(ref IClearance clearance)
+        internal void setClearance(ref INonMutableClearance clearance)
         {
-            throw new NotImplementedException();
+            this.clearance = clearance;
         }
     }
 }
