@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using ATC2027.Controls;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -7,7 +8,7 @@ using System.Reflection.Metadata.Ecma335;
 
 namespace ATC2027
 {
-    public class Constants
+    public static class Constants
     {   
         public static bool DevMode = true;
         #region colors
