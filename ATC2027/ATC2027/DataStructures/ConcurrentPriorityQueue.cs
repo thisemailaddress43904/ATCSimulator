@@ -61,10 +61,12 @@ namespace ATC2027.DataStructures
             ArgumentOutOfRangeException.ThrowIfNegative(index);
 
             //aquire list lock lock for thread safety
-
-            for (int i = index; i < items.Count; i++)
+            lock (itemsLock)
             {
-                array.SetValue(items[i - index].Item1, i);
+                for (int i = index; i < items.Count; i++)
+                {
+                    array.SetValue(items[i - index].Item1, i);
+                }
             }
         }
 
