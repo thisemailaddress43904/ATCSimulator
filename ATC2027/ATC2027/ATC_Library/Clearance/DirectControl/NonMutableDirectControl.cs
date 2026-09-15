@@ -1,5 +1,6 @@
 ﻿using ATC2027.ATC_Library.Clearance;
 using ATC2027.ATC_Library.Clearance.DirectControl;
+using ATC2027.ATC_Library.Clearance.Interfaces;
 using ATC2027.ATC_Library.ControlAttribute.Altitude;
 using ATC2027.ATC_Library.ControlAttribute.Heading;
 using ATC2027.ATC_Library.ControlAttribute.Speed;
@@ -7,7 +8,7 @@ using ATC2027.Library.FlightNumber;
 
 namespace ATC2027.Clearance.DirectControl
 {
-    public class NonMutableDirectControl : DirectControl2
+    public class NonMutableDirectControl : DirectControl2, INonMutableClearance
     {
         public NonMutableDirectControl(FlightNumber flightNumber, string AreaControllerIdentifier, IAltitude altitude, IHeading heading, ISpeed speed, IRunway expectedRunway) : base(flightNumber, AreaControllerIdentifier, speed, altitude, heading, expectedRunway)
         {

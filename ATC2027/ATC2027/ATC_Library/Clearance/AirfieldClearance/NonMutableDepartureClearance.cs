@@ -1,4 +1,5 @@
-﻿using ATC2027.Clearance;
+﻿using ATC2027.ATC_Library.Clearance.Interfaces;
+using ATC2027.Clearance;
 using ATC2027.Library.FlightNumber;
 using System;
 using System.Collections.Generic;
@@ -8,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace ATC2027.ATC_Library.Clearance
 {
-    public class ArrivalClearance : AirportClearance
+    public class NonMutableDepartureClearance : AirportClearance, INonMutableClearance, IDepartureClearance
     {
-
+        INonMutableClearance clearance;
         public IClearance FromAirTrafficControllerDescription(string description, bool isMutable)
         {
             throw new NotImplementedException();

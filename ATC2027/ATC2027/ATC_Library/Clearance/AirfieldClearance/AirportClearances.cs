@@ -8,9 +8,10 @@ using System.Threading.Tasks;
 
 namespace ATC2027.ATC_Library.Clearance
 {
-    public class DepartureClearance : AirportClearance
+    public abstract class AirportClearance : IClearance
     {
-        IClearance clearedTo;
+
+
         public IClearance FromAirTrafficControllerDescription(string description, bool isMutable)
         {
             throw new NotImplementedException();
