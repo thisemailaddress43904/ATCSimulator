@@ -17,6 +17,7 @@ namespace ATC2027
         public static Color primaryColor = Color.Blue;
         public static Color secondaryColor = Color.AliceBlue;
         public static Color tertiaryColor = Color.AntiqueWhite;
+        private static ColourScheme cs = new ColourScheme(primaryColor, secondaryColor, tertiaryColor, background, planeColor);
 
         #endregion
         #region drawing
@@ -63,6 +64,11 @@ namespace ATC2027
         public static GraphicsDevice getGraphicsDevice()
         {
             return getSpriteBatch().GraphicsDevice;
+        }
+
+        internal static ColourScheme getColourScheme()
+        {
+            return cs;
         }
         #endregion
 

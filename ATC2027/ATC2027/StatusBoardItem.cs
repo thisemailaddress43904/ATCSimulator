@@ -1,10 +1,9 @@
-﻿using ATC2027.Library.Altitude;
-using ATC2027.Library.Speed;
-using ATC2027;
+﻿using ATC2027;
 using ATC2027.ATC_Library;
-using ATC2027.ATC_Library.Heading;
 using static ATC2027.ATC_Library.VerticalMovement;
 using static ATC2027.ATC_Library.FlightRelationToAirfield;
+using ATC2027.ATC_Library.ControlAttribute.Heading;
+using ATC2027.ATC_Library.ControlAttribute.Speed;
 
 namespace ATC2027.Forms
 {

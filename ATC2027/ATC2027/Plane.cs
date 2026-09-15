@@ -12,12 +12,11 @@ using ATC2027.DataStructures;
 using ATC2027.ExtensionClasses;
 using ATC2027.Forms;
 using ATC2027.Interfaces;
-using ATC2027.Library.Altitude;
 using ATC2027.Library.FlightNumber;
-using ATC2027.Library.Speed;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
+using System.Collections.Generic;
 using System.Drawing.Text;
 
 namespace ATC2027
@@ -30,7 +29,6 @@ namespace ATC2027
         bool attributesHaveBeenUpdated;
 
         Vector2 location;
-        IClearance clearance;
         
         TimeSpan? timeOfLastUpdate = null;
 
@@ -84,15 +82,9 @@ namespace ATC2027
             Arrival,Departure,FlyOver,Unknown
         }
         #endregion
-        public Plane(FlightNumber flNo, IHeading heading, IAltitude altitude, ISpeed speed, Vector2 location, GraphicsDevice graphicsDevice, IClearance? clearance = null, Color? selectedDrawColor = null, Color? nonSelectedDrawColor = null)
+        public Plane(FlightNumber flNo, IHeading heading, IAltitude altitude, ISpeed speed, Vector2 location, GraphicsDevice graphicsDevice, Color? selectedDrawColor = null, Color? nonSelectedDrawColor = null)
         {
-            this.clearance = clearance;
-
-            if (this.clearance == null)
-            {
-                this.clearance = Clearance.getEmptyClearance();
-                this.verticalMovement = VerticalMovement.VerticalMovementEnum.unknown;
-            }
+            
 
 
             this.flightNumber = flNo;
@@ -193,35 +185,7 @@ namespace ATC2027
             tail.Update(gameTime);
             head.Update(gameTime);
 
-            #region updateHeading
-            updateHeadingNow = lastHeadingUpdate + headingUpdateFrequency < gameTime.TotalGameTime;
-            if (updateHeadingNow)
-            {
-                UpdateHeading();
-                lastHeadingUpdate = gameTime.TotalGameTime;
-                updateHeadingNow = false;
-            }
-            #endregion
-
-            #region updateAltitude
-            updateAltitudeNow = lastAltitudeUpdate + altitudeUpdateFrequency < gameTime.TotalGameTime;
-            if (updateAltitudeNow) {
-                UpdateAltitude();
-                lastAltitudeUpdate = gameTime.TotalGameTime;
-                updateAltitudeNow = false;
-            }
-            #endregion
-
-            #region updateSpeed
-            updateSpeedNow = lastSpeedUpdate + speedUpdateFrequency < gameTime.TotalGameTime;
-            if (updateSpeedNow)
-            {
-                UpdateSpeed();
-                lastSpeedUpdate = gameTime.TotalGameTime;
-                updateSpeedNow = false;
-            }
-            #endregion
-
+            
             UpdateVerticalMovementSymbol();
             previousAltitude = altitude;
 
@@ -262,81 +226,7 @@ namespace ATC2027
                 verticalMovement = VerticalMovement.VerticalMovementEnum.unknown;
         }
 
-        private void UpdateSpeed()
-        {
-            if (clearance == null)
-                return;
-            if (clearance.GetSpeed() == null)
-                return;
-
-            float clearanceSpeed = clearance.GetSpeed().ToKnotsFloat();
-            float actualSpeed = this.speed.ToKnotsFloat();
-
-            bool clearanceSpeedAndActualSpeedAreDifferent = clearanceSpeed == actualSpeed;
-            
-            if (!clearanceSpeedAndActualSpeedAreDifferent)
-            {
-                if (Math.Abs(clearanceSpeed - actualSpeed) < speedUpdateRate+0.1)
-                    speed = clearance.GetSpeed();
-                else if (clearanceSpeed < actualSpeed)
-                    speed = speed.Decrement(speedUpdateRate);
-                else
-                    speed = speed.Increment(speedUpdateRate);
-                
-                this.attributesHaveBeenUpdated = true;
-            }
-        }
-
-        private void UpdateAltitude()
-        {
-            if (clearance == null)
-                return;
-
-            if (clearance.GetAltitude() == null)
-                return;
-
-            float clearanceAltitude = clearance.GetAltitude().GetAltitudeInFeet();
-            float actualAltitude = this.altitude.GetAltitudeInFeet();
-
-            bool clearanceAltitudeAndRealAltitudeAreDifferent = clearanceAltitude == actualAltitude;
-            //update heading
-            if (!clearanceAltitudeAndRealAltitudeAreDifferent)
-            {
-                if (Math.Abs(clearanceAltitude - actualAltitude) < 1)
-                    altitude = clearance.GetAltitude();
-                else if (clearanceAltitude < actualAltitude)
-                    altitude = altitude.Decrement(rateOfDescentPerPeriod);
-                else
-                    altitude = altitude.Increment(rateOfDescentPerPeriod);
-
-                this.attributesHaveBeenUpdated = true;
-            }
-        }
-
-        private void UpdateHeading()
-        {
-            if (clearance == null)
-                return;
-
-            if (clearance.GetHeading() == null)
-                return;
-            float clearanceHeading = clearance.GetHeading().GetHeadingInFloatDegrees();
-            float actualHeading = this.heading.GetHeadingInFloatDegrees();
-
-            bool clearanceHeadingAndHeadingAreDifferent = clearanceHeading == actualHeading;
-            //update heading
-            if (!clearanceHeadingAndHeadingAreDifferent)
-            {
-                if (Math.Abs(clearanceHeading - actualHeading) < 1)
-                    heading = clearance.GetHeading();
-                else if (clearanceHeading < actualHeading)
-                    heading = heading.Decrement(getTurningRadiusFromSpeed());
-                else
-                    heading = heading.Increment(getTurningRadiusFromSpeed());
-
-                this.attributesHaveBeenUpdated = true;
-            }
-        }
+        
 
         public bool getAttributesHaveBeenUpdated()
         {
@@ -458,20 +348,6 @@ namespace ATC2027
                 this.heading, 
                 this.speed, 
                 ATC_Library.FlightRelationToAirfield.FlightRelationToAirfieldEnum.FlyOver);
-        }
-
-
-        internal void setClearance(ref IClearance clearance)
-        {
-            if (this.clearance.GetAltitude() == null)
-                this.verticalMovement = VerticalMovement.VerticalMovementEnum.unknown;
-            else if (this.clearance.GetAltitude().GetAltitudeInFeet() == this.altitude.GetAltitudeInFeet())
-                this.verticalMovement = VerticalMovement.VerticalMovementEnum.constant;
-
-            this.clearance = clearance;
-            
-
-            
         }
 
         internal IAircraftCollectionRingItem ToAirCraftCollectionRingItem()
