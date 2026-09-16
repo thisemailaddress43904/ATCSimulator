@@ -13,14 +13,14 @@ namespace ATC2027.Speech.TTS
     {
         SpeechSynthesizer ssAPI;
         ConcurrentPriorityQueue<string> stringsToSpeak;
-        static bool isSpeaking;
-
+        static bool isSpeaking; //this is static because the SpeechSynthesizer might speak over itself and produce mangked up sound and to ensure that it only speaks one thing at a time, we need to know if it is currently speaking or not.
         public TextToSpeech(int rate, int volume)
         {
-            ssAPI = new SpeechSynthesizer();
-
-            ssAPI.Rate = rate;
-            ssAPI.Volume = volume;
+            ssAPI = new SpeechSynthesizer
+            {
+                Rate = rate,
+                Volume = volume
+            };
             ssAPI.SetOutputToDefaultAudioDevice();
 
             stringsToSpeak = new ConcurrentPriorityQueue<string>();
