@@ -40,7 +40,34 @@ namespace ATC2027.DataStructures
             lock (itemsLock)
             {
                 var tuple = new Tuple<T, int>(item, priority);
+                items.Insert(0, tuple);
+                items = items.OrderBy(x => x.Item2).ToList();
+            }
+        }
+        public void Enqueue(Tuple<T, int> item)
+        {
+            lock (itemsLock)
+            {
+                items.Insert(0, item);
+                items = items.OrderBy(x => x.Item2).ToList();
+            }
+        }
+
+        public void Append(T item, int priority)
+        {
+            lock (itemsLock)
+            {
+                var tuple = new Tuple<T, int>(item, priority);
                 items.Add(tuple);
+                items = items.OrderBy(x => x.Item2).ToList();
+            }
+        }
+
+        public void Append(Tuple<T, int> item)
+        {
+            lock (itemsLock)
+            {
+                items.Add(item);
                 items = items.OrderBy(x => x.Item2).ToList();
             }
         }
