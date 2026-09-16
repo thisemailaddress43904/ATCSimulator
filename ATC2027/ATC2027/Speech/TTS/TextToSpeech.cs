@@ -49,7 +49,7 @@ namespace ATC2027.Speech.TTS
                         while (isSpeaking) ;
 
                         //speak text
-                        Task.Run(() => ssAPI.Speak(text));
+                        Task.Run(() => speak(text));
                     }
                 }
             }
