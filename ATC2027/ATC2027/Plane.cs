@@ -1,11 +1,13 @@
 ﻿using ATC2027.ATC_Library;
 using ATC2027.ATC_Library.Clearance;
 using ATC2027.ATC_Library.Clearance.Interfaces;
+using ATC2027.ATC_Library.Clearance.WaypointControl;
 using ATC2027.ATC_Library.CollectionRing;
 using ATC2027.ATC_Library.ControlAttribute.Altitude;
 using ATC2027.ATC_Library.ControlAttribute.Heading;
 using ATC2027.ATC_Library.ControlAttribute.Speed;
 using ATC2027.Clearance;
+using ATC2027.Clearance.DirectControl;
 using ATC2027.Controls;
 using ATC2027.Controls.Shape;
 using ATC2027.DataStructures;
@@ -21,11 +23,18 @@ using System.Drawing.Text;
 
 namespace ATC2027
 {
-    public class Plane : MoveableItem, IHasDevModeDrawableString, IHasClearance
+    public class Plane : MoveableItem, IHasDevModeDrawableString, IHasNullableNonMutableClearance, IHasDepartureClearance, IHasArrivalClearance
     {
+
+
+
         INonMutableClearance? clearance;
         IDepartureClearance? departureClearance;
         IArrivalClearance? arrivalClearance;
+
+        bool hasTakenOff;
+        bool isApproachingRunwayToLand => arrivalClearance != null;
+        bool isReadyToTakeoff => departureClearance != null && !hasTakenOff;
         bool attributesHaveBeenUpdated;
 
         Vector2 location;
@@ -84,9 +93,6 @@ namespace ATC2027
         #endregion
         public Plane(FlightNumber flNo, IHeading heading, IAltitude altitude, ISpeed speed, Vector2 location, GraphicsDevice graphicsDevice, Color? selectedDrawColor = null, Color? nonSelectedDrawColor = null)
         {
-            
-
-
             this.flightNumber = flNo;
             this.heading = new Heading(heading);
             this.altitude = altitude;
@@ -189,22 +195,30 @@ namespace ATC2027
             UpdateVerticalMovementSymbol();
             previousAltitude = altitude;
 
-            if (isSelected)
-            {
-                bool leftArrowDown = false;
-                bool rightArrowDown = false;
 
-                if (leftArrowDown)
+            if (isApproachingRunwayToLand)
+                throw new NotImplementedException("Landing on runways has not yet been handled");
+            else
+            {
+                if (clearance != null)
                 {
-                    this.heading.Decrement();
-                    attributesHaveBeenUpdated = true;
+                    if (clearance.GetType().ToString().Contains("NonMutableDirectControl"))
+                    {
+
+                    }
+
+                    if (clearance.GetType().ToString().Contains("NonMutableSIDClearance"))
+                        throw new NotImplementedException("NonMutableSIDClearance movement has not yet been implemented");
+                    if (clearance.GetType().ToString().Contains("NonMutableSTARClearance"))
+                        throw new NotImplementedException("NonMutableSTARClearance movement has not yet been implemented");
+                    if (clearance.GetType().ToString().Contains("NonMutableArrivalClearance"))
+                        throw new NotImplementedException("NonMutableArrivalClearance movement has not yet been implemented");
+                    if (clearance.GetType().ToString().Contains("NonMutableDepartureClearance"))
+                        throw new NotImplementedException("NonMutableDepartureClearance movement has not yet been implemented");
                 }
-                if (rightArrowDown)
-                {
-                    this.heading.Increment();
-                    attributesHaveBeenUpdated = true;
-                }
+                
             }
+
         }
 
         private void UpdateVerticalMovementSymbol()
@@ -384,6 +398,21 @@ namespace ATC2027
         internal void setClearance(ref INonMutableClearance clearance)
         {
             this.clearance = clearance;
+        }
+
+        public INonMutableClearance? GetClearance()
+        {
+            return this.clearance;
+        }
+
+        public IDepartureClearance? GetDepartureClearance()
+        {
+            return this.departureClearance;
+        }
+
+        public IArrivalClearance? GetArrivalClearance()
+        {
+            return this.arrivalClearance;
         }
     }
 }
