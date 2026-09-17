@@ -1,4 +1,5 @@
-﻿using ATC2027.Clearance;
+﻿using ATC2027.ATC_Library.Clearance.Interfaces;
+using ATC2027.Clearance;
 using ATC2027.Clearance.WaypointControl;
 using ATC2027.Library.FlightNumber;
 using System;
@@ -9,11 +10,11 @@ using System.Threading.Tasks;
 
 namespace ATC2027.ATC_Library.Clearance.WaypointControl
 {
-    public class SIDClearance : AWaypointClearance
+    public class NonMutableSIDClearance : AWaypointClearance, INonMutableClearance
     {
         private IList<SID> SIDList;
 
-        public SIDClearance(IList<SID>? sidList)
+        public NonMutableSIDClearance(IList<SID>? sidList)
         {
             this.SIDList = sidList;
             this.SIDList ??= [];

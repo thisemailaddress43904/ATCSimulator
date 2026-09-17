@@ -1,4 +1,5 @@
-﻿using ATC2027.Clearance;
+﻿using ATC2027.ATC_Library.Clearance.Interfaces;
+using ATC2027.Clearance;
 using ATC2027.Clearance.WaypointControl;
 using ATC2027.Library.FlightNumber;
 using System;
@@ -9,11 +10,11 @@ using System.Threading.Tasks;
 
 namespace ATC2027.ATC_Library.Clearance.WaypointControl
 {
-    public class STARClearance : AWaypointClearance
+    public class NonMutableSTARClearance : AWaypointClearance, INonMutableClearance
     {
         public IList<STAR> starList;
         
-        public STARClearance(IList<STAR>? starList = null)
+        public NonMutableSTARClearance(IList<STAR>? starList = null)
         {
             this.starList = starList;
             this.starList ??= [];

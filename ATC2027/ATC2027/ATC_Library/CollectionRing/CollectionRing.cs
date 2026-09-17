@@ -153,5 +153,17 @@ namespace ATC2027.ATC_Library.CollectionRing
         {
             throw new NotImplementedException();
         }
+
+        /**
+         * Transfers a plane from this collection ring to another collection ring as well as removes it from this collection ring.
+         * 
+         * @param plane The plane to be transferred.
+         * @param collectionRing The target collection ring to which the plane will be added.
+         */
+        public void TransferPlaneToCollectionRing(ref Plane plane, ref IAircraftCollectionRing collectionRing)
+        {
+            collectionRing.AddPlane(plane);
+            this.RemovePlane(plane);
+        }
     }
 }

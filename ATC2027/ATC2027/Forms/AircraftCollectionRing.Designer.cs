@@ -67,7 +67,7 @@
             tableLayoutPanel2.Controls.Add(lblResult, 6, 6);
             tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
-            tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(2);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
             tableLayoutPanel2.RowCount = 10;
             tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.097561F));
@@ -80,7 +80,6 @@
             tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 18.2926826F));
             tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.65853667F));
             tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.097561F));
-            tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 16F));
             tableLayoutPanel2.Size = new System.Drawing.Size(642, 242);
             tableLayoutPanel2.TabIndex = 2;
             // 
@@ -88,7 +87,7 @@
             // 
             cmbBoxSelectAircraft.FormattingEnabled = true;
             cmbBoxSelectAircraft.Location = new System.Drawing.Point(34, 68);
-            cmbBoxSelectAircraft.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            cmbBoxSelectAircraft.Margin = new System.Windows.Forms.Padding(2);
             cmbBoxSelectAircraft.Name = "cmbBoxSelectAircraft";
             cmbBoxSelectAircraft.Size = new System.Drawing.Size(122, 28);
             cmbBoxSelectAircraft.TabIndex = 0;
@@ -148,7 +147,7 @@
             // 
             txtBoxHeading.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
             txtBoxHeading.Location = new System.Drawing.Point(322, 16);
-            txtBoxHeading.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            txtBoxHeading.Margin = new System.Windows.Forms.Padding(2);
             txtBoxHeading.Name = "txtBoxHeading";
             txtBoxHeading.Size = new System.Drawing.Size(124, 27);
             txtBoxHeading.TabIndex = 5;
@@ -157,7 +156,7 @@
             // 
             txtBoxAltitude.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
             txtBoxAltitude.Location = new System.Drawing.Point(322, 68);
-            txtBoxAltitude.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            txtBoxAltitude.Margin = new System.Windows.Forms.Padding(2);
             txtBoxAltitude.Name = "txtBoxAltitude";
             txtBoxAltitude.Size = new System.Drawing.Size(124, 27);
             txtBoxAltitude.TabIndex = 6;
@@ -166,7 +165,7 @@
             // 
             txtBoxSpeed.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
             txtBoxSpeed.Location = new System.Drawing.Point(322, 172);
-            txtBoxSpeed.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            txtBoxSpeed.Margin = new System.Windows.Forms.Padding(2);
             txtBoxSpeed.Name = "txtBoxSpeed";
             txtBoxSpeed.Size = new System.Drawing.Size(124, 27);
             txtBoxSpeed.TabIndex = 8;
@@ -175,7 +174,7 @@
             // 
             btnApplyClearance.Dock = System.Windows.Forms.DockStyle.Fill;
             btnApplyClearance.Location = new System.Drawing.Point(482, 68);
-            btnApplyClearance.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            btnApplyClearance.Margin = new System.Windows.Forms.Padding(2);
             btnApplyClearance.Name = "btnApplyClearance";
             btnApplyClearance.Size = new System.Drawing.Size(124, 40);
             btnApplyClearance.TabIndex = 9;
@@ -188,7 +187,7 @@
             cmbBoxAltitudeType.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
             cmbBoxAltitudeType.FormattingEnabled = true;
             cmbBoxAltitudeType.Location = new System.Drawing.Point(322, 120);
-            cmbBoxAltitudeType.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            cmbBoxAltitudeType.Margin = new System.Windows.Forms.Padding(2);
             cmbBoxAltitudeType.Name = "cmbBoxAltitudeType";
             cmbBoxAltitudeType.Size = new System.Drawing.Size(124, 28);
             cmbBoxAltitudeType.TabIndex = 10;
@@ -212,7 +211,7 @@
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             ClientSize = new System.Drawing.Size(642, 242);
             Controls.Add(tableLayoutPanel2);
-            Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            Margin = new System.Windows.Forms.Padding(2);
             MaximumSize = new System.Drawing.Size(660, 289);
             MinimumSize = new System.Drawing.Size(660, 289);
             Name = "AircraftCollectionRing";
