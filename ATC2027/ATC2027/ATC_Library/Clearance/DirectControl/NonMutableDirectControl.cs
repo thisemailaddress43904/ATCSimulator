@@ -14,7 +14,7 @@ namespace ATC2027.Clearance.DirectControl
         {
         }
 
-        public NonMutableDirectControl(ADirectControl aDirectControl) : base(aDirectControl.GetFlightNo(), aDirectControl.GetAirTrafficControllingTowerIdentifier(), aDirectControl.GetAltitude(), aDirectControl.GetHeading(), aDirectControl.GetSpeed(), aDirectControl.GetExpectedRunway())
+        public NonMutableDirectControl(ADirectControl aDirectControl) : base(aDirectControl.GetFlightNo(), aDirectControl.GetAirTrafficControllingTowerIdentifier(), aDirectControl.GetSpeed(), aDirectControl.GetAltitude(), aDirectControl.GetHeading(), aDirectControl.GetExpectedRunway())
         {
             
         }
