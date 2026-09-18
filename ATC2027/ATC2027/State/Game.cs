@@ -2,17 +2,15 @@
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 using ATC2027.Library.FlightNumber;
-using ATC2027.Library.Altitude;
-using ATC2027.Library.Speed;
 using System.Linq;
 using ATC2027.Forms;
-using ATC2027.ATC_Library.Heading;
 using ATC2027.ATC_Library.CollectionRing;
 using System;
 using Microsoft.Xna.Framework.Input;
 using ATC2027.Controls;
 using ATC2027.Controls.UserControl.Abstract;
 using ATC2027.Controls.UserControl.Implementable;
+using SharpDX.Direct3D11;
 
 namespace ATC2027.State
 {
@@ -24,6 +22,7 @@ namespace ATC2027.State
         #endregion
 
         #region forms
+        ApplyClearanceForm acf;
         AircraftCollectionRing aircraftCollectionRing;
         TimeSpan formUpdateFrequency = TimeSpan.FromSeconds(1);
         TimeSpan formLastUpdate = TimeSpan.Zero;
@@ -62,7 +61,10 @@ namespace ATC2027.State
             addPlaneForm = new AddPlane(ref cr);
             addPlaneForm.Show();
 
-            label = new Label("testContnetForLabel", Constants.getArial_7(), new Vector2(50, 50), new Vector2(200, 35), ref base.ColorScheme);
+            acf = new ApplyClearanceForm(ref cr);
+            acf.Show();
+
+            label = new Label("testContnetForLabel", Constants.getArial_7(), new Vector2(50, 50), new Vector2(200, 35));
         }
 
         public bool formShouldBeUpdated => cr.planeCollection.Values.Any(x => x.getAttributesHaveBeenUpdated());

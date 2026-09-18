@@ -53,7 +53,7 @@ namespace ATC2027.State
             if (Constants.DevMode)
             {
                 if (Constants.contentManager != null)
-                     devModeText = new Text("templateText", Constants.getArial_7(), new Vector2(35, 35), Color.Red);
+                     devModeText = new Text("templateText", Constants.getArial_7(), new Vector2(35, 35));
 
                 if (devModeText!=null)
                     devModeText.setText(getDevModeDrawableString());
