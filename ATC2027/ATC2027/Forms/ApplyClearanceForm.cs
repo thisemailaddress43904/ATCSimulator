@@ -17,6 +17,7 @@ namespace ATC2027.Forms
         public ApplyClearanceForm(ref CollectionRing collectionRing)
         {
             this.collectionRing = collectionRing;
+
             InitializeComponent();
         }
 
