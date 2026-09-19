@@ -111,7 +111,7 @@ namespace ATC2027.Clearance
 
         public override string GetAirTrafficControllingTowerIdentifier()
         {
-            throw new NotImplementedException();
+            return this.AreaControllerIdentifier;
         }
     }
 }

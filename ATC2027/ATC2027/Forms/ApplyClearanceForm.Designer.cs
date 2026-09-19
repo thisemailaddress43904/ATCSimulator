@@ -32,7 +32,8 @@
             tlpInnerLeft = new System.Windows.Forms.TableLayoutPanel();
             cmbFlightNumbers = new System.Windows.Forms.ComboBox();
             btnApplyClearance = new System.Windows.Forms.Button();
-            TabControl = new System.Windows.Forms.TabControl();
+            lblErrorLabel = new System.Windows.Forms.Label();
+            acf_tc = new System.Windows.Forms.TabControl();
             tpDirectControl = new System.Windows.Forms.TabPage();
             tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
             lblHeading = new System.Windows.Forms.Label();
@@ -77,7 +78,7 @@
             label4 = new System.Windows.Forms.Label();
             tlpOuter.SuspendLayout();
             tlpInnerLeft.SuspendLayout();
-            TabControl.SuspendLayout();
+            acf_tc.SuspendLayout();
             tpDirectControl.SuspendLayout();
             tableLayoutPanel9.SuspendLayout();
             tpSTAR.SuspendLayout();
@@ -104,7 +105,7 @@
             tlpOuter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 65F));
             tlpOuter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5F));
             tlpOuter.Controls.Add(tlpInnerLeft, 1, 1);
-            tlpOuter.Controls.Add(TabControl, 3, 1);
+            tlpOuter.Controls.Add(acf_tc, 3, 1);
             tlpOuter.Dock = System.Windows.Forms.DockStyle.Fill;
             tlpOuter.Location = new System.Drawing.Point(0, 0);
             tlpOuter.Name = "tlpOuter";
@@ -121,6 +122,7 @@
             tlpInnerLeft.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             tlpInnerLeft.Controls.Add(cmbFlightNumbers, 0, 1);
             tlpInnerLeft.Controls.Add(btnApplyClearance, 0, 3);
+            tlpInnerLeft.Controls.Add(lblErrorLabel, 0, 4);
             tlpInnerLeft.Dock = System.Windows.Forms.DockStyle.Fill;
             tlpInnerLeft.Location = new System.Drawing.Point(56, 27);
             tlpInnerLeft.Name = "tlpInnerLeft";
@@ -144,6 +146,8 @@
             cmbFlightNumbers.Size = new System.Drawing.Size(200, 28);
             cmbFlightNumbers.TabIndex = 0;
             cmbFlightNumbers.SelectedIndexChanged += cmbFlightNumbers_SelectedIndexChanged;
+            cmbFlightNumbers.TextChanged += cmbFlightNumbers_TextChanged;
+            cmbFlightNumbers.MouseEnter += cmbFlightNumbers_MouseEnter;
             // 
             // btnApplyClearance
             // 
@@ -155,20 +159,32 @@
             btnApplyClearance.TabIndex = 3;
             btnApplyClearance.Text = "Apply Clearance";
             btnApplyClearance.UseVisualStyleBackColor = true;
+            btnApplyClearance.Click += btnApplyClearance_Click;
             // 
-            // TabControl
+            // lblErrorLabel
             // 
-            TabControl.Controls.Add(tpDirectControl);
-            TabControl.Controls.Add(tpSTAR);
-            TabControl.Controls.Add(tpSID);
-            TabControl.Controls.Add(tpArrival);
-            TabControl.Controls.Add(tpDeparture);
-            TabControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            TabControl.Location = new System.Drawing.Point(321, 27);
-            TabControl.Name = "TabControl";
-            TabControl.SelectedIndex = 0;
-            TabControl.Size = new System.Drawing.Size(684, 437);
-            TabControl.TabIndex = 1;
+            lblErrorLabel.AutoSize = true;
+            lblErrorLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            lblErrorLabel.ForeColor = System.Drawing.Color.Red;
+            lblErrorLabel.Location = new System.Drawing.Point(3, 348);
+            lblErrorLabel.Name = "lblErrorLabel";
+            lblErrorLabel.Size = new System.Drawing.Size(200, 89);
+            lblErrorLabel.TabIndex = 4;
+            // 
+            // acf_tc
+            // 
+            acf_tc.Controls.Add(tpDirectControl);
+            acf_tc.Controls.Add(tpSTAR);
+            acf_tc.Controls.Add(tpSID);
+            acf_tc.Controls.Add(tpArrival);
+            acf_tc.Controls.Add(tpDeparture);
+            acf_tc.Dock = System.Windows.Forms.DockStyle.Fill;
+            acf_tc.Location = new System.Drawing.Point(321, 27);
+            acf_tc.Name = "acf_tc";
+            acf_tc.SelectedIndex = 0;
+            acf_tc.Size = new System.Drawing.Size(684, 437);
+            acf_tc.TabIndex = 1;
+            acf_tc.SelectedIndexChanged += acf_tc_SelectedIndexChanged;
             // 
             // tpDirectControl
             // 
@@ -717,7 +733,8 @@
             Load += ApplyClearanceForm_Load;
             tlpOuter.ResumeLayout(false);
             tlpInnerLeft.ResumeLayout(false);
-            TabControl.ResumeLayout(false);
+            tlpInnerLeft.PerformLayout();
+            acf_tc.ResumeLayout(false);
             tpDirectControl.ResumeLayout(false);
             tableLayoutPanel9.ResumeLayout(false);
             tableLayoutPanel9.PerformLayout();
@@ -743,7 +760,7 @@
         private System.Windows.Forms.TableLayoutPanel tlpOuter;
         private System.Windows.Forms.TableLayoutPanel tlpInnerLeft;
         private System.Windows.Forms.ComboBox cmbFlightNumbers;
-        private System.Windows.Forms.TabControl TabControl;
+        private System.Windows.Forms.TabControl acf_tc;
         private System.Windows.Forms.TabPage tpDirectControl;
         private System.Windows.Forms.TabPage tpSTAR;
         private System.Windows.Forms.TabPage tpSID;
@@ -787,5 +804,6 @@
         private System.Windows.Forms.TextBox txtBoxSpeed;
         private System.Windows.Forms.ComboBox cmbBoxAltitudeType;
         private System.Windows.Forms.Button btnApplyClearance;
+        private System.Windows.Forms.Label lblErrorLabel;
     }
 }

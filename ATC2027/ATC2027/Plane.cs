@@ -25,13 +25,19 @@ namespace ATC2027
 {
     public class Plane : MoveableItem, IHasDevModeDrawableString, IHasNullableNonMutableClearance, IHasDepartureClearance, IHasArrivalClearance
     {
+        #region permissable clearances
+        public bool CanBeConsideredForLandingClearance => hasTakenOff;
+        public bool CanBeConsideredForTakeoffClearance => !hasTakenOff;
+        public bool CanBeConsideredForSTARClearance => !hasTakenOff;
+        public bool CanBeConsideredForSIDClearance => !hasTakenOff;
+        public bool CanBeConsideredForDirectClearance => true;
+        #endregion
 
-
-
+        #region clearances
         INonMutableClearance? clearance;
         IDepartureClearance? departureClearance;
         IArrivalClearance? arrivalClearance;
-
+        #endregion
         bool hasTakenOff;
         bool isApproachingRunwayToLand => arrivalClearance != null;
         bool isReadyToTakeoff => departureClearance != null && !hasTakenOff;
@@ -91,7 +97,7 @@ namespace ATC2027
             Arrival,Departure,FlyOver,Unknown
         }
         #endregion
-        public Plane(FlightNumber flNo, IHeading heading, IAltitude altitude, ISpeed speed, Vector2 location, GraphicsDevice graphicsDevice, Color? selectedDrawColor = null, Color? nonSelectedDrawColor = null)
+        public Plane(FlightNumber flNo, IHeading heading, IAltitude altitude, ISpeed speed, Vector2 location, GraphicsDevice graphicsDevice, bool hasTakenOff, Color? selectedDrawColor = null, Color? nonSelectedDrawColor = null)
         {
             this.flightNumber = flNo;
             this.heading = new Heading(heading);

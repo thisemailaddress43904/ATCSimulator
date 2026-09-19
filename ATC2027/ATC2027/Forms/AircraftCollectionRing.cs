@@ -29,8 +29,8 @@ namespace ATC2027.Forms
         public bool formShouldBeUpdated = false;
 
         private readonly CollectionRing cr;
-        
-        
+
+
         public AircraftCollectionRing(ref CollectionRing cr)
         {
             this.cr = cr;
@@ -121,7 +121,7 @@ namespace ATC2027.Forms
             else
             {
                 ADirectControl clearance = MutableDirectControl.getEmptyClearance();
-                
+
                 if (txtBoxHeading.Text != "")
                     clearance.ApplyHeading(new Heading(txtBoxHeading.Text));
                 if (txtBoxSpeed.Text != "")
@@ -179,6 +179,7 @@ namespace ATC2027.Forms
 
         private void UpdateCmbBoxSelectAircraft()
         {
+            cmbBoxSelectAircraft.Text = "";
             cmbBoxSelectAircraft.Items.Clear();
 
             IList<Plane> planes = cr.getAircraftCollection();
@@ -211,6 +212,16 @@ namespace ATC2027.Forms
         private void cmbBoxSelectAircraft_TextUpdate(object sender, EventArgs e)
         {
             cmbBoxSelectAircraft_SelectedValueChanged(sender, e);
+        }
+
+        private void cmbBoxSelectAircraft_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmbFlightNumbers_SelectedValueChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

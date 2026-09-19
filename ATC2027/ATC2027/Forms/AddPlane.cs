@@ -136,7 +136,8 @@ namespace ATC2027.Forms
                     altitude,
                     speed,
                     location,
-                    Constants.getSpriteBatch().GraphicsDevice));
+                    Constants.getSpriteBatch().GraphicsDevice,
+                    true));
 
                 txtBoxFlightNumber.Text = getNextFlightNumber();
                 txtBoxAltitude.Text = "";
