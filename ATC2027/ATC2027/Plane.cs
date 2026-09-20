@@ -20,6 +20,7 @@ using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Drawing.Text;
+using System.Text;
 
 namespace ATC2027
 {
@@ -34,7 +35,7 @@ namespace ATC2027
         #endregion
 
         #region clearances
-        INonMutableClearance? clearance;
+        INonMutableClearance? airTimeClearance;
         IDepartureClearance? departureClearance;
         IArrivalClearance? arrivalClearance;
         #endregion
@@ -206,20 +207,20 @@ namespace ATC2027
                 throw new NotImplementedException("Landing on runways has not yet been handled");
             else
             {
-                if (clearance != null)
+                if (airTimeClearance != null)
                 {
-                    if (clearance.GetType().ToString().Contains("NonMutableDirectControl"))
+                    if (airTimeClearance.GetType().ToString().Contains("NonMutableDirectControl"))
                     {
 
                     }
 
-                    if (clearance.GetType().ToString().Contains("NonMutableSIDClearance"))
+                    if (airTimeClearance.GetType().ToString().Contains("NonMutableSIDClearance"))
                         throw new NotImplementedException("NonMutableSIDClearance movement has not yet been implemented");
-                    if (clearance.GetType().ToString().Contains("NonMutableSTARClearance"))
+                    if (airTimeClearance.GetType().ToString().Contains("NonMutableSTARClearance"))
                         throw new NotImplementedException("NonMutableSTARClearance movement has not yet been implemented");
-                    if (clearance.GetType().ToString().Contains("NonMutableArrivalClearance"))
+                    if (airTimeClearance.GetType().ToString().Contains("NonMutableArrivalClearance"))
                         throw new NotImplementedException("NonMutableArrivalClearance movement has not yet been implemented");
-                    if (clearance.GetType().ToString().Contains("NonMutableDepartureClearance"))
+                    if (airTimeClearance.GetType().ToString().Contains("NonMutableDepartureClearance"))
                         throw new NotImplementedException("NonMutableDepartureClearance movement has not yet been implemented");
                 }
                 
@@ -356,7 +357,15 @@ namespace ATC2027
 
         public string getDevModeDrawableString()
         {
-            return $"tail    start  {tail.GetStartAsString()},  end  {tail.GetStartAsEnd()}\n    previousLocations.Count: {previousLocations.Count}\n    head.getCentre(): {head.GetCentre().ToString()}\n    heading: {heading.ToString()}"; 
+            StringBuilder stringBuilder = new StringBuilder();
+            stringBuilder.AppendLine("tail").Append($"  start  {tail.GetStartAsString()},  end  {tail.GetStartAsEnd()}");
+            stringBuilder.AppendLine($"previousLocations.Count: {previousLocations.Count}");
+            stringBuilder.AppendLine($"head.getCentre(): {head.GetCentre().ToString()}");
+            stringBuilder.AppendLine($"heading: {heading.ToString()}");
+            stringBuilder.Append($"airTimeClearance: ").AppendLine(airTimeClearance == null ? "null" : airTimeClearance.getDevModeDrawableString());
+            stringBuilder.Append($"departureClearance: ").AppendLine(departureClearance == null ? "null" : departureClearance.getDevModeDrawableString());
+            stringBuilder.Append($"arrivalClearance: ").AppendLine(arrivalClearance == null ? "null" : arrivalClearance.getDevModeDrawableString());
+            return stringBuilder.ToString();
         }
 
         public StatusBoardItem toStatusBoardItem()
@@ -403,12 +412,12 @@ namespace ATC2027
 
         internal void setClearance(ref INonMutableClearance clearance)
         {
-            this.clearance = clearance;
+            this.airTimeClearance = clearance;
         }
 
         public INonMutableClearance? GetClearance()
         {
-            return this.clearance;
+            return this.airTimeClearance;
         }
 
         public IDepartureClearance? GetDepartureClearance()
