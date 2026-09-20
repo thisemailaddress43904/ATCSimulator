@@ -21,6 +21,7 @@ namespace ATC2027.ATC_Library.CollectionRing
         public Dictionary<string, Plane> planeCollection;
         private TimeSpan lastUpdate;
         private Plane? selectedPlane;
+        public event EventHandler PlaneRemoved;
 
         public CollectionRing()
         {
@@ -34,7 +35,16 @@ namespace ATC2027.ATC_Library.CollectionRing
 
         public void ApplyClearance(INonMutableClearance clearance, ref Plane plane)
         {
-            plane.setClearance(ref clearance);
+            try
+            {
+                plane.setClearance(ref clearance);
+            }
+            catch (NullReferenceException nre)
+            {
+                //this happens when the plane has already been removed from the collection ring
+                //do nothing to handle this
+            }
+            
         }
 
         public void ClearAircraftCollection()
@@ -84,6 +94,8 @@ namespace ATC2027.ATC_Library.CollectionRing
             
             if (selectedPlane != null || plane.flightNoAsStr() == selectedPlane.flightNoAsStr())
                 selectedPlane = null;
+
+            PlaneRemoved.Invoke(this, EventArgs.Empty);
         }
 
         public void Update(GameTime gameTime)
