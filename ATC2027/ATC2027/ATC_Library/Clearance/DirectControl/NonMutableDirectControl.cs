@@ -56,5 +56,10 @@ namespace ATC2027.Clearance.DirectControl
         {
             return base.expectedRunway;
         }
+
+        public override string getDevModeDrawableString()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

@@ -30,6 +30,11 @@ namespace ATC2027.ATC_Library.Clearance.WaypointControl
             throw new NotImplementedException();
         }
 
+        public override string getDevModeDrawableString()
+        {
+            throw new NotImplementedException();
+        }
+
         public override IRunway getExpectedRunway()
         {
             throw new NotImplementedException();

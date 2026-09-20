@@ -1,5 +1,6 @@
 ﻿using ATC2027.ATC_Library.Clearance.DirectControl;
 using ATC2027.ATC_Library.ControlAttribute.Altitude;
+using ATC2027.Interfaces;
 using ATC2027.Library.FlightNumber;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace ATC2027.Clearance
 {
-    public interface IClearance
+    public interface IClearance : IHasDevModeDrawableString
     {
         public bool WithNoDelay();
         public string ToAirTrafficControllerDescription();

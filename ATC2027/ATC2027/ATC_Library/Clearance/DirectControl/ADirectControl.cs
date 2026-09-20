@@ -25,5 +25,6 @@ namespace ATC2027.ATC_Library.Clearance.DirectControl
         public abstract ISpeed GetSpeed();
 
         public abstract IRunway GetExpectedRunway();
+        public abstract string getDevModeDrawableString();
     }
 }

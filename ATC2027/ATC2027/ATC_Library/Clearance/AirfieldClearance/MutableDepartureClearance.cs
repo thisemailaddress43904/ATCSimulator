@@ -9,5 +9,9 @@ namespace ATC2027.ATC_Library.Clearance.AirfieldClearance
 {
     public class MutableDepartureClearance : AirportClearance, IMutableClearance, IDepartureClearance
     {
+        public override string getDevModeDrawableString()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

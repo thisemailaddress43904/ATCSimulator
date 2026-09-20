@@ -22,6 +22,11 @@ namespace ATC2027.ATC_Library.Clearance
             throw new NotImplementedException();
         }
 
+        public override string getDevModeDrawableString()
+        {
+            throw new NotImplementedException();
+        }
+
         public FlightNumber GetFlightNo()
         {
             throw new NotImplementedException();
