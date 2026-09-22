@@ -1,6 +1,7 @@
 ﻿using ATC2027.ExtensionClasses;
 using System;
 using System.Collections.Generic;
+using System.Windows.Forms;
 using static ATC2027.ATC_Library.ControlAttribute.Altitude.AltitudeType;
 
 
@@ -22,7 +23,15 @@ namespace ATC2027.ATC_Library.ControlAttribute.Altitude
             this.hasChanged = false;
         }
 
-        public Altitude(string text, System.Windows.Forms.ComboBox cmbBoxAltitudeType)
+        public static class AltitudeFactory
+        {
+            public static Altitude build(string text, ComboBox cmbBoxAltitudeType)
+            {
+                return new Altitude(text, cmbBoxAltitudeType);
+            }
+        }
+
+        private Altitude(string text, System.Windows.Forms.ComboBox cmbBoxAltitudeType)
         {
             if (cmbBoxAltitudeType.Text.ToLower() == "feet")
                 this.feet = int.Parse(text);

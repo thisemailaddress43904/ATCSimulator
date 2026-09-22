@@ -140,7 +140,7 @@ namespace ATC2027.Forms
                     }
                 }
                 if (txtBoxAltitude.Text != "")
-                    clearance.ApplyAltitude(new Altitude(txtBoxAltitude.Text, cmbBoxAltitudeType));
+                    clearance.ApplyAltitude(Altitude.AltitudeFactory.build(txtBoxAltitude.Text, cmbBoxAltitudeType));
 
                 //apply clearance here
                 Plane plane;
