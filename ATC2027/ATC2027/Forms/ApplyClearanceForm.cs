@@ -28,7 +28,7 @@ namespace ATC2027.Forms
 
             InitializeComponent();
         }
-
+        
         private void ApplyClearanceForm_Load(object sender, EventArgs e)
         {
             acf_tc.TabIndex = 0;

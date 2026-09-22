@@ -51,13 +51,27 @@
             tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             btnAddSTAR = new System.Windows.Forms.Button();
             btnRemoveSTAR = new System.Windows.Forms.Button();
+            tableLayoutPanel10 = new System.Windows.Forms.TableLayoutPanel();
+            lblStarSpeedLabel = new System.Windows.Forms.Label();
+            lblSTARAltitudeType = new System.Windows.Forms.Label();
+            lblSTARAltitudeValue = new System.Windows.Forms.Label();
+            txtBoxStarSpeed = new System.Windows.Forms.TextBox();
+            txtBoxStarAltitudeValue = new System.Windows.Forms.TextBox();
+            cmboBoxStarAltitudeType = new System.Windows.Forms.ComboBox();
             tpSID = new System.Windows.Forms.TabPage();
             tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-            lbSID = new System.Windows.Forms.ListBox();
-            cmbBoxSIDCollection = new System.Windows.Forms.ComboBox();
+            listBoxSIDList = new System.Windows.Forms.ListBox();
+            cmbBoxSidCollectionSelector = new System.Windows.Forms.ComboBox();
             tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
-            btnAddSID = new System.Windows.Forms.Button();
-            btnRemoveSID = new System.Windows.Forms.Button();
+            btnSidAddSID = new System.Windows.Forms.Button();
+            btnSidRemoveSID = new System.Windows.Forms.Button();
+            tableLayoutPanel11 = new System.Windows.Forms.TableLayoutPanel();
+            lblSIDSpeedLabel = new System.Windows.Forms.Label();
+            lblSIDAltitudeType = new System.Windows.Forms.Label();
+            lblSIDAltitudeValue = new System.Windows.Forms.Label();
+            txtBoxSidSpeed = new System.Windows.Forms.TextBox();
+            txtBoxSidAltitudeValue = new System.Windows.Forms.TextBox();
+            cmbBoxSidAltitudeType = new System.Windows.Forms.ComboBox();
             tpArrival = new System.Windows.Forms.TabPage();
             tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             cmbBoxAirportSelectorArrival = new System.Windows.Forms.ComboBox();
@@ -84,9 +98,11 @@
             tpSTAR.SuspendLayout();
             tableLayoutPanel3.SuspendLayout();
             tableLayoutPanel4.SuspendLayout();
+            tableLayoutPanel10.SuspendLayout();
             tpSID.SuspendLayout();
             tableLayoutPanel5.SuspendLayout();
             tableLayoutPanel6.SuspendLayout();
+            tableLayoutPanel11.SuspendLayout();
             tpArrival.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
             tableLayoutPanel7.SuspendLayout();
@@ -337,6 +353,7 @@
             tableLayoutPanel3.Controls.Add(lbSTAR, 2, 1);
             tableLayoutPanel3.Controls.Add(cmbBoxSTARCollection, 0, 1);
             tableLayoutPanel3.Controls.Add(tableLayoutPanel4, 0, 2);
+            tableLayoutPanel3.Controls.Add(tableLayoutPanel10, 0, 3);
             tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             tableLayoutPanel3.Location = new System.Drawing.Point(3, 3);
             tableLayoutPanel3.Name = "tableLayoutPanel3";
@@ -408,6 +425,87 @@
             btnRemoveSTAR.Text = "Remove";
             btnRemoveSTAR.UseVisualStyleBackColor = true;
             // 
+            // tableLayoutPanel10
+            // 
+            tableLayoutPanel10.ColumnCount = 4;
+            tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            tableLayoutPanel10.Controls.Add(lblStarSpeedLabel, 1, 1);
+            tableLayoutPanel10.Controls.Add(lblSTARAltitudeType, 1, 2);
+            tableLayoutPanel10.Controls.Add(lblSTARAltitudeValue, 1, 3);
+            tableLayoutPanel10.Controls.Add(txtBoxStarSpeed, 2, 1);
+            tableLayoutPanel10.Controls.Add(txtBoxStarAltitudeValue, 2, 3);
+            tableLayoutPanel10.Controls.Add(cmboBoxStarAltitudeType, 2, 2);
+            tableLayoutPanel10.Dock = System.Windows.Forms.DockStyle.Fill;
+            tableLayoutPanel10.Location = new System.Drawing.Point(3, 160);
+            tableLayoutPanel10.Name = "tableLayoutPanel10";
+            tableLayoutPanel10.RowCount = 5;
+            tableLayoutPanel3.SetRowSpan(tableLayoutPanel10, 2);
+            tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
+            tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
+            tableLayoutPanel10.Size = new System.Drawing.Size(295, 235);
+            tableLayoutPanel10.TabIndex = 3;
+            // 
+            // lblStarSpeedLabel
+            // 
+            lblStarSpeedLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            lblStarSpeedLabel.AutoSize = true;
+            lblStarSpeedLabel.Location = new System.Drawing.Point(93, 36);
+            lblStarSpeedLabel.Name = "lblStarSpeedLabel";
+            lblStarSpeedLabel.Size = new System.Drawing.Size(51, 20);
+            lblStarSpeedLabel.TabIndex = 0;
+            lblStarSpeedLabel.Text = "Speed";
+            // 
+            // lblSTARAltitudeType
+            // 
+            lblSTARAltitudeType.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            lblSTARAltitudeType.AutoSize = true;
+            lblSTARAltitudeType.Location = new System.Drawing.Point(47, 106);
+            lblSTARAltitudeType.Name = "lblSTARAltitudeType";
+            lblSTARAltitudeType.Size = new System.Drawing.Size(97, 20);
+            lblSTARAltitudeType.TabIndex = 1;
+            lblSTARAltitudeType.Text = "Altitude Type";
+            // 
+            // lblSTARAltitudeValue
+            // 
+            lblSTARAltitudeValue.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            lblSTARAltitudeValue.AutoSize = true;
+            lblSTARAltitudeValue.Location = new System.Drawing.Point(42, 176);
+            lblSTARAltitudeValue.Name = "lblSTARAltitudeValue";
+            lblSTARAltitudeValue.Size = new System.Drawing.Size(102, 20);
+            lblSTARAltitudeValue.TabIndex = 2;
+            lblSTARAltitudeValue.Text = "Altitude Value";
+            // 
+            // txtBoxStarSpeed
+            // 
+            txtBoxStarSpeed.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            txtBoxStarSpeed.Location = new System.Drawing.Point(150, 32);
+            txtBoxStarSpeed.Name = "txtBoxStarSpeed";
+            txtBoxStarSpeed.Size = new System.Drawing.Size(112, 27);
+            txtBoxStarSpeed.TabIndex = 3;
+            // 
+            // txtBoxStarAltitudeValue
+            // 
+            txtBoxStarAltitudeValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            txtBoxStarAltitudeValue.Location = new System.Drawing.Point(150, 172);
+            txtBoxStarAltitudeValue.Name = "txtBoxStarAltitudeValue";
+            txtBoxStarAltitudeValue.Size = new System.Drawing.Size(112, 27);
+            txtBoxStarAltitudeValue.TabIndex = 4;
+            // 
+            // cmboBoxStarAltitudeType
+            // 
+            cmboBoxStarAltitudeType.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            cmboBoxStarAltitudeType.FormattingEnabled = true;
+            cmboBoxStarAltitudeType.Location = new System.Drawing.Point(150, 102);
+            cmboBoxStarAltitudeType.Name = "cmboBoxStarAltitudeType";
+            cmboBoxStarAltitudeType.Size = new System.Drawing.Size(112, 28);
+            cmboBoxStarAltitudeType.TabIndex = 5;
+            // 
             // tpSID
             // 
             tpSID.BackColor = System.Drawing.Color.Silver;
@@ -425,9 +523,10 @@
             tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 45F));
             tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
             tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 45F));
-            tableLayoutPanel5.Controls.Add(lbSID, 2, 1);
-            tableLayoutPanel5.Controls.Add(cmbBoxSIDCollection, 0, 1);
+            tableLayoutPanel5.Controls.Add(listBoxSIDList, 2, 1);
+            tableLayoutPanel5.Controls.Add(cmbBoxSidCollectionSelector, 0, 1);
             tableLayoutPanel5.Controls.Add(tableLayoutPanel6, 0, 2);
+            tableLayoutPanel5.Controls.Add(tableLayoutPanel11, 0, 3);
             tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
             tableLayoutPanel5.Location = new System.Drawing.Point(3, 3);
             tableLayoutPanel5.Name = "tableLayoutPanel5";
@@ -440,25 +539,25 @@
             tableLayoutPanel5.Size = new System.Drawing.Size(670, 398);
             tableLayoutPanel5.TabIndex = 2;
             // 
-            // lbSID
+            // listBoxSIDList
             // 
-            lbSID.Dock = System.Windows.Forms.DockStyle.Fill;
-            lbSID.FormattingEnabled = true;
-            lbSID.Location = new System.Drawing.Point(371, 42);
-            lbSID.Name = "lbSID";
-            tableLayoutPanel5.SetRowSpan(lbSID, 3);
-            lbSID.Size = new System.Drawing.Size(296, 191);
-            lbSID.TabIndex = 0;
+            listBoxSIDList.Dock = System.Windows.Forms.DockStyle.Fill;
+            listBoxSIDList.FormattingEnabled = true;
+            listBoxSIDList.Location = new System.Drawing.Point(371, 42);
+            listBoxSIDList.Name = "listBoxSIDList";
+            tableLayoutPanel5.SetRowSpan(listBoxSIDList, 3);
+            listBoxSIDList.Size = new System.Drawing.Size(296, 191);
+            listBoxSIDList.TabIndex = 0;
             // 
-            // cmbBoxSIDCollection
+            // cmbBoxSidCollectionSelector
             // 
-            cmbBoxSIDCollection.Cursor = System.Windows.Forms.Cursors.Hand;
-            cmbBoxSIDCollection.Dock = System.Windows.Forms.DockStyle.Fill;
-            cmbBoxSIDCollection.FormattingEnabled = true;
-            cmbBoxSIDCollection.Location = new System.Drawing.Point(3, 42);
-            cmbBoxSIDCollection.Name = "cmbBoxSIDCollection";
-            cmbBoxSIDCollection.Size = new System.Drawing.Size(295, 28);
-            cmbBoxSIDCollection.TabIndex = 1;
+            cmbBoxSidCollectionSelector.Cursor = System.Windows.Forms.Cursors.Hand;
+            cmbBoxSidCollectionSelector.Dock = System.Windows.Forms.DockStyle.Fill;
+            cmbBoxSidCollectionSelector.FormattingEnabled = true;
+            cmbBoxSidCollectionSelector.Location = new System.Drawing.Point(3, 42);
+            cmbBoxSidCollectionSelector.Name = "cmbBoxSidCollectionSelector";
+            cmbBoxSidCollectionSelector.Size = new System.Drawing.Size(295, 28);
+            cmbBoxSidCollectionSelector.TabIndex = 1;
             // 
             // tableLayoutPanel6
             // 
@@ -466,8 +565,8 @@
             tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
             tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
             tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
-            tableLayoutPanel6.Controls.Add(btnAddSID, 0, 0);
-            tableLayoutPanel6.Controls.Add(btnRemoveSID, 2, 0);
+            tableLayoutPanel6.Controls.Add(btnSidAddSID, 0, 0);
+            tableLayoutPanel6.Controls.Add(btnSidRemoveSID, 2, 0);
             tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
             tableLayoutPanel6.Location = new System.Drawing.Point(3, 121);
             tableLayoutPanel6.Name = "tableLayoutPanel6";
@@ -477,27 +576,108 @@
             tableLayoutPanel6.Size = new System.Drawing.Size(295, 33);
             tableLayoutPanel6.TabIndex = 2;
             // 
-            // btnAddSID
+            // btnSidAddSID
             // 
-            btnAddSID.Cursor = System.Windows.Forms.Cursors.Hand;
-            btnAddSID.Dock = System.Windows.Forms.DockStyle.Fill;
-            btnAddSID.Location = new System.Drawing.Point(3, 3);
-            btnAddSID.Name = "btnAddSID";
-            btnAddSID.Size = new System.Drawing.Size(112, 27);
-            btnAddSID.TabIndex = 0;
-            btnAddSID.Text = "Add";
-            btnAddSID.UseVisualStyleBackColor = true;
+            btnSidAddSID.Cursor = System.Windows.Forms.Cursors.Hand;
+            btnSidAddSID.Dock = System.Windows.Forms.DockStyle.Fill;
+            btnSidAddSID.Location = new System.Drawing.Point(3, 3);
+            btnSidAddSID.Name = "btnSidAddSID";
+            btnSidAddSID.Size = new System.Drawing.Size(112, 27);
+            btnSidAddSID.TabIndex = 0;
+            btnSidAddSID.Text = "Add";
+            btnSidAddSID.UseVisualStyleBackColor = true;
             // 
-            // btnRemoveSID
+            // btnSidRemoveSID
             // 
-            btnRemoveSID.Cursor = System.Windows.Forms.Cursors.Hand;
-            btnRemoveSID.Dock = System.Windows.Forms.DockStyle.Fill;
-            btnRemoveSID.Location = new System.Drawing.Point(180, 3);
-            btnRemoveSID.Name = "btnRemoveSID";
-            btnRemoveSID.Size = new System.Drawing.Size(112, 27);
-            btnRemoveSID.TabIndex = 1;
-            btnRemoveSID.Text = "Remove";
-            btnRemoveSID.UseVisualStyleBackColor = true;
+            btnSidRemoveSID.Cursor = System.Windows.Forms.Cursors.Hand;
+            btnSidRemoveSID.Dock = System.Windows.Forms.DockStyle.Fill;
+            btnSidRemoveSID.Location = new System.Drawing.Point(180, 3);
+            btnSidRemoveSID.Name = "btnSidRemoveSID";
+            btnSidRemoveSID.Size = new System.Drawing.Size(112, 27);
+            btnSidRemoveSID.TabIndex = 1;
+            btnSidRemoveSID.Text = "Remove";
+            btnSidRemoveSID.UseVisualStyleBackColor = true;
+            // 
+            // tableLayoutPanel11
+            // 
+            tableLayoutPanel11.ColumnCount = 4;
+            tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            tableLayoutPanel11.Controls.Add(lblSIDSpeedLabel, 1, 1);
+            tableLayoutPanel11.Controls.Add(lblSIDAltitudeType, 1, 2);
+            tableLayoutPanel11.Controls.Add(lblSIDAltitudeValue, 1, 3);
+            tableLayoutPanel11.Controls.Add(txtBoxSidSpeed, 2, 1);
+            tableLayoutPanel11.Controls.Add(txtBoxSidAltitudeValue, 2, 3);
+            tableLayoutPanel11.Controls.Add(cmbBoxSidAltitudeType, 2, 2);
+            tableLayoutPanel11.Dock = System.Windows.Forms.DockStyle.Fill;
+            tableLayoutPanel11.Location = new System.Drawing.Point(3, 160);
+            tableLayoutPanel11.Name = "tableLayoutPanel11";
+            tableLayoutPanel11.RowCount = 5;
+            tableLayoutPanel5.SetRowSpan(tableLayoutPanel11, 2);
+            tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
+            tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
+            tableLayoutPanel11.Size = new System.Drawing.Size(295, 235);
+            tableLayoutPanel11.TabIndex = 3;
+            // 
+            // lblSIDSpeedLabel
+            // 
+            lblSIDSpeedLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            lblSIDSpeedLabel.AutoSize = true;
+            lblSIDSpeedLabel.Location = new System.Drawing.Point(93, 36);
+            lblSIDSpeedLabel.Name = "lblSIDSpeedLabel";
+            lblSIDSpeedLabel.Size = new System.Drawing.Size(51, 20);
+            lblSIDSpeedLabel.TabIndex = 0;
+            lblSIDSpeedLabel.Text = "Speed";
+            // 
+            // lblSIDAltitudeType
+            // 
+            lblSIDAltitudeType.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            lblSIDAltitudeType.AutoSize = true;
+            lblSIDAltitudeType.Location = new System.Drawing.Point(47, 106);
+            lblSIDAltitudeType.Name = "lblSIDAltitudeType";
+            lblSIDAltitudeType.Size = new System.Drawing.Size(97, 20);
+            lblSIDAltitudeType.TabIndex = 1;
+            lblSIDAltitudeType.Text = "Altitude Type";
+            // 
+            // lblSIDAltitudeValue
+            // 
+            lblSIDAltitudeValue.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            lblSIDAltitudeValue.AutoSize = true;
+            lblSIDAltitudeValue.Location = new System.Drawing.Point(42, 176);
+            lblSIDAltitudeValue.Name = "lblSIDAltitudeValue";
+            lblSIDAltitudeValue.Size = new System.Drawing.Size(102, 20);
+            lblSIDAltitudeValue.TabIndex = 2;
+            lblSIDAltitudeValue.Text = "Altitude Value";
+            // 
+            // txtBoxSidSpeed
+            // 
+            txtBoxSidSpeed.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            txtBoxSidSpeed.Location = new System.Drawing.Point(150, 32);
+            txtBoxSidSpeed.Name = "txtBoxSidSpeed";
+            txtBoxSidSpeed.Size = new System.Drawing.Size(112, 27);
+            txtBoxSidSpeed.TabIndex = 3;
+            // 
+            // txtBoxSidAltitudeValue
+            // 
+            txtBoxSidAltitudeValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            txtBoxSidAltitudeValue.Location = new System.Drawing.Point(150, 172);
+            txtBoxSidAltitudeValue.Name = "txtBoxSidAltitudeValue";
+            txtBoxSidAltitudeValue.Size = new System.Drawing.Size(112, 27);
+            txtBoxSidAltitudeValue.TabIndex = 4;
+            // 
+            // cmbBoxSidAltitudeType
+            // 
+            cmbBoxSidAltitudeType.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            cmbBoxSidAltitudeType.FormattingEnabled = true;
+            cmbBoxSidAltitudeType.Location = new System.Drawing.Point(150, 102);
+            cmbBoxSidAltitudeType.Name = "cmbBoxSidAltitudeType";
+            cmbBoxSidAltitudeType.Size = new System.Drawing.Size(112, 28);
+            cmbBoxSidAltitudeType.TabIndex = 5;
             // 
             // tpArrival
             // 
@@ -741,9 +921,13 @@
             tpSTAR.ResumeLayout(false);
             tableLayoutPanel3.ResumeLayout(false);
             tableLayoutPanel4.ResumeLayout(false);
+            tableLayoutPanel10.ResumeLayout(false);
+            tableLayoutPanel10.PerformLayout();
             tpSID.ResumeLayout(false);
             tableLayoutPanel5.ResumeLayout(false);
             tableLayoutPanel6.ResumeLayout(false);
+            tableLayoutPanel11.ResumeLayout(false);
+            tableLayoutPanel11.PerformLayout();
             tpArrival.ResumeLayout(false);
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel7.ResumeLayout(false);
@@ -773,12 +957,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.Button btnAddSTAR;
         private System.Windows.Forms.Button btnRemoveSTAR;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
-        private System.Windows.Forms.ListBox lbSID;
-        private System.Windows.Forms.ComboBox cmbBoxSIDCollection;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
-        private System.Windows.Forms.Button btnAddSID;
-        private System.Windows.Forms.Button btnRemoveSID;
         private System.Windows.Forms.ComboBox cmbBoxAirportSelectorArrival;
         private System.Windows.Forms.ComboBox cmbBoxRunwaySelectorArrival;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
@@ -805,5 +983,25 @@
         private System.Windows.Forms.ComboBox cmbBoxAltitudeType;
         private System.Windows.Forms.Button btnApplyClearance;
         private System.Windows.Forms.Label lblErrorLabel;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel10;
+        private System.Windows.Forms.Label lblStarSpeedLabel;
+        private System.Windows.Forms.Label lblSTARAltitudeType;
+        private System.Windows.Forms.Label lblSTARAltitudeValue;
+        private System.Windows.Forms.TextBox txtBoxStarSpeed;
+        private System.Windows.Forms.TextBox txtBoxStarAltitudeValue;
+        private System.Windows.Forms.ComboBox cmboBoxStarAltitudeType;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
+        private System.Windows.Forms.ListBox listBoxSIDList;
+        private System.Windows.Forms.ComboBox cmbBoxSidCollectionSelector;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
+        private System.Windows.Forms.Button btnSidAddSID;
+        private System.Windows.Forms.Button btnSidRemoveSID;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel11;
+        private System.Windows.Forms.Label lblSIDSpeedLabel;
+        private System.Windows.Forms.Label lblSIDAltitudeType;
+        private System.Windows.Forms.Label lblSIDAltitudeValue;
+        private System.Windows.Forms.TextBox txtBoxSidSpeed;
+        private System.Windows.Forms.TextBox txtBoxSidAltitudeValue;
+        private System.Windows.Forms.ComboBox cmbBoxSidAltitudeType;
     }
 }
