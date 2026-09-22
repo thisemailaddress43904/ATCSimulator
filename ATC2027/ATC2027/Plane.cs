@@ -1,13 +1,11 @@
 ﻿using ATC2027.ATC_Library;
+using ATC2027.ATC_Library.Airfield;
 using ATC2027.ATC_Library.Clearance;
 using ATC2027.ATC_Library.Clearance.Interfaces;
-using ATC2027.ATC_Library.Clearance.WaypointControl;
 using ATC2027.ATC_Library.CollectionRing;
 using ATC2027.ATC_Library.ControlAttribute.Altitude;
 using ATC2027.ATC_Library.ControlAttribute.Heading;
 using ATC2027.ATC_Library.ControlAttribute.Speed;
-using ATC2027.Clearance;
-using ATC2027.Clearance.DirectControl;
 using ATC2027.Controls;
 using ATC2027.Controls.Shape;
 using ATC2027.DataStructures;
@@ -19,13 +17,17 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
-using System.Drawing.Text;
 using System.Text;
 
 namespace ATC2027
 {
     public class Plane : MoveableItem, IHasDevModeDrawableString, IHasNullableNonMutableClearance, IHasDepartureClearance, IHasArrivalClearance
     {
+        #region airfields
+        private IAirfield? departureAirfield;
+        private IAirfield? arrivalAirfield;
+        #endregion
+
         #region permissable clearances
         public bool CanBeConsideredForLandingClearance => hasTakenOff;
         public bool CanBeConsideredForTakeoffClearance => !hasTakenOff;
@@ -365,6 +367,8 @@ namespace ATC2027
             stringBuilder.Append($"airTimeClearance: ").AppendLine(airTimeClearance == null ? "null" : airTimeClearance.getDevModeDrawableString());
             stringBuilder.Append($"departureClearance: ").AppendLine(departureClearance == null ? "null" : departureClearance.getDevModeDrawableString());
             stringBuilder.Append($"arrivalClearance: ").AppendLine(arrivalClearance == null ? "null" : arrivalClearance.getDevModeDrawableString());
+            stringBuilder.Append($"arrivalAirfield: ").AppendLine(arrivalAirfield == null ? "null" : arrivalAirfield.getDevModeDrawableString());
+            stringBuilder.Append($"departureAirfield: ").AppendLine(departureAirfield == null ? "null" : departureAirfield.getDevModeDrawableString());
             return stringBuilder.ToString();
         }
 

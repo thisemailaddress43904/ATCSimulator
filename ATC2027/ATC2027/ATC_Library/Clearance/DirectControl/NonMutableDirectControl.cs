@@ -1,10 +1,11 @@
-﻿using ATC2027.ATC_Library.Clearance;
+﻿using ATC2027.ATC_Library.Airfield;
 using ATC2027.ATC_Library.Clearance.DirectControl;
 using ATC2027.ATC_Library.Clearance.Interfaces;
 using ATC2027.ATC_Library.ControlAttribute.Altitude;
 using ATC2027.ATC_Library.ControlAttribute.Heading;
 using ATC2027.ATC_Library.ControlAttribute.Speed;
 using ATC2027.Library.FlightNumber;
+using System.Text;
 
 namespace ATC2027.Clearance.DirectControl
 {
@@ -59,7 +60,17 @@ namespace ATC2027.Clearance.DirectControl
 
         public override string getDevModeDrawableString()
         {
-            throw new System.NotImplementedException();
+            StringBuilder sb = new StringBuilder();
+            sb.Append(base.AreaControllerIdentifier).Append(' ').Append(base.FlightNumber).Append(" cleared to ");
+
+            if (base.altitude != null)
+                sb.Append("flight level ").AppendLine(base.altitude.GetAltitudeAsFlightLevel());
+            if (base.heading != null)
+                sb.Append(base.heading).AppendLine(" degrees");
+            if (base.speed != null)
+                sb.Append(base.speed.ToString()).AppendLine(" knots");
+
+            return sb.ToString();
         }
     }
 }
