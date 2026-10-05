@@ -23,7 +23,7 @@ namespace ATC2027.Controls
         string text = text;
         SpriteFont spriteFont = spriteFont;
         Vector2 location = location;
-        
+
 
         public void setText(string newText) => this.text = newText;
         public string getText() => this.text;
@@ -58,7 +58,16 @@ namespace ATC2027.Controls
             {
                 spriteBatch.DrawString(spriteFont, "?", (Vector2)location, (Color)color);
             }
-            
+
+        }
+        public static void StaticDraw(SpriteBatch spriteBatch, string text, SpriteFont spriteFont, Vector2 location, Color color, float angleInDegrees, float scale = 1)
+        {
+            StaticDraw(spriteBatch, text, spriteFont, location, color, double.DegreesToRadians(angleInDegrees), scale);
+        }
+        public static void StaticDraw(SpriteBatch spriteBatch, string text, SpriteFont spriteFont, Vector2 location, Color color, double angleInRadians, float scale = 1)
+        {
+            Vector2 originOfText = spriteFont.MeasureString(text);
+            spriteBatch.DrawString(spriteFont, text, location, color, (float)angleInRadians, originOfText, scale, SpriteEffects.None, 0);
         }
     }
 }
