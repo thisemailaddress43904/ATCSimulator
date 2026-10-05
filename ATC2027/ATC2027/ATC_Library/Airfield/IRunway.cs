@@ -8,6 +8,7 @@ namespace ATC2027.ATC_Library.Airfield
 {
     public interface IRunway
     {
-        public string getShorthandName();
+        public string getShorthandName1();
+        public string? getShorthandName2();
     }
 }

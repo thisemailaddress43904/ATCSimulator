@@ -1,4 +1,5 @@
-﻿using ATC2027.Clearance;
+﻿using ATC2027.ATC_Library.Airfield;
+using ATC2027.Clearance;
 using ATC2027.Library.FlightNumber;
 using System;
 using System.Collections.Generic;
@@ -10,33 +11,27 @@ namespace ATC2027.ATC_Library.Clearance
 {
     public abstract class AirportClearance : IClearance
     {
+        protected string airfieldName;
+        protected FlightNumber flightNumber;
+        protected bool withNoDelay = false;
+        protected IRunway runway;
+        public abstract IClearance FromAirTrafficControllerDescription(string description, bool isMutable);
 
-
-        public IClearance FromAirTrafficControllerDescription(string description, bool isMutable)
-        {
-            throw new NotImplementedException();
-        }
-
-        public string GetAirTrafficControllingTowerIdentifier()
-        {
-            throw new NotImplementedException();
-        }
+        public abstract string GetAirTrafficControllingTowerIdentifier();
 
         public abstract string getDevModeDrawableString();
-
-        public FlightNumber GetFlightNo()
+        public abstract string ToAirTrafficControllerDescription();
+        public virtual string getAirfieldName()
         {
-            throw new NotImplementedException();
+            return airfieldName;
         }
-
-        public string ToAirTrafficControllerDescription()
+        public virtual FlightNumber GetFlightNo()
         {
-            throw new NotImplementedException();
+            return this.GetFlightNo();
         }
-
-        public bool WithNoDelay()
+        public virtual bool WithNoDelay()
         {
-            throw new NotImplementedException();
+            return this.withNoDelay;
         }
     }
 }

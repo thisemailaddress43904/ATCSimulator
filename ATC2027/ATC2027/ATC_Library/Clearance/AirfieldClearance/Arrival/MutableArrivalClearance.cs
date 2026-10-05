@@ -1,4 +1,5 @@
 ﻿using ATC2027.ATC_Library.Airfield;
+using ATC2027.ATC_Library.Clearance.AirfieldClearance.Interfaces;
 using ATC2027.ATC_Library.Clearance.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -6,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ATC2027.ATC_Library.Clearance.AirfieldClearance
+namespace ATC2027.ATC_Library.Clearance.AirfieldClearance.Arrival
 {
     public abstract class MutableArrivalClearance : AirportClearance, IMutableClearance, IArrivalClearance
     {

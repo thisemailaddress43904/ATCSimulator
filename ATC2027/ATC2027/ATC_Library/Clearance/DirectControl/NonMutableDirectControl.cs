@@ -5,6 +5,7 @@ using ATC2027.ATC_Library.ControlAttribute.Altitude;
 using ATC2027.ATC_Library.ControlAttribute.Heading;
 using ATC2027.ATC_Library.ControlAttribute.Speed;
 using ATC2027.Library.FlightNumber;
+using System;
 using System.Text;
 
 namespace ATC2027.Clearance.DirectControl
@@ -22,33 +23,33 @@ namespace ATC2027.Clearance.DirectControl
 
         public override ADirectControl ApplyAltitude(IAltitude altitude)
         {
-            base.altitude = altitude;
+            base.altitude = (Altitude)altitude;
             return this;
         }
 
         public override ADirectControl ApplyHeading(IHeading heading)
         {
-            base.heading = heading; 
+            base.heading = (Heading)heading;
             return this;
         }
 
         public override ADirectControl ApplySpeed(ISpeed speed)
         {
-            base.speed = speed;
+            base.speed = (Speed)speed;
             return this;
         }
 
-        public override IAltitude GetAltitude()
+        public override Altitude GetAltitude()
         {
             return base.altitude;
         }
 
-        public override IHeading GetHeading()
+        public override Heading GetHeading()
         {
             return base.heading;
         }
 
-        public override ISpeed GetSpeed()
+        public override Speed GetSpeed()
         {
             return base.speed;
         }
@@ -71,6 +72,21 @@ namespace ATC2027.Clearance.DirectControl
                 sb.Append(base.speed.ToString()).AppendLine(" knots");
 
             return sb.ToString();
+        }
+
+        public Heading getTargetHeading()
+        {
+            return this.heading;
+        }
+
+        public Altitude getTargeAltitude()
+        {
+            return this.altitude;
+        }
+
+        public Speed getTargetSpeed()
+        {
+            return this.speed;
         }
     }
 }

@@ -16,9 +16,9 @@ namespace ATC2027.Clearance
         protected IRunway? expectedRunway;
         protected FlightNumber? FlightNumber;
         protected string? AreaControllerIdentifier;
-        protected ISpeed? speed;
-        protected IAltitude? altitude;
-        protected IHeading? heading;
+        protected Speed? speed;
+        protected Altitude? altitude;
+        protected Heading? heading;
 
         public DirectControl2()
         {
@@ -30,7 +30,7 @@ namespace ATC2027.Clearance
             this.expectedRunway = null;
         }
 
-        public DirectControl2(FlightNumber flightNumber, string AreaControllerIdentifier, ISpeed? speed, IAltitude? altitude, IHeading? heading, IRunway? expectedRunway)
+        public DirectControl2(FlightNumber flightNumber, string AreaControllerIdentifier, Speed? speed, Altitude? altitude, Heading? heading, IRunway? expectedRunway)
         {
             this.expectedRunway = expectedRunway;
             this.FlightNumber = flightNumber;
@@ -38,6 +38,13 @@ namespace ATC2027.Clearance
             this.speed = speed;
             this.altitude = altitude;
             this.heading = heading;
+        }
+
+        protected DirectControl2(FlightNumber flightNumber, string areaControllerIdentifier, ISpeed speed1, IAltitude altitude1, IHeading heading1, IRunway expectedRunway)
+        {
+            FlightNumber = flightNumber;
+            AreaControllerIdentifier = areaControllerIdentifier;
+            this.expectedRunway = expectedRunway;
         }
 
         public override string ToAirTrafficControllerDescription()

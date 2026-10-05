@@ -12,7 +12,7 @@ namespace ATC2027.Clearance.DirectControl
 {
     public class MutableDirectControl : DirectControl2, IMutableClearance
     {
-        public MutableDirectControl(FlightNumber flightNumber, string AreaControllerIdentifier, IAltitude? altitude, IHeading heading, ISpeed speed, IRunway expectedRunway) : base(flightNumber, AreaControllerIdentifier, speed, altitude, heading, expectedRunway)
+        public MutableDirectControl(FlightNumber flightNumber, string AreaControllerIdentifier, IAltitude? altitude, IHeading heading, ISpeed speed, IRunway expectedRunway) : base(flightNumber, AreaControllerIdentifier, (Speed)speed, (Altitude)altitude, (Heading)heading, expectedRunway)
         {}
 
         public MutableDirectControl(ADirectControl directControl) : base(directControl.GetFlightNo(), directControl.GetAirTrafficControllingTowerIdentifier(), directControl.GetSpeed(), directControl.GetAltitude(), directControl.GetHeading(), directControl.GetExpectedRunway())
@@ -25,33 +25,33 @@ namespace ATC2027.Clearance.DirectControl
 
         public override ADirectControl ApplyAltitude(IAltitude altitude)
         {
-            base.altitude = altitude;
+            base.altitude = (Altitude)altitude;
             return this;
         }
 
         public override ADirectControl ApplyHeading(IHeading heading)
         {
-            base.heading = heading;
+            base.heading = (Heading)heading;
             return this;
         }
 
         public override ADirectControl ApplySpeed(ISpeed speed)
         {
-            base.speed = speed;
+            base.speed = (Speed)speed;
             return this;
         }
 
-        public override IAltitude GetAltitude()
+        public override Altitude GetAltitude()
         {
             return base.altitude;
         }
 
-        public override IHeading GetHeading()
+        public override Heading GetHeading()
         {
             return base.heading;
         }
 
-        public override ISpeed GetSpeed()
+        public override Speed GetSpeed()
         {
             return base.speed;
         }

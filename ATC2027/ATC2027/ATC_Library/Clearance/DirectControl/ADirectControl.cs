@@ -19,11 +19,11 @@ namespace ATC2027.ATC_Library.Clearance.DirectControl
         public abstract FlightNumber GetFlightNo();
         public abstract string GetAirTrafficControllingTowerIdentifier();
 
-        public abstract IAltitude GetAltitude();
+        public abstract Altitude GetAltitude();
 
-        public abstract IHeading GetHeading();
+        public abstract Heading GetHeading();
 
-        public abstract ISpeed GetSpeed();
+        public abstract Speed GetSpeed();
 
         public abstract IRunway GetExpectedRunway();
         public abstract string getDevModeDrawableString();

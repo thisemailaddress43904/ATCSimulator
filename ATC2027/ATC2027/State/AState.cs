@@ -33,6 +33,11 @@ namespace ATC2027.State
                 if (devModeText != null)
                     devModeText.Draw(gameTime, spriteBatch);                
             }
+            try
+            {
+                Constants.getGraphicsDevice().Clear(ColorScheme.Item3);
+            } 
+            catch (Exception ex){}
         }
 
         public virtual void Update(GameTime gameTime)

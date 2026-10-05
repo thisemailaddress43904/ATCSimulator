@@ -39,6 +39,14 @@ namespace ATC2027.ATC_Library.ControlAttribute.Altitude
                 this.feet = float.Parse(text) * 1000;
         }
 
+        #region Operator Overloading
+        public static Altitude operator +(Altitude a, Altitude b) => new Altitude(a.feet + b.feet);
+        public static Altitude operator -(Altitude a, Altitude b) => new Altitude(a.feet - b.feet);
+        public static bool operator <(Altitude a, Altitude b) => (a.feet < b.feet);
+        public static bool operator >(Altitude a, Altitude b) => (a.feet > b.feet);
+
+        #endregion
+
         public int GetAltitudeInFeet()
         {
             return (int)(feet);
@@ -131,12 +139,12 @@ namespace ATC2027.ATC_Library.ControlAttribute.Altitude
 
         }
 
-        public IAltitude Decrement(float rateOfDescentPerPeriod = 1f)
+        public Altitude Decrement(float rateOfDescentPerPeriod = 1f)
         {
             return new Altitude(this.feet - rateOfDescentPerPeriod);
         }
 
-        public IAltitude Increment(float rateOfDescentPerPeriod = 1f)
+        public Altitude Increment(float rateOfDescentPerPeriod = 1f)
         {
             return new Altitude(this.feet + rateOfDescentPerPeriod);
         }

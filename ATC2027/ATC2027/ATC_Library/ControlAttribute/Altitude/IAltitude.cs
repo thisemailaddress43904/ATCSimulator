@@ -11,7 +11,5 @@ namespace ATC2027.ATC_Library.ControlAttribute.Altitude
         public int GetAltitudeInFeet();
         public string GetAltitudeAsFlightLevel(int NumberOfDigitsAfterDecimalPoint = 0);
         public string ToString();
-        IAltitude Decrement(float rateOfDescentPerPeriod);
-        IAltitude Increment(float rateOfDescentPerPeriod);
     }
 }

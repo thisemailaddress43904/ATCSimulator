@@ -162,6 +162,7 @@
             cmbFlightNumbers.Size = new System.Drawing.Size(200, 28);
             cmbFlightNumbers.TabIndex = 0;
             cmbFlightNumbers.SelectedIndexChanged += cmbFlightNumbers_SelectedIndexChanged;
+            cmbFlightNumbers.SelectedValueChanged += cmbFlightNumbers_SelectedIndexChanged;
             cmbFlightNumbers.TextChanged += cmbFlightNumbers_TextChanged;
             cmbFlightNumbers.MouseEnter += cmbFlightNumbers_MouseEnter;
             // 

@@ -16,7 +16,7 @@ namespace ATC2027
         public static Color planeColor => Color.White;
         public static Color primaryColor = Color.Blue;
         public static Color secondaryColor = Color.AliceBlue;
-        public static Color tertiaryColor = Color.AntiqueWhite;
+        public static Color tertiaryColor = Color.CornflowerBlue;
         private static ColourScheme cs = new ColourScheme(primaryColor, secondaryColor, tertiaryColor, background, planeColor);
 
         #endregion
@@ -73,6 +73,8 @@ namespace ATC2027
         #endregion
 
         public static int getHeightOfScreen => 720;
+        public static int getMiddleOfScreenHeight => getHeightOfScreen / 2;
         public static int getWidthOfScreen => 1080;
+        public static int getMiddleOfScreenWidth => getWidthOfScreen / 2;
     }
 }

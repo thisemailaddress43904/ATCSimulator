@@ -1,15 +1,23 @@
-﻿using ATC2027.ATC_Library.Clearance;
+﻿using ATC2027.ATC_Library.Airfield;
+using ATC2027.ATC_Library.Clearance;
+using ATC2027.ATC_Library.Clearance.AirfieldClearance;
+using ATC2027.ATC_Library.Clearance.AirfieldClearance.Arrival;
+using ATC2027.ATC_Library.Clearance.AirfieldClearance.Departure;
+using ATC2027.ATC_Library.Clearance.AirfieldClearance.Interfaces;
 using ATC2027.ATC_Library.Clearance.DirectControl;
+using ATC2027.ATC_Library.Clearance.WaypointControl;
 using ATC2027.ATC_Library.CollectionRing;
 using ATC2027.ATC_Library.ControlAttribute.Altitude;
 using ATC2027.ATC_Library.ControlAttribute.Heading;
 using ATC2027.ATC_Library.ControlAttribute.Speed;
+using ATC2027.Clearance;
 using ATC2027.Clearance.DirectControl;
 using ATC2027.ExtensionClasses;
+using ATC2027.Interfaces;
 using ATC2027.Library.FlightNumber;
+using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -21,6 +29,7 @@ namespace ATC2027.Forms
 {
     public partial class ApplyClearanceForm : Form
     {
+        IAirfield? airfield;
         CollectionRing collectionRing;
         public ApplyClearanceForm(ref CollectionRing collectionRing)
         {
@@ -74,10 +83,10 @@ namespace ATC2027.Forms
                     }
                 case 2:
                     {
-                        cmbBoxSIDCollection.TabIndex = 1;
-                        btnAddSID.TabIndex = 2;
-                        lbSID.TabIndex = 3;
-                        btnRemoveSID.TabIndex = 4;
+                        cmbBoxSidCollectionSelector.TabIndex = 1;
+                        btnSidAddSID.TabIndex = 2;
+                        listBoxSIDList.TabIndex = 3;
+                        btnSidRemoveSID.TabIndex = 4;
                         break;
                     }
                 case 3:
@@ -158,7 +167,7 @@ namespace ATC2027.Forms
 
             switch (selectedIndex)
             {
-                case 0:
+                case 0: //Direct Control
                     {
                         string errorMessage = "";
 
@@ -231,20 +240,79 @@ namespace ATC2027.Forms
                         }
                         break;
                     }
-                case 1:
+                case 1: //STAR Contro
                     {
+                        NonMutableSTARClearance starClearance = NonMutableSTARClearanceFactory.Build([], []);
                         break;
                     }
                 case 2:
                     {
+                        NonMutableSIDClearance sidCLearance = NonMutableSIDClearance.Factory.Build([]);
                         break;
                     }
                 case 3:
                     {
+                        IRunway runway = Runway.Factory.build(cmbBoxAirportSelectorArrival.Text, cmbBoxRunwaySelectorArrival.Text);
+                        string airfieldName = cmbBoxAirportSelectorArrival.Text;
+                        FlightNumber flNo = new FlightNumber(cmbFlightNumbers.Text);
+                        bool noDelay = false;
+
+                        INonMutableArrivalClearance ac = new NonMutableArrivalClearance(runway, airfield, flNo, noDelay);
+
+                        Plane plane;
+                        try
+                        {
+                            plane = collectionRing.GetPlaneByFlightNumber(cmbFlightNumbers.Text);
+                            this.collectionRing.ApplyClearance(ac, ref plane);
+                        }
+                        catch (Exception)
+                        {
+
+                            DialogResult result = MessageBox.Show(this, $"Unable to find {cmbFlightNumbers.Text}", "Warning", MessageBoxButtons.RetryCancel, MessageBoxIcon.Warning);
+
+                            if (result == DialogResult.Cancel) { return; }
+                            else if (result == DialogResult.Retry)
+                                btnApplyClearance_Click(this, new EventArgs());
+                            else
+                            {
+                                MessageBox.Show(this, $"Dialogue result {result} not handled", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                            return;
+                        }
                         break;
                     }
                 case 4:
                     {
+                        IRunway runway = Runway.Factory.build(cmbBoxAirportSelectorDeparture.Text, cmbBoxRunwaySelectorDeparture.Text);
+                        string airfieldName = cmbBoxAirportSelectorDeparture.Text;
+                        FlightNumber flNo = new FlightNumber(cmbFlightNumbers.Text);
+                        bool noDelay = false;
+
+                        INonMutableDepartureClearance dc = new NonMutableDepartureClearance(runway, airfieldName, flNo, noDelay);
+
+                        Plane plane;
+                        try
+                        {
+                            plane = collectionRing.GetPlaneByFlightNumber(cmbFlightNumbers.Text);
+                            this.collectionRing.ApplyClearance(dc, ref plane);
+                        }
+                        catch (Exception)
+                        {
+
+                            DialogResult result = MessageBox.Show(this, $"Unable to find {cmbFlightNumbers.Text}", "Warning", MessageBoxButtons.RetryCancel, MessageBoxIcon.Warning);
+
+                            if (result == DialogResult.Cancel) { return; }
+                            else if (result == DialogResult.Retry)
+                                btnApplyClearance_Click(this, new EventArgs());
+                            else
+                            {
+                                MessageBox.Show(this, $"Dialogue result {result} not handled", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                            return;
+                        }
+
+                        
+
                         break;
                     }
             }

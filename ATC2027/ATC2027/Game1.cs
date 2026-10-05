@@ -1,4 +1,5 @@
-﻿using ATC2027.State;
+﻿using ATC2027.ATC_Library.Airfield;
+using ATC2027.State;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -33,6 +34,7 @@ namespace ATC2027
             // TODO: Add your initialization logic here
             Constants.contentManager = this.Content;
             base.Initialize();
+            Runway.runwayTexture = Content.Load<Texture2D>("images/runway");
         }
 
         protected override void LoadContent()

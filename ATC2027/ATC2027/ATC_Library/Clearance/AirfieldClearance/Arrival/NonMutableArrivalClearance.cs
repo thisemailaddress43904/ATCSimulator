@@ -1,37 +1,26 @@
 ﻿using ATC2027.ATC_Library.Airfield;
+using ATC2027.ATC_Library.Clearance.AirfieldClearance.Interfaces;
 using ATC2027.ATC_Library.Clearance.Interfaces;
 using ATC2027.ATC_Library.ControlAttribute.Altitude;
 using ATC2027.ATC_Library.ControlAttribute.Heading;
 using ATC2027.ATC_Library.ControlAttribute.Speed;
 using ATC2027.Clearance;
-using ATC2027.Clearance.WaypointControl;
 using ATC2027.Library.FlightNumber;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace ATC2027.ATC_Library.Clearance.WaypointControl
+namespace ATC2027.ATC_Library.Clearance.AirfieldClearance.Arrival
 {
-    public class NonMutableSIDClearance : AWaypointClearance, INonMutableClearance
+    public class NonMutableArrivalClearance : AirportClearance, INonMutableClearance, IArrivalClearance, INonMutableArrivalClearance
     {
-        private IList<SID> SIDList;
-
-        public NonMutableSIDClearance(IList<SID>? sidList)
+        public NonMutableArrivalClearance(IRunway runway, IAirfield airfield, FlightNumber flNo, bool withNoDelay)
         {
-            this.SIDList = sidList;
-            this.SIDList ??= [];
+            base.airfieldName = airfieldName;
+            base.withNoDelay = withNoDelay;
+            base.flightNumber = flNo;
+            base.runway = runway;
         }
-
-        public class Factory
-        {
-            public static NonMutableSIDClearance Build(IList<SID> sid)
-            {
-                return new NonMutableSIDClearance(sid);
-            }
-        }
-
+        
+        INonMutableClearance nonMutableClearance;
         public override IClearance FromAirTrafficControllerDescription(string description, bool isMutable)
         {
             throw new NotImplementedException();
@@ -47,32 +36,7 @@ namespace ATC2027.ATC_Library.Clearance.WaypointControl
             throw new NotImplementedException();
         }
 
-        public override IRunway getExpectedRunway()
-        {
-            throw new NotImplementedException();
-        }
-
-        public override FlightNumber GetFlightNo()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Altitude getTargeAltitude()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Heading getTargetHeading()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Speed getTargetSpeed()
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void setExpectedRunway(IRunway expectedRunway, IAirfield airfield)
+        public FlightNumber GetFlightNo()
         {
             throw new NotImplementedException();
         }
@@ -82,7 +46,37 @@ namespace ATC2027.ATC_Library.Clearance.WaypointControl
             throw new NotImplementedException();
         }
 
-        public override bool WithNoDelay()
+        public bool WithNoDelay()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Heading getTargetHeading()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Altitude getTargeAltitude()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Speed getTargetSpeed()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IRunway getRunway()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IAirfield getAirfield()
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool ClearedToLand()
         {
             throw new NotImplementedException();
         }

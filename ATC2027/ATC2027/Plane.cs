@@ -1,11 +1,13 @@
 ﻿using ATC2027.ATC_Library;
 using ATC2027.ATC_Library.Airfield;
 using ATC2027.ATC_Library.Clearance;
+using ATC2027.ATC_Library.Clearance.AirfieldClearance.Interfaces;
 using ATC2027.ATC_Library.Clearance.Interfaces;
 using ATC2027.ATC_Library.CollectionRing;
 using ATC2027.ATC_Library.ControlAttribute.Altitude;
 using ATC2027.ATC_Library.ControlAttribute.Heading;
 using ATC2027.ATC_Library.ControlAttribute.Speed;
+using ATC2027.Clearance;
 using ATC2027.Controls;
 using ATC2027.Controls.Shape;
 using ATC2027.DataStructures;
@@ -24,10 +26,11 @@ namespace ATC2027
     public class Plane : MoveableItem, IHasDevModeDrawableString, IHasNullableNonMutableClearance, IHasDepartureClearance, IHasArrivalClearance
     {
         #region airfields
-        private IAirfield? departureAirfield;
-        private IAirfield? arrivalAirfield;
+        private IAirfield? departureAirfield = AirfieldFactory.BuildLondonHeathrow();
+        private IAirfield? arrivalAirfield = AirfieldFactory.BuildLondonHeathrow();
         #endregion
 
+        bool hasTakenOff;
         #region permissable clearances
         public bool CanBeConsideredForLandingClearance => hasTakenOff;
         public bool CanBeConsideredForTakeoffClearance => !hasTakenOff;
@@ -38,12 +41,12 @@ namespace ATC2027
 
         #region clearances
         INonMutableClearance? airTimeClearance;
-        IDepartureClearance? departureClearance;
-        IArrivalClearance? arrivalClearance;
+        INonMutableDepartureClearance? departureClearance;
+        INonMutableArrivalClearance? arrivalClearance;
         #endregion
-        bool hasTakenOff;
+        
         bool isApproachingRunwayToLand => arrivalClearance != null;
-        bool isReadyToTakeoff => departureClearance != null && !hasTakenOff;
+        bool isReadyToTakeoff => departureClearance != null && (Altitude)altitude > departureAirfield.GetAltitude(); //fails when the arrival airfield is lower than the departure airfield
         bool attributesHaveBeenUpdated;
 
         Vector2 location;
@@ -73,7 +76,7 @@ namespace ATC2027
         #endregion
 
         //Altitude
-        IAltitude altitude;
+        Altitude altitude;
         IAltitude previousAltitude;
         VerticalMovement.VerticalMovementEnum verticalMovement;
         bool updateAltitudeNow;
@@ -100,7 +103,7 @@ namespace ATC2027
             Arrival,Departure,FlyOver,Unknown
         }
         #endregion
-        public Plane(FlightNumber flNo, IHeading heading, IAltitude altitude, ISpeed speed, Vector2 location, GraphicsDevice graphicsDevice, bool hasTakenOff, Color? selectedDrawColor = null, Color? nonSelectedDrawColor = null)
+        public Plane(FlightNumber flNo, IHeading heading, Altitude altitude, ISpeed speed, Vector2 location, GraphicsDevice graphicsDevice, bool hasTakenOff, Color? selectedDrawColor = null, Color? nonSelectedDrawColor = null)
         {
             this.flightNumber = flNo;
             this.heading = new Heading(heading);
@@ -127,7 +130,34 @@ namespace ATC2027
 
             previousLastAppendageToPreviousLocations = lastAppendageToPreviousLocations;
         }
+        bool PlaneIsInAir() {
 
+            bool departureAirfieldIsNull = departureAirfield == null;
+            bool arrivalAirfieldIsNull = arrivalAirfield == null;
+
+            if (departureAirfieldIsNull || arrivalAirfieldIsNull)
+                throw new Exception($"Plane {flightNoAsStr} has not been properly constructed, its not possible to determine if it is in the air reliably especially at low altitudes. departureAirfield or arrivalAirfield is null");
+
+            bool departureAirfieldAltitudeIsNull = departureAirfield.GetAltitude() == null;
+            bool arrivalAirfieldAltitudeIsNull = arrivalAirfield.GetAltitude() == null;
+
+            bool altitudeAttributeIsNull = altitude == null;
+
+            if (departureAirfieldAltitudeIsNull)
+                throw new Exception();
+
+            if (arrivalAirfieldAltitudeIsNull)
+                throw new Exception();
+
+            if (altitudeAttributeIsNull)
+                throw new Exception();
+
+            //its been ensured that no used attributes are null from this point
+
+            return (Altitude)altitude > departureAirfield.GetAltitude() || (Altitude)altitude > arrivalAirfield.GetAltitude();
+
+            
+        }
         public float getTurningRadiusFromSpeed()
         {
             return MathExtension.Map(this.speed.ToKnotsFloat()/500f,5,9);
@@ -179,6 +209,31 @@ namespace ATC2027
                 Text.StaticDraw(spriteBatch, topLine, font, location, normalTextDrawColor);
         }
 
+        private void UpdateHeading()
+        {
+            if (airTimeClearance == null)
+                return;
+
+            if (airTimeClearance.getTargetHeading() == null)
+                return;
+            float clearanceHeading = airTimeClearance.getTargetHeading().GetHeadingInFloatDegrees();
+            float actualHeading = this.heading.GetHeadingInFloatDegrees();
+
+            bool clearanceHeadingAndHeadingAreDifferent = clearanceHeading == actualHeading;
+            //update heading
+            if (!clearanceHeadingAndHeadingAreDifferent)
+            {
+                if (Math.Abs(clearanceHeading - actualHeading) < 1)
+                    heading = airTimeClearance.getTargetHeading();
+                else if (clearanceHeading < actualHeading)
+                    heading = heading.Decrement(getTurningRadiusFromSpeed());
+                else
+                    heading = heading.Increment(getTurningRadiusFromSpeed());
+
+                this.attributesHaveBeenUpdated = true;
+            }
+        }
+
         public override void Update(GameTime gameTime)
         {
             //Determine draw colour of the head and tail
@@ -195,41 +250,92 @@ namespace ATC2027
             
 
             UpdateTailInformation(gameTime);
-            UpdateHeadInformation(gameTime);
+            UpdateHeadInformation(gameTime, airTimeClearance, departureClearance, arrivalClearance);
 
             tail.Update(gameTime);
             head.Update(gameTime);
 
-            
+            #region updateHeading
+            updateHeadingNow = lastHeadingUpdate + headingUpdateFrequency < gameTime.TotalGameTime;
+            if (updateHeadingNow)
+            {
+                UpdateHeading();
+                lastHeadingUpdate = gameTime.TotalGameTime;
+                updateHeadingNow = false;
+            }
+            #endregion
+            #region updateAltitude
+            updateAltitudeNow = lastAltitudeUpdate + altitudeUpdateFrequency < gameTime.TotalGameTime;
+            if (updateAltitudeNow)
+            {
+                UpdateAltitude();
+                lastAltitudeUpdate = gameTime.TotalGameTime;
+                updateAltitudeNow = false;
+            }
+            #endregion
+            #region updateSpeed
+            updateSpeedNow = lastSpeedUpdate + speedUpdateFrequency < gameTime.TotalGameTime;
+            if (updateSpeedNow)
+            {
+                UpdateSpeed();
+                lastSpeedUpdate = gameTime.TotalGameTime;
+                updateSpeedNow = false;
+            }
+            #endregion
+
             UpdateVerticalMovementSymbol();
             previousAltitude = altitude;
-
-
-            if (isApproachingRunwayToLand)
-                throw new NotImplementedException("Landing on runways has not yet been handled");
-            else
-            {
-                if (airTimeClearance != null)
-                {
-                    if (airTimeClearance.GetType().ToString().Contains("NonMutableDirectControl"))
-                    {
-
-                    }
-
-                    if (airTimeClearance.GetType().ToString().Contains("NonMutableSIDClearance"))
-                        throw new NotImplementedException("NonMutableSIDClearance movement has not yet been implemented");
-                    if (airTimeClearance.GetType().ToString().Contains("NonMutableSTARClearance"))
-                        throw new NotImplementedException("NonMutableSTARClearance movement has not yet been implemented");
-                    if (airTimeClearance.GetType().ToString().Contains("NonMutableArrivalClearance"))
-                        throw new NotImplementedException("NonMutableArrivalClearance movement has not yet been implemented");
-                    if (airTimeClearance.GetType().ToString().Contains("NonMutableDepartureClearance"))
-                        throw new NotImplementedException("NonMutableDepartureClearance movement has not yet been implemented");
-                }
-                
-            }
-
         }
 
+        private void UpdateSpeed()
+        {
+            if (airTimeClearance == null)
+                return;
+            if (airTimeClearance.getTargetSpeed() == null)
+                return;
+
+            float clearanceSpeed = airTimeClearance.getTargetSpeed().ToKnotsFloat();
+            float actualSpeed = this.speed.ToKnotsFloat();
+
+            bool clearanceSpeedAndActualSpeedAreDifferent = clearanceSpeed == actualSpeed;
+
+            if (!clearanceSpeedAndActualSpeedAreDifferent)
+            {
+                if (Math.Abs(clearanceSpeed - actualSpeed) < speedUpdateRate + 0.1)
+                    speed = airTimeClearance.getTargetSpeed();
+                else if (clearanceSpeed < actualSpeed)
+                    speed = speed.Decrement(speedUpdateRate);
+                else
+                    speed = speed.Increment(speedUpdateRate);
+
+                this.attributesHaveBeenUpdated = true;
+            }
+        }
+        private void UpdateAltitude()
+        {
+            if (airTimeClearance == null)
+                return;
+
+            if (airTimeClearance.getTargeAltitude() == null)
+                return;
+
+            float clearanceAltitude = airTimeClearance.getTargeAltitude().GetAltitudeInFeet();
+            float actualAltitude = this.altitude.GetAltitudeInFeet();
+
+            bool clearanceAltitudeAndRealAltitudeAreDifferent = clearanceAltitude == actualAltitude;
+            //update heading
+            if (!clearanceAltitudeAndRealAltitudeAreDifferent)
+            {
+                if (Math.Abs(clearanceAltitude - actualAltitude) < 1)
+                    altitude = airTimeClearance.getTargeAltitude();
+                else if (clearanceAltitude < actualAltitude)
+                    altitude = altitude.Decrement(rateOfDescentPerPeriod);
+                else
+                    altitude = altitude.Increment(rateOfDescentPerPeriod);
+
+                this.attributesHaveBeenUpdated = true;
+            }
+        }
         private void UpdateVerticalMovementSymbol()
         {
             if (previousAltitude == null || altitude == null)
@@ -261,12 +367,12 @@ namespace ATC2027
             this.attributesHaveBeenUpdated = changeInAttributesHasBeenHandled;
         }
 
-        private void UpdateHeadInformation(GameTime gameTime)
+        private void UpdateHeadInformation(GameTime gameTime, INonMutableClearance airTimeClearance, INonMutableDepartureClearance departureClearance, INonMutableArrivalClearance arrivalClearance)
         {
             if (head is null)
                 return;
             
-            float magnitudeOfMovement = (float)gameTime.ElapsedGameTime.Nanoseconds / 500000f * this.speed.ToKnotsFloat();
+            float magnitudeOfMovement = (float)gameTime.ElapsedGameTime.Nanoseconds / 750000f * this.speed.ToKnotsFloat();
             Vector2 directionOfMovement = new Vector2(
                 (float)Math.Cos(heading.GetHeadingInFloatRadians()),
                 (float)Math.Sin(heading.GetHeadingInFloatRadians())
@@ -274,6 +380,35 @@ namespace ATC2027
             location = head.GetCentre() + (directionOfMovement * magnitudeOfMovement);
             head.SetCentre(location);
             
+
+            
+
+            if (PlaneIsInAir())
+            //aircraft has landed or is getting ready to depart - crash landings have been implemented
+            {
+                if (isApproachingRunwayToLand)
+                //aircraft is getting ready to land
+                {
+                    //altitude, speed and heading should be modified towards the entry point for the runway
+                }
+                else
+                {
+                    //check for STAR, SID or DirectControl clearance
+                }
+            }
+            else
+            {
+                if (isReadyToTakeoff)
+                //Airplane is ready to takeoff
+                {
+
+                }
+                else
+                //Airplane has already taken of
+                {
+
+                }
+            }
         }
 
         private void UpdateTailInformation(GameTime gameTime)
@@ -429,9 +564,24 @@ namespace ATC2027
             return this.departureClearance;
         }
 
-        public IArrivalClearance? GetArrivalClearance()
+        public INonMutableArrivalClearance? GetArrivalClearance()
         {
             return this.arrivalClearance;
+        }
+
+        internal void SetDepartureClearance(INonMutableDepartureClearance clearance)
+        {
+            this.departureClearance = clearance;
+        }
+
+        internal void SetArrivalClearance(INonMutableArrivalClearance clearance)
+        {
+            this.arrivalClearance = clearance;
+        }
+
+        IArrivalClearance IHasArrivalClearance.GetArrivalClearance()
+        {
+            throw new NotImplementedException();
         }
     }
 }

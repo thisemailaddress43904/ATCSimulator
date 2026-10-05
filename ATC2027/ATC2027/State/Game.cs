@@ -1,16 +1,12 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
-using ATC2027.Library.FlightNumber;
 using System.Linq;
 using ATC2027.Forms;
 using ATC2027.ATC_Library.CollectionRing;
 using System;
 using Microsoft.Xna.Framework.Input;
-using ATC2027.Controls;
-using ATC2027.Controls.UserControl.Abstract;
-using ATC2027.Controls.UserControl.Implementable;
-using SharpDX.Direct3D11;
+using ATC2027.ATC_Library.Airfield;
 
 namespace ATC2027.State
 {
@@ -21,9 +17,10 @@ namespace ATC2027.State
         CollectionRing cr;
         #endregion
 
+        Airfield airfield;
+
         #region forms
         ApplyClearanceForm acf;
-        AircraftCollectionRing aircraftCollectionRing;
         TimeSpan formUpdateFrequency = TimeSpan.FromSeconds(1);
         TimeSpan formLastUpdate = TimeSpan.Zero;
 
@@ -31,11 +28,9 @@ namespace ATC2027.State
         private TimeSpan collectionRingUpdateFrequency = TimeSpan.FromSeconds(1);
         #endregion
 
-        #region testingui
 
-        ILabel label;
-
-        #endregion
+        
+        //private Runway runway = new Runway("9", "27", 100f, Runway.runwayTexture, Constants.getArial_7());
 
         public override string getName => this.GetType().Name;
 
@@ -54,28 +49,25 @@ namespace ATC2027.State
             foreach (var item in cr.getAircraftCollectionRingListItemsAsList())
                 statusBoardItemList.Add(item);
 
-            
-            aircraftCollectionRing = new AircraftCollectionRing(ref cr);
-            aircraftCollectionRing.Show();
-
             addPlaneForm = new AddPlane(ref cr);
             addPlaneForm.Show();
 
             acf = new ApplyClearanceForm(ref cr);
             acf.Show();
 
-            label = new Label("testContnetForLabel", Constants.getArial_7(), new Vector2(50, 50), new Vector2(200, 35));
+            airfield = AirfieldFactory.BuildLondonHeathrow();
         }
 
         public bool formShouldBeUpdated => cr.planeCollection.Values.Any(x => x.getAttributesHaveBeenUpdated());
 
         public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
+            
             foreach (var plane in cr.planeCollection) 
                 plane.Value.Draw(gameTime, spriteBatch);
             
-            //speedTesting.Draw(gameTime, spriteBatch);
-            label.Draw(gameTime, spriteBatch);
+            airfield.Draw(gameTime, spriteBatch);
+
             base.Draw(gameTime, spriteBatch);
         }
         
@@ -88,16 +80,13 @@ namespace ATC2027.State
             if (gameTime.TotalGameTime - formLastUpdate > formUpdateFrequency)
             {
                 formLastUpdate = gameTime.TotalGameTime;
-
-                if (aircraftCollectionRing.formShouldBeUpdated || formShouldBeUpdated)
-                    aircraftCollectionRing.UpdateForm();
             }
             
             if (cr.planeCollection.Count == 0)
             {
                 indexOfSelectedPlane = cr.planeCollection.Count - 1;
             }
-                
+            airfield.Update(gameTime);    
             foreach(var plane in cr.planeCollection)
                 plane.Value.Update(gameTime);
 
@@ -115,7 +104,7 @@ namespace ATC2027.State
                     selectedPlane.IncrementHeading();
             }
 
-            label.Update(gameTime);
+            //runway.Update(gameTime);
 
             base.Update(gameTime);
         }

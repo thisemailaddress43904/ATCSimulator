@@ -1,4 +1,5 @@
 ﻿using ATC2027.ATC_Library.Clearance;
+using ATC2027.ATC_Library.Clearance.AirfieldClearance.Interfaces;
 using ATC2027.ATC_Library.Clearance.Interfaces;
 using ATC2027.Clearance;
 using ATC2027.Forms;
@@ -31,6 +32,26 @@ namespace ATC2027.ATC_Library.CollectionRing
         public void AddPlane(Plane plane)
         {
             planeCollection.Add(plane.flightNoAsStr(), plane);
+        }
+
+        public void ApplyClearance(INonMutableDepartureClearance clearance, ref Plane plane)
+        {
+            if (plane.CanBeConsideredForTakeoffClearance)
+            {
+                plane.SetDepartureClearance(clearance);
+            }
+            else
+                throw new Exception("Not implemented");
+        }
+
+        public void ApplyClearance(INonMutableArrivalClearance clearance, ref Plane plane)
+        {
+            if (plane.CanBeConsideredForTakeoffClearance)
+            {
+                plane.SetArrivalClearance(clearance);
+            }
+            else
+                throw new Exception("Not implemented");
         }
 
         public void ApplyClearance(INonMutableClearance clearance, ref Plane plane)
@@ -85,7 +106,10 @@ namespace ATC2027.ATC_Library.CollectionRing
 
         public string getDevModeDrawableString()
         {
-            return $"{selectedPlane?.getDevModeDrawableString()}\nCollectionSize: {this.planeCollection.Count}";
+            if (selectedPlane != null)
+                return $"{selectedPlane?.getDevModeDrawableString()}\nCollectionSize: {this.planeCollection.Count}";
+            else
+                return $"CollectionSize: {this.planeCollection.Count}";
         }
 
         public void RemovePlane(Plane plane)
@@ -133,7 +157,15 @@ namespace ATC2027.ATC_Library.CollectionRing
         {
             if (selectedPlane is not null)
             {
-                planeCollection[selectedPlane.flightNoAsStr()].SetIsSelected(false);
+                try
+                {
+                    planeCollection[selectedPlane.flightNoAsStr()].SetIsSelected(false);
+                }
+                catch (Exception ex)
+                {
+                    //the key value pair has already been removed from the dictionary and so its attributes can not be modified via the dictionary
+                }
+                
                 selectedPlane = null;
             }
                 

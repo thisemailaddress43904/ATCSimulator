@@ -1,4 +1,7 @@
-﻿using ATC2027.Clearance;
+﻿using ATC2027.ATC_Library.ControlAttribute.Altitude;
+using ATC2027.ATC_Library.ControlAttribute.Heading;
+using ATC2027.ATC_Library.ControlAttribute.Speed;
+using ATC2027.Clearance;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,5 +12,8 @@ namespace ATC2027.ATC_Library.Clearance.Interfaces
 {
     public interface INonMutableClearance : IClearance
     {
+        public Heading getTargetHeading();
+        public Altitude getTargeAltitude();
+        public Speed getTargetSpeed();
     }
 }
