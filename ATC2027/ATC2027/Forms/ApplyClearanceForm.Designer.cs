@@ -90,6 +90,7 @@
             label2 = new System.Windows.Forms.Label();
             label3 = new System.Windows.Forms.Label();
             label4 = new System.Windows.Forms.Label();
+            checkBox1 = new System.Windows.Forms.CheckBox();
             tlpOuter.SuspendLayout();
             tlpInnerLeft.SuspendLayout();
             acf_tc.SuspendLayout();
@@ -230,6 +231,7 @@
             tableLayoutPanel9.Controls.Add(txtBoxAltitude, 2, 3);
             tableLayoutPanel9.Controls.Add(txtBoxSpeed, 2, 7);
             tableLayoutPanel9.Controls.Add(cmbBoxAltitudeType, 2, 5);
+            tableLayoutPanel9.Controls.Add(checkBox1, 1, 8);
             tableLayoutPanel9.Dock = System.Windows.Forms.DockStyle.Fill;
             tableLayoutPanel9.Location = new System.Drawing.Point(3, 3);
             tableLayoutPanel9.Margin = new System.Windows.Forms.Padding(2);
@@ -901,6 +903,16 @@
             label4.TabIndex = 3;
             label4.Text = "Null";
             // 
+            // checkBox1
+            // 
+            checkBox1.AutoSize = true;
+            checkBox1.Location = new System.Drawing.Point(36, 357);
+            checkBox1.Name = "checkBox1";
+            checkBox1.Size = new System.Drawing.Size(101, 8);
+            checkBox1.TabIndex = 11;
+            checkBox1.Text = "checkBox1";
+            checkBox1.UseVisualStyleBackColor = true;
+            // 
             // ApplyClearanceForm
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -1004,5 +1016,6 @@
         private System.Windows.Forms.TextBox txtBoxSidSpeed;
         private System.Windows.Forms.TextBox txtBoxSidAltitudeValue;
         private System.Windows.Forms.ComboBox cmbBoxSidAltitudeType;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }

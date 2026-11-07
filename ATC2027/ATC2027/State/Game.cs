@@ -7,6 +7,8 @@ using ATC2027.ATC_Library.CollectionRing;
 using System;
 using Microsoft.Xna.Framework.Input;
 using ATC2027.ATC_Library.Airfield;
+using ATC2027.ATC_Library.Plane;
+using Plane = ATC2027.ATC_Library.Plane.Plane;
 
 namespace ATC2027.State
 {

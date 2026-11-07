@@ -2,6 +2,7 @@
 using ATC2027.ATC_Library.ControlAttribute.Altitude;
 using ATC2027.ATC_Library.ControlAttribute.Heading;
 using ATC2027.ATC_Library.ControlAttribute.Speed;
+using ATC2027.ATC_Library.Plane;
 using ATC2027.ExtensionClasses;
 using ATC2027.Library.FlightNumber;
 using System;
@@ -11,6 +12,7 @@ using System.Drawing;
 using System.Numerics;
 using System.Windows.Forms;
 using static ATC2027.ATC_Library.ControlAttribute.Altitude.AltitudeType;
+using Plane = ATC2027.ATC_Library.Plane.Plane;
 
 namespace ATC2027.Forms
 {

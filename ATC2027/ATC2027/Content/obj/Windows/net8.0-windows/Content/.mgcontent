@@ -4,10 +4,12 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/danUser/Desktop/B/ATC2027/ATC2027/ATC2027/Content/Arial_12.spritefont</File>
-    <File>C:/Users/danUser/Desktop/B/ATC2027/ATC2027/ATC2027/Content/Arial_7.spritefont</File>
+    <File>C:/Users/Dan/Documents/disk1/code/newCopies/new/ATCSimulator/ATC2027/ATC2027/Content/../../../../../../runway.png</File>
+    <File>C:/Users/Dan/Documents/disk1/code/newCopies/new/ATCSimulator/ATC2027/ATC2027/Content/Arial_12.spritefont</File>
+    <File>C:/Users/Dan/Documents/disk1/code/newCopies/new/ATCSimulator/ATC2027/ATC2027/Content/Arial_7.spritefont</File>
   </SourceFiles>
   <DestFiles>
+    <File>images/runway.png</File>
     <File xsi:nil="true" />
     <File xsi:nil="true" />
   </DestFiles>

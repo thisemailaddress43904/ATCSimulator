@@ -1,6 +1,7 @@
 ﻿using ATC2027.ATC_Library.Clearance;
 using ATC2027.ATC_Library.Clearance.AirfieldClearance.Interfaces;
 using ATC2027.ATC_Library.Clearance.Interfaces;
+using ATC2027.ATC_Library.Plane;
 using ATC2027.Clearance;
 using ATC2027.Forms;
 using ATC2027.Interfaces;
@@ -19,22 +20,22 @@ namespace ATC2027.ATC_Library.CollectionRing
     public class CollectionRing : IAircraftCollectionRing, IUpdateable, IHasDevModeDrawableString
     {
         
-        public Dictionary<string, Plane> planeCollection;
+        public Dictionary<string, Plane.Plane> planeCollection;
         private TimeSpan lastUpdate;
-        private Plane? selectedPlane;
+        private Plane.Plane? selectedPlane;
         public event EventHandler PlaneRemoved;
 
         public CollectionRing()
         {
-            planeCollection = new Dictionary<string, Plane>();
+            planeCollection = new Dictionary<string, Plane.Plane>();
         }
 
-        public void AddPlane(Plane plane)
+        public void AddPlane(Plane.Plane plane)
         {
             planeCollection.Add(plane.flightNoAsStr(), plane);
         }
 
-        public void ApplyClearance(INonMutableDepartureClearance clearance, ref Plane plane)
+        public void ApplyClearance(INonMutableDepartureClearance clearance, ref Plane.Plane plane)
         {
             if (plane.CanBeConsideredForTakeoffClearance)
             {
@@ -44,7 +45,7 @@ namespace ATC2027.ATC_Library.CollectionRing
                 throw new Exception("Not implemented");
         }
 
-        public void ApplyClearance(INonMutableArrivalClearance clearance, ref Plane plane)
+        public void ApplyClearance(INonMutableArrivalClearance clearance, ref Plane.Plane plane)
         {
             if (plane.CanBeConsideredForTakeoffClearance)
             {
@@ -54,7 +55,7 @@ namespace ATC2027.ATC_Library.CollectionRing
                 throw new Exception("Not implemented");
         }
 
-        public void ApplyClearance(INonMutableClearance clearance, ref Plane plane)
+        public void ApplyClearance(INonMutableClearance clearance, ref Plane.Plane plane)
         {
             try
             {
@@ -73,7 +74,7 @@ namespace ATC2027.ATC_Library.CollectionRing
             planeCollection.Clear();
         }
 
-        public bool Contains(Plane plane)
+        public bool Contains(Plane.Plane plane)
         {
             return planeCollection.ContainsKey(plane.flightNoAsStr());
         }
@@ -88,7 +89,7 @@ namespace ATC2027.ATC_Library.CollectionRing
             throw new NotImplementedException();
         }
 
-        public IList<Plane> getAircraftCollection()
+        public IList<Plane.Plane> getAircraftCollection()
         {
             return planeCollection.Values.ToList();
         }
@@ -112,7 +113,7 @@ namespace ATC2027.ATC_Library.CollectionRing
                 return $"CollectionSize: {this.planeCollection.Count}";
         }
 
-        public void RemovePlane(Plane plane)
+        public void RemovePlane(Plane.Plane plane)
         {
             planeCollection.Remove(plane.flightNoAsStr(), out _);
             
@@ -171,7 +172,7 @@ namespace ATC2027.ATC_Library.CollectionRing
                 
         }
 
-        public void SelectPlane(ref Plane plane)
+        public void SelectPlane(ref Plane.Plane plane)
         {
             this.selectedPlane = plane;
             plane?.SetIsSelected(true);
@@ -183,9 +184,9 @@ namespace ATC2027.ATC_Library.CollectionRing
             return lastUpdate;
         }
 
-        internal Plane? GetPlaneByFlightNumber(string flightNumber)
+        internal Plane.Plane? GetPlaneByFlightNumber(string flightNumber)
         {
-            if (!planeCollection.TryGetValue(flightNumber, out Plane plane))
+            if (!planeCollection.TryGetValue(flightNumber, out Plane.Plane plane))
             {
                 plane = null;
             }
@@ -193,7 +194,7 @@ namespace ATC2027.ATC_Library.CollectionRing
             return plane;
         }
 
-        ConcurrentDictionary<Plane, byte> IAircraftCollectionRing.getAircraftCollection()
+        ConcurrentDictionary<Plane.Plane, byte> IAircraftCollectionRing.getAircraftCollection()
         {
             throw new NotImplementedException();
         }
@@ -204,7 +205,7 @@ namespace ATC2027.ATC_Library.CollectionRing
          * @param plane The plane to be transferred.
          * @param collectionRing The target collection ring to which the plane will be added.
          */
-        public void TransferPlaneToCollectionRing(ref Plane plane, ref IAircraftCollectionRing collectionRing)
+        public void TransferPlaneToCollectionRing(ref Plane.Plane plane, ref IAircraftCollectionRing collectionRing)
         {
             collectionRing.AddPlane(plane);
             this.RemovePlane(plane);

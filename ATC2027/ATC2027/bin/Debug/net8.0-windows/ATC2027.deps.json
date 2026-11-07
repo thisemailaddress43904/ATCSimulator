@@ -8,127 +8,501 @@
     ".NETCoreApp,Version=v8.0": {
       "ATC2027/1.0.0": {
         "dependencies": {
-          "MonoGame.Framework.WindowsDX": "3.8.5.1"
+          "MonoGame.Framework.Content.Pipeline": "3.8.5.1",
+          "MonoGame.Framework.WindowsDX": "3.8.6.1",
+          "System.Speech": "10.0.12",
+          "Vosk": "0.3.38"
         },
         "runtime": {
           "ATC2027.dll": {}
         }
       },
-      "MonoGame.Framework.WindowsDX/3.8.5.1": {
+      "AssimpNetter/6.0.4": {
+        "runtime": {
+          "lib/net6.0/AssimpNetter.dll": {
+            "assemblyVersion": "6.0.4.0",
+            "fileVersion": "6.0.4.0"
+          }
+        },
+        "runtimeTargets": {
+          "runtimes/linux-arm64/native/libassimp.so": {
+            "rid": "linux-arm64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/linux-x64/native/libassimp.so": {
+            "rid": "linux-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/osx-arm64/native/libassimp.dylib": {
+            "rid": "osx-arm64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/osx-x64/native/libassimp.dylib": {
+            "rid": "osx-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win-arm64/native/assimp.dll": {
+            "rid": "win-arm64",
+            "assetType": "native",
+            "fileVersion": "6.0.4.0"
+          },
+          "runtimes/win-x64/native/assimp.dll": {
+            "rid": "win-x64",
+            "assetType": "native",
+            "fileVersion": "6.0.4.0"
+          },
+          "runtimes/win-x86/native/assimp.dll": {
+            "rid": "win-x86",
+            "assetType": "native",
+            "fileVersion": "6.0.4.0"
+          }
+        }
+      },
+      "BCnEncoder.Net/2.1.0": {
         "dependencies": {
-          "SharpDX": "4.0.1",
-          "SharpDX.DXGI": "4.0.1",
-          "SharpDX.Direct2D1": "4.0.1",
-          "SharpDX.Direct3D11": "4.0.1",
-          "SharpDX.MediaFoundation": "4.0.1",
-          "SharpDX.XAudio2": "4.0.1",
-          "SharpDX.XInput": "4.0.1"
+          "Microsoft.Toolkit.HighPerformance": "7.0.2"
         },
         "runtime": {
-          "lib/net8.0-windows7.0/MonoGame.Framework.dll": {
+          "lib/netstandard2.1/BCnEncoder.dll": {
+            "assemblyVersion": "2.1.0.0",
+            "fileVersion": "2.1.0.0"
+          }
+        }
+      },
+      "LibKTX/0.9.2": {
+        "runtime": {
+          "lib/netstandard2.0/KtxSharp.dll": {
+            "assemblyVersion": "0.9.2.0",
+            "fileVersion": "0.9.2.0"
+          }
+        }
+      },
+      "Libuv/1.9.1": {
+        "runtimeTargets": {
+          "runtimes/debian-x64/native/libuv.so": {
+            "rid": "debian-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/fedora-x64/native/libuv.so": {
+            "rid": "fedora-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/opensuse-x64/native/libuv.so": {
+            "rid": "opensuse-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/osx/native/libuv.dylib": {
+            "rid": "osx",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/rhel-x64/native/libuv.so": {
+            "rid": "rhel-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win7-arm/native/libuv.dll": {
+            "rid": "win7-arm",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win7-x64/native/libuv.dll": {
+            "rid": "win7-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win7-x86/native/libuv.dll": {
+            "rid": "win7-x86",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "Microsoft.CodeAnalysis.Common/1.3.0": {
+        "runtime": {
+          "lib/netstandard1.3/Microsoft.CodeAnalysis.dll": {
+            "assemblyVersion": "1.3.0.0",
+            "fileVersion": "1.3.0.60613"
+          }
+        }
+      },
+      "Microsoft.CodeAnalysis.CSharp/1.3.0": {
+        "dependencies": {
+          "Microsoft.CodeAnalysis.Common": "1.3.0"
+        },
+        "runtime": {
+          "lib/netstandard1.3/Microsoft.CodeAnalysis.CSharp.dll": {
+            "assemblyVersion": "1.3.0.0",
+            "fileVersion": "1.3.0.60613"
+          }
+        }
+      },
+      "Microsoft.CodeAnalysis.VisualBasic/1.3.0": {
+        "dependencies": {
+          "Microsoft.CodeAnalysis.Common": "1.3.0"
+        },
+        "runtime": {
+          "lib/netstandard1.3/Microsoft.CodeAnalysis.VisualBasic.dll": {
+            "assemblyVersion": "1.3.0.0",
+            "fileVersion": "1.3.0.60613"
+          }
+        }
+      },
+      "Microsoft.NETCore.App/1.0.5": {
+        "dependencies": {
+          "Libuv": "1.9.1",
+          "Microsoft.CodeAnalysis.CSharp": "1.3.0",
+          "Microsoft.CodeAnalysis.VisualBasic": "1.3.0"
+        }
+      },
+      "Microsoft.Toolkit.HighPerformance/7.0.2": {
+        "runtime": {
+          "lib/net5.0/Microsoft.Toolkit.HighPerformance.dll": {
+            "assemblyVersion": "7.0.0.0",
+            "fileVersion": "7.0.2.1"
+          }
+        }
+      },
+      "MonoGame.Framework.Content.Pipeline/3.8.5.1": {
+        "dependencies": {
+          "AssimpNetter": "6.0.4",
+          "BCnEncoder.Net": "2.1.0",
+          "LibKTX": "0.9.2",
+          "MonoGame.Library.FreeType": "2.13.2.3",
+          "MonoGame.Library.MojoShader": "1.0.0.5",
+          "MonoGame.Tool.Basisu": "2.0.2.1",
+          "MonoGame.Tool.Crunch": "1.0.4.7",
+          "MonoGame.Tool.Dxc": "1.8.2505.11",
+          "MonoGame.Tool.FFmpeg": "7.0.0.10",
+          "MonoGame.Tool.FFprobe": "7.0.0.10",
+          "SharpDX": "4.2.0",
+          "SharpDX.D3DCompiler": "4.0.1",
+          "System.CommandLine": "2.0.0-beta4.22272.1",
+          "YamlDotNet": "16.3.0"
+        },
+        "runtime": {
+          "lib/net8.0/MonoGame.Framework.Content.Pipeline.dll": {
             "assemblyVersion": "3.8.5.1",
             "fileVersion": "3.8.5.1"
           }
+        },
+        "runtimeTargets": {
+          "runtimes/linux-arm64/native/libmgpipeline.so": {
+            "rid": "linux-arm64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/linux-x64/native/libmgpipeline.so": {
+            "rid": "linux-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/osx/native/libmgpipeline.dylib": {
+            "rid": "osx",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win-arm64/native/mgpipeline.dll": {
+            "rid": "win-arm64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win-x64/native/mgpipeline.dll": {
+            "rid": "win-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          }
         }
       },
-      "SharpDX/4.0.1": {
+      "MonoGame.Framework.WindowsDX/3.8.6.1": {
+        "dependencies": {
+          "SharpDX": "4.2.0",
+          "SharpDX.DXGI": "4.2.0",
+          "SharpDX.Direct2D1": "4.2.0",
+          "SharpDX.Direct3D11": "4.2.0",
+          "SharpDX.MediaFoundation": "4.2.0",
+          "SharpDX.XAudio2": "4.2.0",
+          "SharpDX.XInput": "4.2.0"
+        },
         "runtime": {
-          "lib/netcoreapp1.0/SharpDX.dll": {
+          "lib/net8.0-windows7.0/MonoGame.Framework.dll": {
+            "assemblyVersion": "3.8.6.1",
+            "fileVersion": "3.8.6.1"
+          }
+        }
+      },
+      "MonoGame.Library.FreeType/2.13.2.3": {
+        "runtimeTargets": {
+          "runtimes/linux-arm64/native/libfreetype.so": {
+            "rid": "linux-arm64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/linux-x64/native/libfreetype.so": {
+            "rid": "linux-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/osx/native/libfreetype.dylib": {
+            "rid": "osx",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win-arm64/native/freetype.dll": {
+            "rid": "win-arm64",
+            "assetType": "native",
+            "fileVersion": "2.13.3.0"
+          },
+          "runtimes/win-x64/native/freetype.dll": {
+            "rid": "win-x64",
+            "assetType": "native",
+            "fileVersion": "2.13.3.0"
+          }
+        }
+      },
+      "MonoGame.Library.MojoShader/1.0.0.5": {
+        "runtimeTargets": {
+          "runtimes/linux-arm64/native/libmojoshader.so": {
+            "rid": "linux-arm64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/linux-x64/native/libmojoshader.so": {
+            "rid": "linux-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/osx/native/libmojoshader.dylib": {
+            "rid": "osx",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win-arm64/native/mojoshader.dll": {
+            "rid": "win-arm64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win-x64/native/mojoshader.dll": {
+            "rid": "win-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "MonoGame.Tool.Basisu/2.0.2.1": {
+        "runtime": {
+          "lib/net8.0/MonoGame.Tool.Basisu.dll": {
+            "assemblyVersion": "2.0.2.1",
+            "fileVersion": "2.0.2.1"
+          }
+        }
+      },
+      "MonoGame.Tool.Crunch/1.0.4.7": {
+        "runtime": {
+          "lib/net8.0/MonoGame.Tool.Crunch.dll": {
+            "assemblyVersion": "1.0.4.7",
+            "fileVersion": "1.0.4.7"
+          }
+        }
+      },
+      "MonoGame.Tool.Dxc/1.8.2505.11": {
+        "runtime": {
+          "lib/net8.0/MonoGame.Tool.Dxc.dll": {
+            "assemblyVersion": "1.8.2505.11",
+            "fileVersion": "1.8.2505.11"
+          }
+        }
+      },
+      "MonoGame.Tool.FFmpeg/7.0.0.10": {
+        "runtime": {
+          "lib/net8.0/MonoGame.Tool.FFmpeg.dll": {
+            "assemblyVersion": "7.0.0.10",
+            "fileVersion": "7.0.0.10"
+          }
+        }
+      },
+      "MonoGame.Tool.FFprobe/7.0.0.10": {
+        "runtime": {
+          "lib/net8.0/MonoGame.Tool.FFprobe.dll": {
+            "assemblyVersion": "7.0.0.10",
+            "fileVersion": "7.0.0.10"
+          }
+        }
+      },
+      "SharpDX/4.2.0": {
+        "runtime": {
+          "lib/netstandard1.1/SharpDX.dll": {
+            "assemblyVersion": "4.2.0.0",
+            "fileVersion": "4.2.0.0"
+          }
+        }
+      },
+      "SharpDX.D3DCompiler/4.0.1": {
+        "dependencies": {
+          "Microsoft.NETCore.App": "1.0.5",
+          "SharpDX": "4.2.0"
+        },
+        "runtime": {
+          "lib/netcoreapp1.0/SharpDX.D3DCompiler.dll": {
             "assemblyVersion": "4.0.1.0",
             "fileVersion": "4.0.1.0"
           }
         }
       },
-      "SharpDX.Direct2D1/4.0.1": {
+      "SharpDX.Direct2D1/4.2.0": {
         "dependencies": {
-          "SharpDX": "4.0.1",
-          "SharpDX.DXGI": "4.0.1"
+          "SharpDX": "4.2.0",
+          "SharpDX.DXGI": "4.2.0"
         },
         "runtime": {
-          "lib/netcoreapp1.0/SharpDX.Direct2D1.dll": {
-            "assemblyVersion": "4.0.1.0",
-            "fileVersion": "4.0.1.0"
+          "lib/netstandard1.1/SharpDX.Direct2D1.dll": {
+            "assemblyVersion": "4.2.0.0",
+            "fileVersion": "4.2.0.0"
           }
         }
       },
-      "SharpDX.Direct3D11/4.0.1": {
+      "SharpDX.Direct3D11/4.2.0": {
         "dependencies": {
-          "SharpDX": "4.0.1",
-          "SharpDX.DXGI": "4.0.1"
+          "SharpDX": "4.2.0",
+          "SharpDX.DXGI": "4.2.0"
         },
         "runtime": {
-          "lib/netcoreapp1.0/SharpDX.Direct3D11.dll": {
-            "assemblyVersion": "4.0.1.0",
-            "fileVersion": "4.0.1.0"
+          "lib/netstandard1.1/SharpDX.Direct3D11.dll": {
+            "assemblyVersion": "4.2.0.0",
+            "fileVersion": "4.2.0.0"
           }
         }
       },
-      "SharpDX.Direct3D9/4.0.1": {
+      "SharpDX.DXGI/4.2.0": {
         "dependencies": {
-          "SharpDX": "4.0.1"
+          "SharpDX": "4.2.0"
         },
         "runtime": {
-          "lib/netcoreapp1.0/SharpDX.Direct3D9.dll": {
-            "assemblyVersion": "4.0.1.0",
-            "fileVersion": "4.0.1.0"
+          "lib/netstandard1.1/SharpDX.DXGI.dll": {
+            "assemblyVersion": "4.2.0.0",
+            "fileVersion": "4.2.0.0"
           }
         }
       },
-      "SharpDX.DXGI/4.0.1": {
+      "SharpDX.MediaFoundation/4.2.0": {
         "dependencies": {
-          "SharpDX": "4.0.1"
+          "SharpDX": "4.2.0",
+          "SharpDX.DXGI": "4.2.0"
         },
         "runtime": {
-          "lib/netcoreapp1.0/SharpDX.DXGI.dll": {
-            "assemblyVersion": "4.0.1.0",
-            "fileVersion": "4.0.1.0"
+          "lib/netstandard1.1/SharpDX.MediaFoundation.dll": {
+            "assemblyVersion": "4.2.0.0",
+            "fileVersion": "4.2.0.0"
           }
         }
       },
-      "SharpDX.Mathematics/4.0.1": {
+      "SharpDX.XAudio2/4.2.0": {
         "dependencies": {
-          "SharpDX": "4.0.1"
+          "SharpDX": "4.2.0"
         },
         "runtime": {
-          "lib/netcoreapp1.0/SharpDX.Mathematics.dll": {
-            "assemblyVersion": "4.0.1.0",
-            "fileVersion": "4.0.1.0"
+          "lib/netstandard1.1/SharpDX.XAudio2.dll": {
+            "assemblyVersion": "4.2.0.0",
+            "fileVersion": "4.2.0.0"
           }
         }
       },
-      "SharpDX.MediaFoundation/4.0.1": {
+      "SharpDX.XInput/4.2.0": {
         "dependencies": {
-          "SharpDX": "4.0.1",
-          "SharpDX.DXGI": "4.0.1",
-          "SharpDX.Direct3D9": "4.0.1",
-          "SharpDX.Mathematics": "4.0.1"
+          "SharpDX": "4.2.0"
         },
         "runtime": {
-          "lib/netcoreapp1.0/SharpDX.MediaFoundation.dll": {
-            "assemblyVersion": "4.0.1.0",
-            "fileVersion": "4.0.1.0"
+          "lib/netstandard1.1/SharpDX.XInput.dll": {
+            "assemblyVersion": "4.2.0.0",
+            "fileVersion": "4.2.0.0"
           }
         }
       },
-      "SharpDX.XAudio2/4.0.1": {
-        "dependencies": {
-          "SharpDX": "4.0.1"
-        },
+      "System.CommandLine/2.0.0-beta4.22272.1": {
         "runtime": {
-          "lib/netcoreapp1.0/SharpDX.XAudio2.dll": {
-            "assemblyVersion": "4.0.1.0",
-            "fileVersion": "4.0.1.0"
+          "lib/net6.0/System.CommandLine.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.0.22.27201"
+          }
+        },
+        "resources": {
+          "lib/net6.0/cs/System.CommandLine.resources.dll": {
+            "locale": "cs"
+          },
+          "lib/net6.0/de/System.CommandLine.resources.dll": {
+            "locale": "de"
+          },
+          "lib/net6.0/es/System.CommandLine.resources.dll": {
+            "locale": "es"
+          },
+          "lib/net6.0/fr/System.CommandLine.resources.dll": {
+            "locale": "fr"
+          },
+          "lib/net6.0/it/System.CommandLine.resources.dll": {
+            "locale": "it"
+          },
+          "lib/net6.0/ja/System.CommandLine.resources.dll": {
+            "locale": "ja"
+          },
+          "lib/net6.0/ko/System.CommandLine.resources.dll": {
+            "locale": "ko"
+          },
+          "lib/net6.0/pl/System.CommandLine.resources.dll": {
+            "locale": "pl"
+          },
+          "lib/net6.0/pt-BR/System.CommandLine.resources.dll": {
+            "locale": "pt-BR"
+          },
+          "lib/net6.0/ru/System.CommandLine.resources.dll": {
+            "locale": "ru"
+          },
+          "lib/net6.0/tr/System.CommandLine.resources.dll": {
+            "locale": "tr"
+          },
+          "lib/net6.0/zh-Hans/System.CommandLine.resources.dll": {
+            "locale": "zh-Hans"
+          },
+          "lib/net6.0/zh-Hant/System.CommandLine.resources.dll": {
+            "locale": "zh-Hant"
           }
         }
       },
-      "SharpDX.XInput/4.0.1": {
-        "dependencies": {
-          "SharpDX": "4.0.1"
-        },
+      "System.Speech/10.0.12": {
         "runtime": {
-          "lib/netcoreapp1.0/SharpDX.XInput.dll": {
-            "assemblyVersion": "4.0.1.0",
-            "fileVersion": "4.0.1.0"
+          "lib/net8.0/System.Speech.dll": {
+            "assemblyVersion": "10.0.0.12",
+            "fileVersion": "10.0.1226.42308"
+          }
+        },
+        "runtimeTargets": {
+          "runtimes/win/lib/net8.0/System.Speech.dll": {
+            "rid": "win",
+            "assetType": "runtime",
+            "assemblyVersion": "10.0.0.12",
+            "fileVersion": "10.0.1226.42308"
+          }
+        }
+      },
+      "Vosk/0.3.38": {
+        "runtime": {
+          "lib/netstandard2.0/Vosk.dll": {
+            "assemblyVersion": "0.0.0.0",
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "YamlDotNet/16.3.0": {
+        "runtime": {
+          "lib/net8.0/YamlDotNet.dll": {
+            "assemblyVersion": "16.0.0.0",
+            "fileVersion": "16.3.0.0"
           }
         }
       }
@@ -140,75 +514,215 @@
       "serviceable": false,
       "sha512": ""
     },
-    "MonoGame.Framework.WindowsDX/3.8.5.1": {
+    "AssimpNetter/6.0.4": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-umElz+9tmJKHF7NF5kvRFuG6SIWGKpjtYq43iYuFdBL35VCZnWHn/altkXU3tXnI6gwVuqHbuysZ7nUzdVkwBg==",
-      "path": "monogame.framework.windowsdx/3.8.5.1",
-      "hashPath": "monogame.framework.windowsdx.3.8.5.1.nupkg.sha512"
+      "sha512": "sha512-CCqtd+gNavdW9DJthXV+EVz0nyahey5cG89wgk4gMkx2T4WQ8LsRr0KPZuQ1L3YxGn56suszi2Utx3fUp0E4mQ==",
+      "path": "assimpnetter/6.0.4",
+      "hashPath": "assimpnetter.6.0.4.nupkg.sha512"
     },
-    "SharpDX/4.0.1": {
+    "BCnEncoder.Net/2.1.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-8YA1VFg1/K8Emb8FEZDobojcv1BLuppVo7CRJQEgA1V748VIMPBru0i0OnsCjLSThzTn7juOvH85qjFL9Grl1w==",
-      "path": "sharpdx/4.0.1",
-      "hashPath": "sharpdx.4.0.1.nupkg.sha512"
+      "sha512": "sha512-bBKYUDhpYenmp8vy5BVUHmS2LFym0NMga9V+S1eMJ+4zQLBwDw63Bs83AKOyqBKC2AqqgxXdTFA2a2V+SmGoIw==",
+      "path": "bcnencoder.net/2.1.0",
+      "hashPath": "bcnencoder.net.2.1.0.nupkg.sha512"
     },
-    "SharpDX.Direct2D1/4.0.1": {
+    "LibKTX/0.9.2": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-EDBYa9kAG+gaMB4cCH7WNpxS8WijSCejNz/SERs2P1sWEPZZdUiUIruQMjPCdW3lXxT508aYiH2UXHAaZtk00g==",
-      "path": "sharpdx.direct2d1/4.0.1",
-      "hashPath": "sharpdx.direct2d1.4.0.1.nupkg.sha512"
+      "sha512": "sha512-Koost9wf/iKsgIgqonMsHFV62HpOR4bUBy77YlYer8EtQm67/ZsSxU/dHAEJhkBVvlsTeBRCotsrQLWn8sehig==",
+      "path": "libktx/0.9.2",
+      "hashPath": "libktx.0.9.2.nupkg.sha512"
     },
-    "SharpDX.Direct3D11/4.0.1": {
+    "Libuv/1.9.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-7xIfeAhxPhbPgSiREfFbOOwIWonUt2GHR7XZN5p2DJMWuqjl0+h1oo2/sF+SH/c6D6APjdbt0J+dYSzoV0PA/w==",
-      "path": "sharpdx.direct3d11/4.0.1",
-      "hashPath": "sharpdx.direct3d11.4.0.1.nupkg.sha512"
+      "sha512": "sha512-uqX2Frwf9PW8MaY7PRNY6HM5BpW1D8oj1EdqzrmbEFD5nH63Yat3aEjN/tws6Tw6Fk7LwmLBvtUh32tTeTaHiA==",
+      "path": "libuv/1.9.1",
+      "hashPath": "libuv.1.9.1.nupkg.sha512"
     },
-    "SharpDX.Direct3D9/4.0.1": {
+    "Microsoft.CodeAnalysis.Common/1.3.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-xUgVtuy3UGljCjzPe1d0yndNI+htHnpCUcMk1QpmXZHwxudUGtes1iz18JD2Zy5Xx7VzFp2+guOGWkNrJmIgEA==",
-      "path": "sharpdx.direct3d9/4.0.1",
-      "hashPath": "sharpdx.direct3d9.4.0.1.nupkg.sha512"
+      "sha512": "sha512-V09G35cs0CT1C4Dr1IEOh8IGfnWALEVAOO5JXsqagxXwmYR012TlorQ+vx2eXxfZRKs3gAS/r92gN9kRBLba5A==",
+      "path": "microsoft.codeanalysis.common/1.3.0",
+      "hashPath": "microsoft.codeanalysis.common.1.3.0.nupkg.sha512"
     },
-    "SharpDX.DXGI/4.0.1": {
+    "Microsoft.CodeAnalysis.CSharp/1.3.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-Av/kToUkVR1tDtIP9zmDGwCuCtyL04+PP7kes6aABzky1Y9vT03kR7mDeE83gl+E8GUmMMbVXbQ4AG2CVb66sg==",
-      "path": "sharpdx.dxgi/4.0.1",
-      "hashPath": "sharpdx.dxgi.4.0.1.nupkg.sha512"
+      "sha512": "sha512-BgWDIAbSFsHuGeLSn/rljLi51nXqkSo4DZ0qEIrHyPVasrhxEVq7aV8KKZ3HEfSFB+GIhBmOogE+mlOLYg19eg==",
+      "path": "microsoft.codeanalysis.csharp/1.3.0",
+      "hashPath": "microsoft.codeanalysis.csharp.1.3.0.nupkg.sha512"
     },
-    "SharpDX.Mathematics/4.0.1": {
+    "Microsoft.CodeAnalysis.VisualBasic/1.3.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-txMROd5A4mICHRRPf5KHA5MVNEqFUdOg2ZYfqNqjQM1n2jfe+sxDG3Xs+aO5zAShJAZFD6xO5R7yGfn9CzHckQ==",
-      "path": "sharpdx.mathematics/4.0.1",
-      "hashPath": "sharpdx.mathematics.4.0.1.nupkg.sha512"
+      "sha512": "sha512-Sf3k8PkTkWqBmXnnblJbvb7ewO6mJzX6WO2t7m04BmOY5qBq6yhhyXnn/BMM+QCec3Arw3X35Zd8f9eBql0qgg==",
+      "path": "microsoft.codeanalysis.visualbasic/1.3.0",
+      "hashPath": "microsoft.codeanalysis.visualbasic.1.3.0.nupkg.sha512"
     },
-    "SharpDX.MediaFoundation/4.0.1": {
+    "Microsoft.NETCore.App/1.0.5": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-/po30bqI6n14db6eHirTLJYEVV8/Wi0DGn2OJGtEnf5/++jUOhMR5Z1Xi84wOldXgf+7WKXOML2BhpqCPWVC2g==",
-      "path": "sharpdx.mediafoundation/4.0.1",
-      "hashPath": "sharpdx.mediafoundation.4.0.1.nupkg.sha512"
+      "sha512": "sha512-rqd+4QNUIdrauKaP8KVo2Ut5OeEGoyOsAMZr7u1IEtSRx5LeA1omVCLpY0TJ5Z47jfMm/MRuD/RG5Ahg8WwX2w==",
+      "path": "microsoft.netcore.app/1.0.5",
+      "hashPath": "microsoft.netcore.app.1.0.5.nupkg.sha512"
     },
-    "SharpDX.XAudio2/4.0.1": {
+    "Microsoft.Toolkit.HighPerformance/7.0.2": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-Kok1XdV2vEKSdr+EcGf0xFNBAd1tcjp/TZeRNBNVgB5YYoUGASoNO2decCBi7vh9qdocN+pmuuOiZCtDOd9DgQ==",
-      "path": "sharpdx.xaudio2/4.0.1",
-      "hashPath": "sharpdx.xaudio2.4.0.1.nupkg.sha512"
+      "sha512": "sha512-tG6v0AhDw/yJMtiH/tI4F6I/+sNIfu4++6WFfN73FyNcPh31et33w45wo8Lx1sfxcfLtkYk+w2fvU/MubYg4VQ==",
+      "path": "microsoft.toolkit.highperformance/7.0.2",
+      "hashPath": "microsoft.toolkit.highperformance.7.0.2.nupkg.sha512"
     },
-    "SharpDX.XInput/4.0.1": {
+    "MonoGame.Framework.Content.Pipeline/3.8.5.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-vDnp6CTVC9dKQHwLVF4GLNdCJqGMUuxyZLLlorDjgnVOOO7koPR20/tqt1A53gnNy/Id93Nzq7K2ILLvBQWvGQ==",
-      "path": "sharpdx.xinput/4.0.1",
-      "hashPath": "sharpdx.xinput.4.0.1.nupkg.sha512"
+      "sha512": "sha512-czAf6b5yEmNSXtm2XZkovVDIjVuuY7nXSI/KvqDq9fnzHRnRVQ8G08fBwFyUqir/QsNkfh8E8/nyDio8x0Ayag==",
+      "path": "monogame.framework.content.pipeline/3.8.5.1",
+      "hashPath": "monogame.framework.content.pipeline.3.8.5.1.nupkg.sha512"
+    },
+    "MonoGame.Framework.WindowsDX/3.8.6.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-pnr/oe7WZ6H3Qpmnjvsr8fRYwgOr/PgYH4Mxpw2ahl5J9WaGW/mbtp1PvH8kzyk9iXthnXy9UMgIVlMipx1jFA==",
+      "path": "monogame.framework.windowsdx/3.8.6.1",
+      "hashPath": "monogame.framework.windowsdx.3.8.6.1.nupkg.sha512"
+    },
+    "MonoGame.Library.FreeType/2.13.2.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-l5t96YkWOHFmwFETFNDIxovy1TddXG0rVJNUWHrhyYqAvx8CXxBlk60STaVH411TMW8asL1pAsawahNPhCs8Iw==",
+      "path": "monogame.library.freetype/2.13.2.3",
+      "hashPath": "monogame.library.freetype.2.13.2.3.nupkg.sha512"
+    },
+    "MonoGame.Library.MojoShader/1.0.0.5": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-/QlTi2VlJjjNJegIjEODlJzjVdgkjQKieaiW0Q8uYDisH1QKdjIzwwRo7TBd4FkFAAWOlaT6PzZSK7I07Gsn7A==",
+      "path": "monogame.library.mojoshader/1.0.0.5",
+      "hashPath": "monogame.library.mojoshader.1.0.0.5.nupkg.sha512"
+    },
+    "MonoGame.Tool.Basisu/2.0.2.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-yYvRUFZc9I/TNXbL8NckhRZPOI/T+tjQ9VGYjr6/vqSwPtPapu7FDTeC052JPxrExZQIJXWyecESesTQV9+7jQ==",
+      "path": "monogame.tool.basisu/2.0.2.1",
+      "hashPath": "monogame.tool.basisu.2.0.2.1.nupkg.sha512"
+    },
+    "MonoGame.Tool.Crunch/1.0.4.7": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-S0VT3JC/NQ/gNmYnAHYw5fR0d9cNZrN1LynjUurQdXSxeFFi2i/wixD+N/DD36n5oFfvMth2HAaH8xzSriqB7g==",
+      "path": "monogame.tool.crunch/1.0.4.7",
+      "hashPath": "monogame.tool.crunch.1.0.4.7.nupkg.sha512"
+    },
+    "MonoGame.Tool.Dxc/1.8.2505.11": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ORK843Xkm73RXnGWT6jVBJTs7CrjHpAxt2AO+WVARtwJrEc7vS3/UQ5ftxUmehZzSs4qh3weUzSkj3LHxTvY4Q==",
+      "path": "monogame.tool.dxc/1.8.2505.11",
+      "hashPath": "monogame.tool.dxc.1.8.2505.11.nupkg.sha512"
+    },
+    "MonoGame.Tool.FFmpeg/7.0.0.10": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-zenw4EIiT703083ArWEHKsmgsq8f2ISihu5mhHB2VTEtemjZciz6nDojZNSHuG79/DT4dyNv/hzGlLcrjO8h5g==",
+      "path": "monogame.tool.ffmpeg/7.0.0.10",
+      "hashPath": "monogame.tool.ffmpeg.7.0.0.10.nupkg.sha512"
+    },
+    "MonoGame.Tool.FFprobe/7.0.0.10": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-zD7flcmmaJWF8l5qgxk49NZN9ook2Usi+31qqqRby6pz4Rj7LR/EGXis9lHD+ICeisxOJ96HyuU2vzuqOjSqEQ==",
+      "path": "monogame.tool.ffprobe/7.0.0.10",
+      "hashPath": "monogame.tool.ffprobe.7.0.0.10.nupkg.sha512"
+    },
+    "SharpDX/4.2.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-3pv0LFMvfK/dv1qISJnn8xBeeT6R/FRvr0EV4KI2DGsL84Qlv6P7isWqxGyU0LCwlSVCJN3jgHJ4Bl0KI2PJww==",
+      "path": "sharpdx/4.2.0",
+      "hashPath": "sharpdx.4.2.0.nupkg.sha512"
+    },
+    "SharpDX.D3DCompiler/4.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-D3OzwToJ8j8dDOeJxUGUxJFwSnTQ89jJejSQkhuIsaBGh8Wd8DhQzmcsKzQaoLnzLBECS1Y37y9bGQaw3CnhxA==",
+      "path": "sharpdx.d3dcompiler/4.0.1",
+      "hashPath": "sharpdx.d3dcompiler.4.0.1.nupkg.sha512"
+    },
+    "SharpDX.Direct2D1/4.2.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Qs8LzDMaQf1u3KB8ArHu9pDv6itZ++QXs99a/bVAG+nKr0Hx5NG4mcN5vsfE0mVR2TkeHfeUm4PksRah6VUPtA==",
+      "path": "sharpdx.direct2d1/4.2.0",
+      "hashPath": "sharpdx.direct2d1.4.2.0.nupkg.sha512"
+    },
+    "SharpDX.Direct3D11/4.2.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-oTm/iT5X/IIuJ8kNYP+DTC/MhBhqtRF5dbgPPFgLBdQv0BKzNTzXQQXd7SveBFjQg6hXEAJ2jGCAzNYvGFc9LA==",
+      "path": "sharpdx.direct3d11/4.2.0",
+      "hashPath": "sharpdx.direct3d11.4.2.0.nupkg.sha512"
+    },
+    "SharpDX.DXGI/4.2.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-UjKqkgWc8U+SP+j3LBzFP6OB6Ntapjih7Xo+g1rLcsGbIb5KwewBrBChaUu7sil8rWoeVU/k0EJd3SMN4VqNZw==",
+      "path": "sharpdx.dxgi/4.2.0",
+      "hashPath": "sharpdx.dxgi.4.2.0.nupkg.sha512"
+    },
+    "SharpDX.MediaFoundation/4.2.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-HRf6EU+LyqZN7pETlVhxKkpz2E2p9oGPgFcCZ0t7+S6gnrE9qw49Po69t2YeWo6/MT3APh2Fja7hLNB6Yq36cg==",
+      "path": "sharpdx.mediafoundation/4.2.0",
+      "hashPath": "sharpdx.mediafoundation.4.2.0.nupkg.sha512"
+    },
+    "SharpDX.XAudio2/4.2.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Q3fFjN8iumvCjIXioHYqfGKUNGFN8FjdmAtRfyZ+7KHnWjeA22WOKeeVxdm429le+gOTgN+9P51wfAJjwAPdHQ==",
+      "path": "sharpdx.xaudio2/4.2.0",
+      "hashPath": "sharpdx.xaudio2.4.2.0.nupkg.sha512"
+    },
+    "SharpDX.XInput/4.2.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-mH3soea+aVUaTuFrkwx+zohklDvCczcgtuTiZJbOCyS5GZ/F9se4BsRJ86xTA9baf0drXYbZQj152PN7lnjiwg==",
+      "path": "sharpdx.xinput/4.2.0",
+      "hashPath": "sharpdx.xinput.4.2.0.nupkg.sha512"
+    },
+    "System.CommandLine/2.0.0-beta4.22272.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-1uqED/q2H0kKoLJ4+hI2iPSBSEdTuhfCYADeJrAqERmiGQ2NNacYKRNEQ+gFbU4glgVyK8rxI+ZOe1onEtr/Pg==",
+      "path": "system.commandline/2.0.0-beta4.22272.1",
+      "hashPath": "system.commandline.2.0.0-beta4.22272.1.nupkg.sha512"
+    },
+    "System.Speech/10.0.12": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-IrIKdPfbeCtgDeKQvJE2EtS8sSLxxpBRzCCpkg/4jORLwmhSUrVZtIrnbbaWQxo3tjnXK6aHH6MNsvi3S3PuTg==",
+      "path": "system.speech/10.0.12",
+      "hashPath": "system.speech.10.0.12.nupkg.sha512"
+    },
+    "Vosk/0.3.38": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-W/me6nwF7fq9uWVmqbmWvPx3DjhMSzb9D85IZa0FUg2PIxcWjfG55vYHBc+9xCuNL/zohIBRYTKiP4itnMU3ww==",
+      "path": "vosk/0.3.38",
+      "hashPath": "vosk.0.3.38.nupkg.sha512"
+    },
+    "YamlDotNet/16.3.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-SgMOdxbz8X65z8hraIs6hOEdnkH6hESTAIUa7viEngHOYaH+6q5XJmwr1+yb9vJpNQ19hCQY69xbFsLtXpobQA==",
+      "path": "yamldotnet/16.3.0",
+      "hashPath": "yamldotnet.16.3.0.nupkg.sha512"
     }
   }
 }

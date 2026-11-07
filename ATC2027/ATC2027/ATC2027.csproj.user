@@ -5,7 +5,7 @@
     <Compile Update="Forms\AddPlane.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forms\AircraftCollectionRing.cs">
+    <Compile Update="Forms\ApplyClearanceForm.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>

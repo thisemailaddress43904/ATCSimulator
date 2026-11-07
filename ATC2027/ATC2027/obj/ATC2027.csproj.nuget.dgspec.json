@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\dan\\Documents\\code\\newCopies\\ATC2027\\ATC2027\\ATC2027\\ATC2027.csproj": {}
+    "C:\\Users\\Dan\\Documents\\disk1\\code\\newCopies\\new\\ATCSimulator\\ATC2027\\ATC2027\\ATC2027.csproj": {}
   },
   "projects": {
-    "C:\\Users\\dan\\Documents\\code\\newCopies\\ATC2027\\ATC2027\\ATC2027\\ATC2027.csproj": {
+    "C:\\Users\\Dan\\Documents\\disk1\\code\\newCopies\\new\\ATCSimulator\\ATC2027\\ATC2027\\ATC2027.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\dan\\Documents\\code\\newCopies\\ATC2027\\ATC2027\\ATC2027\\ATC2027.csproj",
+        "projectUniqueName": "C:\\Users\\Dan\\Documents\\disk1\\code\\newCopies\\new\\ATCSimulator\\ATC2027\\ATC2027\\ATC2027.csproj",
         "projectName": "ATC2027",
-        "projectPath": "C:\\Users\\dan\\Documents\\code\\newCopies\\ATC2027\\ATC2027\\ATC2027\\ATC2027.csproj",
-        "packagesPath": "C:\\Users\\dan\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\dan\\Documents\\code\\newCopies\\ATC2027\\ATC2027\\ATC2027\\obj\\",
+        "projectPath": "C:\\Users\\Dan\\Documents\\disk1\\code\\newCopies\\new\\ATCSimulator\\ATC2027\\ATC2027\\ATC2027.csproj",
+        "packagesPath": "C:\\Users\\Dan\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Dan\\Documents\\disk1\\code\\newCopies\\new\\ATCSimulator\\ATC2027\\ATC2027\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\dan\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\Dan\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -56,9 +52,21 @@
               "target": "Package",
               "version": "[3.8.*, )"
             },
+            "MonoGame.Framework.Content.Pipeline": {
+              "target": "Package",
+              "version": "[3.8.5.1, )"
+            },
             "MonoGame.Framework.WindowsDX": {
               "target": "Package",
               "version": "[3.8.*, )"
+            },
+            "System.Speech": {
+              "target": "Package",
+              "version": "[10.0.12, )"
+            },
+            "Vosk": {
+              "target": "Package",
+              "version": "[0.3.38, )"
             }
           },
           "imports": [
@@ -80,7 +88,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.400/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.403/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

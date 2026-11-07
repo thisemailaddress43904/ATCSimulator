@@ -5,11 +5,13 @@ using ATC2027.ATC_Library.Clearance.AirfieldClearance.Arrival;
 using ATC2027.ATC_Library.Clearance.AirfieldClearance.Departure;
 using ATC2027.ATC_Library.Clearance.AirfieldClearance.Interfaces;
 using ATC2027.ATC_Library.Clearance.DirectControl;
+using ATC2027.ATC_Library.Clearance.Interfaces;
 using ATC2027.ATC_Library.Clearance.WaypointControl;
 using ATC2027.ATC_Library.CollectionRing;
 using ATC2027.ATC_Library.ControlAttribute.Altitude;
 using ATC2027.ATC_Library.ControlAttribute.Heading;
 using ATC2027.ATC_Library.ControlAttribute.Speed;
+using ATC2027.ATC_Library.Plane;
 using ATC2027.Clearance;
 using ATC2027.Clearance.DirectControl;
 using ATC2027.ExtensionClasses;
@@ -24,6 +26,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Plane = ATC2027.ATC_Library.Plane.Plane;
 
 namespace ATC2027.Forms
 {
@@ -185,7 +188,44 @@ namespace ATC2027.Forms
                         }
                         else
                         {
-                            ADirectControl clearance = MutableDirectControl.getEmptyClearance();
+                            //Find the plane to apply the clearance to
+                            Plane plane;
+                            try
+                            {
+                                plane = collectionRing.GetPlaneByFlightNumber(cmbFlightNumbers.Text);
+                            }
+                            catch (Exception)
+                            {
+
+                                DialogResult result = MessageBox.Show(this, $"Unable to find {cmbFlightNumbers.Text}", "Warning", MessageBoxButtons.RetryCancel, MessageBoxIcon.Warning);
+
+                                if (result == DialogResult.Cancel) { return; }
+                                else if (result == DialogResult.Retry)
+                                    btnApplyClearance_Click(this, new EventArgs());
+                                else
+                                {
+                                    MessageBox.Show(this, $"Dialogue result {result} not handled", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
+                                return;
+                            }
+
+                            //build the new clearance
+                            ADirectControl clearance;
+                            INonMutableClearance currentClearance = plane.getAirtimeClearance();
+
+                            if (currentClearance == null)
+                            {
+                                clearance = MutableDirectControl.getEmptyClearance();
+                            }
+                            else if (currentClearance is ADirectControl)
+                            {
+                                clearance = new MutableDirectControl((ADirectControl)currentClearance);
+                            }
+                            else
+                            {
+                                clearance = MutableDirectControl.getEmptyClearance();
+                            }
+                            
 
                             if (txtBoxHeading.Text != "")
                                 clearance.ApplyHeading(new Heading(txtBoxHeading.Text));
@@ -208,26 +248,6 @@ namespace ATC2027.Forms
                                 clearance.ApplyAltitude(Altitude.AltitudeFactory.build(txtBoxAltitude.Text, cmbBoxAltitudeType));
 
                             //apply clearance here
-                            Plane plane;
-                            try
-                            {
-                                plane = collectionRing.GetPlaneByFlightNumber(cmbFlightNumbers.Text);
-                            }
-                            catch (Exception)
-                            {
-
-                                DialogResult result = MessageBox.Show(this, $"Unable to find {cmbFlightNumbers.Text}", "Warning", MessageBoxButtons.RetryCancel, MessageBoxIcon.Warning);
-
-                                if (result == DialogResult.Cancel) { return; }
-                                else if (result == DialogResult.Retry)
-                                    btnApplyClearance_Click(this, new EventArgs());
-                                else
-                                {
-                                    MessageBox.Show(this, $"Dialogue result {result} not handled", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                }
-                                return;
-                            }
-
                             this.collectionRing.ApplyClearance(NonMutableClearanceFactory.BuildNonMutableControl(clearance), ref plane);
 
                             //clear text boxes and combo boxes

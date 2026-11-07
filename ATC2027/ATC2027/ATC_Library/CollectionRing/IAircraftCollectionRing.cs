@@ -13,12 +13,12 @@ namespace ATC2027.ATC_Library.CollectionRing
 {
     public interface IAircraftCollectionRing
     {
-        ConcurrentDictionary<Plane, byte> getAircraftCollection();
-        public void AddPlane(Plane plane);
-        public void RemovePlane(Plane plane);
+        ConcurrentDictionary<Plane.Plane, byte> getAircraftCollection();
+        public void AddPlane(Plane.Plane plane);
+        public void RemovePlane(Plane.Plane plane);
         public void ClearAircraftCollection();
-        public bool Contains(Plane plane);
-        public void ApplyClearance(INonMutableClearance clearance, ref Plane plane);
+        public bool Contains(Plane.Plane plane);
+        public void ApplyClearance(INonMutableClearance clearance, ref Plane.Plane plane);
         public IAircraftCollectionRing fromIATA_Code(string IATA_Code);
         public IAircraftCollectionRing fromICAO_Code(string ICAO_Code);
 
