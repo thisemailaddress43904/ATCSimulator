@@ -1,56 +1,75 @@
-﻿using Microsoft.Xna.Framework;
-using System;
+﻿using ATC2027.Controls;
+using ATC2027.Database;
+using ATC2027.Interfaces;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace ATC2027.Clearance.WaypointControl
 {
-    public class STAR
+    public class STAR : IComponent, IFromString<STAR>
     {
         string name;
         Vector2 longitudeLatitudeLocation;
+        Rectangle drawingRectangle;
+        public static Texture2D texture;
+        private static int length = 12, height = 12;
+
+
+        public STAR() { }
+
         public STAR(string name, Vector2 location)
         {
             this.name = name;
             this.longitudeLatitudeLocation = location;
+            this.drawingRectangle = new Rectangle((int)location.X, (int)location.Y, length, height);
+        }
+
+        public STAR(string name, float longitude, float latitude)
+        {
+            this.name = name;
+            this.longitudeLatitudeLocation = new Vector2(longitude, latitude);
+            this.drawingRectangle = new Rectangle((int)longitudeLatitudeLocation.X, (int)longitudeLatitudeLocation.Y, length, height);
+        }
+
+        public STAR(string csvNameLongitudeLatitude)
+        {
+            string[] strArr = csvNameLongitudeLatitude.Split(',');
+            this.name = strArr[0];
+            this.longitudeLatitudeLocation = new Vector2(float.Parse(strArr[1]), float.Parse(strArr[2]));
+            this.drawingRectangle = new Rectangle((int)longitudeLatitudeLocation.X, (int)longitudeLatitudeLocation.Y, length, height);
         }
 
         public static class ListFactory
         {
-            public static IList<STAR> Build_STAR_List_ForLHR()
+            public static IList<STAR> Build_STAR_List_ForLHR(int setID)
             {
-                return [];
-                /*
-                STAR w1 = new STAR("w1", new Vector2(,));
-                STAR w2 = new STAR("w2", new Vector2(,));
-                STAR w3 = new STAR("w3", new Vector2(,));
+                //using concatenation as data type isn't a string so won't enable sql injection
+                string query = $"SELECT CONCAT(tblSTAR.name, ',', tblSTAR.x_coord, ',', tblSTAR.y_coord) as csvNameXY FROM tblSTAR WHERE tblSTAR.setID = " + setID + ";";
 
-                STAR wn1 = new STAR("wn1", new Vector2(,));
-                STAR wn2 = new STAR("wn2", new Vector2(,));
-
-                STAR ws1 = new STAR("ws1", new Vector2(,));
-                STAR ws2 = new STAR("ws2", new Vector2(,));
-
-                STAR e1 = new STAR("e1", new Vector2(,));
-                STAR e2 = new STAR("e2", new Vector2(,));
-                STAR e3 = new STAR("e3", new Vector2(,));
-
-                STAR en1 = new STAR("en1", new Vector2(,));
-                STAR en2 = new STAR("en2", new Vector2(,));
-
-                STAR es1 = new STAR("es1", new Vector2(,));
-                STAR es2 = new STAR("es2", new Vector2(,));
-
-                return [w1, w2, w3, wn1, wn2, ws1, ws2, e1, e2, e3, en1, en2, es1, es2];
-                */
+                return DatabaseConnectivity.databaseConnectivity.ExecuteInsertionStatement<STAR>(query, "csvNameXY");
             }
         }
 
         public string getName()
         {
             return name;
+        }
+
+        public void Update(GameTime gameTime)
+        {
+        }
+
+        public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
+        {
+            spriteBatch.Draw(texture, drawingRectangle, Color.CornflowerBlue);
+            Text.StaticDraw(spriteBatch, this.name, Constants.getArial_7(), new Vector2(this.drawingRectangle.X, this.drawingRectangle.Y - Constants.getArial_7().MeasureString("!").Y), Color.Black);
+        }
+
+        public STAR fromString(string value)
+        {
+            return new STAR(value);
         }
     }
 }

@@ -1,54 +1,54 @@
-﻿using ATC2027.Interfaces;
+﻿using ATC2027.Controls;
+using ATC2027.Database;
+using ATC2027.Interfaces;
+using Microsoft.Data.Sqlite;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using SharpDX.Direct2D1;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ATC2027.Clearance.WaypointControl
 {
-    public class SID : IComponent
+    public class SID : IComponent, IFromString<SID>
     {
         string name;
         Vector2 longitudeLatitudeLocation;
-        static Texture2D texture;
+        public static Texture2D texture;
+        private Rectangle drawingRectangle;
+
+        public int length = 6, width = 6;
+
+        public SID() { }
+
         public SID(string name, Vector2 location)
         {
             this.name = name;
             this.longitudeLatitudeLocation = location;
+            this.drawingRectangle = new Rectangle((int)location.X, (int)location.Y, width, length);
         }
 
-        public static class ListFactory
+        public SID(string name, float longitude, float latitude)
         {
-            public static IList<SID> Build_SID_List_ForLHR()
+            this.name = name;
+            this.longitudeLatitudeLocation = new Vector2(longitude, latitude);
+            this.drawingRectangle = new Rectangle((int)longitude, (int)latitude, width, length);
+        }
+
+        public SID(string csvNameLongitudeLatitude)
+        {
+            string[] strArr = csvNameLongitudeLatitude.Split(',');
+            this.name = strArr[0];
+            this.longitudeLatitudeLocation = new Vector2(float.Parse(strArr[1]), float.Parse(strArr[2]));
+            this.drawingRectangle = new Rectangle((int)longitudeLatitudeLocation.X, (int)longitudeLatitudeLocation.Y, length, width);
+        }
+              
+        public static class Factory {
+            public static IList<SID> Build_SID_List_ForLHR(int setID)
             {
-                return [];
-                /*
-                SID w1 = new SID("w1", new Vector2(,));
-                SID w2 = new SID("w2", new Vector2(,));
-                SID w3 = new SID("w3", new Vector2(,));
+                //using concatenation as data type isn't a string so won't enable sql injection
+                string query = $"SELECT CONCAT(tblSID.name, ',', tblSID.x_coord, ',', tblSID.y_coord) as csvNameXY FROM tblSID WHERE tblSID.setID = " + setID + ";";
 
-                SID wn1 = new SID("wn1", new Vector2(,));
-                SID wn2 = new SID("wn2", new Vector2(,));
-
-                SID ws1 = new SID("ws1", new Vector2(,));
-                SID ws2 = new SID("ws2", new Vector2(,));
-
-                SID e1 = new SID("e1", new Vector2(,));
-                SID e2 = new SID("e2", new Vector2(,));
-                SID e3 = new SID("e3", new Vector2(,));
-
-                SID en1 = new SID("n1", new Vector2(,));
-                SID en2 = new SID("en2", new Vector2(,));
-
-                SID es1 = new SID("es1", new Vector2(,));
-                SID es2 = new SID("es2", new Vector2(,));
-
-                return [w1, w2, w3, wn1, wn2, ws1, ws2, e1, e2, e3, en1, en2, es1, es2];
-                */
+                return DatabaseConnectivity.databaseConnectivity.ExecuteInsertionStatement<SID>(query, "csvNameXY");
             }
         }
 
@@ -57,13 +57,18 @@ namespace ATC2027.Clearance.WaypointControl
 
         }
 
-        public void Draw(GameTime gameTime, Microsoft.Xna.Framework.Graphics.SpriteBatch spriteBatch)
+        public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
-            throw new NotImplementedException();
+            spriteBatch.Draw(texture, drawingRectangle, Color.CornflowerBlue);
+            Text.StaticDraw(spriteBatch, this.name, Constants.getArial_7(), new Vector2(this.drawingRectangle.X, this.drawingRectangle.Y - Constants.getArial_7().MeasureString("!").Y), Color.Black);
         }
         public Vector2 GetLongitudeAndLattitude()
         {
             return this.longitudeLatitudeLocation;
+        }
+        public SID fromString(string value)
+        {
+            return new SID(value);
         }
     }
 }

@@ -23,8 +23,8 @@ namespace ATC2027.ATC_Library.Airfield
                     new Tuple<Heading,IList<string>>(new Heading(270), ["27L","09R"]), 
                     new Tuple<Heading, IList<string>>(new Heading(270), ["27R", "09L"])]),
                 new Altitude(0, AltitudeTypeEnum.Feet),
-                STAR.ListFactory.Build_STAR_List_ForLHR(),
-                SID.ListFactory.Build_SID_List_ForLHR()
+                STAR.ListFactory.Build_STAR_List_ForLHR(0),
+                SID.Factory.Build_SID_List_ForLHR(0)
                 );
         }
     }

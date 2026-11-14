@@ -1,22 +1,17 @@
 ﻿using ATC2027.ATC_Library.ControlAttribute.Altitude;
-using ATC2027.ATC_Library.ControlAttribute.Heading;
 using ATC2027.Clearance.WaypointControl;
-using ATC2027.Controls.UserControl.Abstract;
 using ATC2027.Interfaces;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace ATC2027.ATC_Library.Airfield
 {
     public class Airfield : IAirfield, IComponent, IHasDevModeDrawableString
     {
         private string _name;
-        private string _shorthandName;
         private Tuple<float, float> _location;
         private IList<Runway> _runwayList;
         public static int spacingBetweenRunways = 2;
@@ -39,6 +34,15 @@ namespace ATC2027.ATC_Library.Airfield
             foreach (Runway runway in this._runwayList)
             {
                 runway.Draw(gameTime, spriteBatch);
+            }
+
+            foreach (SID sid in sidList) { 
+                sid.Draw(gameTime, spriteBatch);
+            }
+
+            foreach(STAR star in starList)
+            {
+                star.Draw(gameTime, spriteBatch);
             }
         }
 
@@ -77,7 +81,20 @@ namespace ATC2027.ATC_Library.Airfield
 
         public void Update(GameTime gameTime)
         {
+            foreach (Runway runway in _runwayList)
+            {
+                runway.Update(gameTime);
+            }
 
+            foreach (SID sid in sidList)
+            {
+                sid.Update(gameTime);
+            }
+
+            foreach (STAR star in starList)
+            {
+                star.Update(gameTime);
+            }
         }
 
         public Altitude GetAltitude()

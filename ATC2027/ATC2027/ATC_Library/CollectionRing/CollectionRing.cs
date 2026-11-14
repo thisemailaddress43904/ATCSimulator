@@ -33,6 +33,7 @@ namespace ATC2027.ATC_Library.CollectionRing
         public void AddPlane(Plane.Plane plane)
         {
             planeCollection.Add(plane.flightNoAsStr(), plane);
+            Speech.TTS.TextToSpeech.Speak(plane.getAnnouncementSpeech("tower"));
         }
 
         public void ApplyClearance(INonMutableDepartureClearance clearance, ref Plane.Plane plane)
@@ -119,6 +120,8 @@ namespace ATC2027.ATC_Library.CollectionRing
             
             if (selectedPlane != null || plane.flightNoAsStr() == selectedPlane.flightNoAsStr())
                 selectedPlane = null;
+
+            Speech.TTS.TextToSpeech.Speak(plane.getDepartureFromAirspaceSpeech("tower"));
 
             PlaneRemoved.Invoke(this, EventArgs.Empty);
         }

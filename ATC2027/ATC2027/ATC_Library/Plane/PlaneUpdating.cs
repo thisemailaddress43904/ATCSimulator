@@ -214,5 +214,15 @@ namespace ATC2027.ATC_Library.Plane
                 this.attributesHaveBeenUpdated = true;
             }
         }
+
+        public string getAnnouncementSpeech(string areaController)
+        {
+            return $"{this.flightNoAsStr} {areaController} entering your airspace";
+        }
+
+        public string getDepartureFromAirspaceSpeech(string areaController)
+        {
+            return $"{this.flightNoAsStr} {areaController} leaving your airspace";
+        }
     }
 }
