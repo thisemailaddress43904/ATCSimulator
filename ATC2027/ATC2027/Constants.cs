@@ -16,7 +16,7 @@ namespace ATC2027
         public static Color planeColor => Color.White;
         public static Color primaryColor = Color.Blue;
         public static Color secondaryColor = Color.AliceBlue;
-        public static Color tertiaryColor = Color.CornflowerBlue;
+        public static Color tertiaryColor = Color.CadetBlue;
         private static ColourScheme cs = new ColourScheme(primaryColor, secondaryColor, tertiaryColor, background, planeColor);
 
         #endregion
