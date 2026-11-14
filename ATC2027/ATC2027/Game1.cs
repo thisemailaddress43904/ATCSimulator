@@ -1,4 +1,5 @@
 ﻿using ATC2027.ATC_Library.Airfield;
+using ATC2027.Clearance.WaypointControl;
 using ATC2027.State;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -35,6 +36,8 @@ namespace ATC2027
             Constants.contentManager = this.Content;
             base.Initialize();
             Runway.runwayTexture = Content.Load<Texture2D>("images/runway");
+            STAR.texture = Content.Load<Texture2D>("images/STAR_Emblem");
+            SID.texture = Content.Load<Texture2D>("images/SID_Emblem");
         }
 
         protected override void LoadContent()
