@@ -11,6 +11,13 @@ namespace ATC2027.Speech.TTS
 {
     public class TextToSpeech
     {
+
+        private static TextToSpeech tts = new TextToSpeech(70, 75);
+        public static void Speak(string str)
+        {
+            tts.speak(str);
+        }
+
         SpeechSynthesizer ssAPI;
         ConcurrentPriorityQueue<string> stringsToSpeak;
         static bool isSpeaking; //this is static because the SpeechSynthesizer might speak over itself and produce mangked up sound and to ensure that it only speaks one thing at a time, we need to know if it is currently speaking or not.
