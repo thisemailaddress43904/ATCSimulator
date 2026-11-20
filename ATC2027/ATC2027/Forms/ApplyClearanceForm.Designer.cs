@@ -44,6 +44,7 @@
             txtBoxAltitude = new System.Windows.Forms.TextBox();
             txtBoxSpeed = new System.Windows.Forms.TextBox();
             cmbBoxAltitudeType = new System.Windows.Forms.ComboBox();
+            checkBox1 = new System.Windows.Forms.CheckBox();
             tpSTAR = new System.Windows.Forms.TabPage();
             tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             lbSTAR = new System.Windows.Forms.ListBox();
@@ -90,7 +91,6 @@
             label2 = new System.Windows.Forms.Label();
             label3 = new System.Windows.Forms.Label();
             label4 = new System.Windows.Forms.Label();
-            checkBox1 = new System.Windows.Forms.CheckBox();
             tlpOuter.SuspendLayout();
             tlpInnerLeft.SuspendLayout();
             acf_tc.SuspendLayout();
@@ -125,12 +125,13 @@
             tlpOuter.Controls.Add(acf_tc, 3, 1);
             tlpOuter.Dock = System.Windows.Forms.DockStyle.Fill;
             tlpOuter.Location = new System.Drawing.Point(0, 0);
+            tlpOuter.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             tlpOuter.Name = "tlpOuter";
             tlpOuter.RowCount = 3;
             tlpOuter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
             tlpOuter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 90F));
             tlpOuter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
-            tlpOuter.Size = new System.Drawing.Size(1062, 493);
+            tlpOuter.Size = new System.Drawing.Size(931, 376);
             tlpOuter.TabIndex = 0;
             // 
             // tlpInnerLeft
@@ -141,7 +142,8 @@
             tlpInnerLeft.Controls.Add(btnApplyClearance, 0, 3);
             tlpInnerLeft.Controls.Add(lblErrorLabel, 0, 4);
             tlpInnerLeft.Dock = System.Windows.Forms.DockStyle.Fill;
-            tlpInnerLeft.Location = new System.Drawing.Point(56, 27);
+            tlpInnerLeft.Location = new System.Drawing.Point(49, 20);
+            tlpInnerLeft.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             tlpInnerLeft.Name = "tlpInnerLeft";
             tlpInnerLeft.RowCount = 5;
             tlpInnerLeft.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
@@ -149,7 +151,7 @@
             tlpInnerLeft.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             tlpInnerLeft.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             tlpInnerLeft.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            tlpInnerLeft.Size = new System.Drawing.Size(206, 437);
+            tlpInnerLeft.Size = new System.Drawing.Size(180, 334);
             tlpInnerLeft.TabIndex = 0;
             // 
             // cmbFlightNumbers
@@ -158,9 +160,10 @@
             cmbFlightNumbers.Cursor = System.Windows.Forms.Cursors.Hand;
             cmbFlightNumbers.Dock = System.Windows.Forms.DockStyle.Top;
             cmbFlightNumbers.FormattingEnabled = true;
-            cmbFlightNumbers.Location = new System.Drawing.Point(3, 90);
+            cmbFlightNumbers.Location = new System.Drawing.Point(3, 68);
+            cmbFlightNumbers.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             cmbFlightNumbers.Name = "cmbFlightNumbers";
-            cmbFlightNumbers.Size = new System.Drawing.Size(200, 28);
+            cmbFlightNumbers.Size = new System.Drawing.Size(174, 23);
             cmbFlightNumbers.TabIndex = 0;
             cmbFlightNumbers.SelectedIndexChanged += cmbFlightNumbers_SelectedIndexChanged;
             cmbFlightNumbers.SelectedValueChanged += cmbFlightNumbers_SelectedIndexChanged;
@@ -171,9 +174,10 @@
             // 
             btnApplyClearance.Cursor = System.Windows.Forms.Cursors.Hand;
             btnApplyClearance.Dock = System.Windows.Forms.DockStyle.Fill;
-            btnApplyClearance.Location = new System.Drawing.Point(3, 264);
+            btnApplyClearance.Location = new System.Drawing.Point(3, 200);
+            btnApplyClearance.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             btnApplyClearance.Name = "btnApplyClearance";
-            btnApplyClearance.Size = new System.Drawing.Size(200, 81);
+            btnApplyClearance.Size = new System.Drawing.Size(174, 62);
             btnApplyClearance.TabIndex = 3;
             btnApplyClearance.Text = "Apply Clearance";
             btnApplyClearance.UseVisualStyleBackColor = true;
@@ -184,9 +188,9 @@
             lblErrorLabel.AutoSize = true;
             lblErrorLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             lblErrorLabel.ForeColor = System.Drawing.Color.Red;
-            lblErrorLabel.Location = new System.Drawing.Point(3, 348);
+            lblErrorLabel.Location = new System.Drawing.Point(3, 264);
             lblErrorLabel.Name = "lblErrorLabel";
-            lblErrorLabel.Size = new System.Drawing.Size(200, 89);
+            lblErrorLabel.Size = new System.Drawing.Size(174, 70);
             lblErrorLabel.TabIndex = 4;
             // 
             // acf_tc
@@ -197,10 +201,11 @@
             acf_tc.Controls.Add(tpArrival);
             acf_tc.Controls.Add(tpDeparture);
             acf_tc.Dock = System.Windows.Forms.DockStyle.Fill;
-            acf_tc.Location = new System.Drawing.Point(321, 27);
+            acf_tc.Location = new System.Drawing.Point(281, 20);
+            acf_tc.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             acf_tc.Name = "acf_tc";
             acf_tc.SelectedIndex = 0;
-            acf_tc.Size = new System.Drawing.Size(684, 437);
+            acf_tc.Size = new System.Drawing.Size(599, 334);
             acf_tc.TabIndex = 1;
             acf_tc.SelectedIndexChanged += acf_tc_SelectedIndexChanged;
             // 
@@ -208,10 +213,11 @@
             // 
             tpDirectControl.BackColor = System.Drawing.Color.Silver;
             tpDirectControl.Controls.Add(tableLayoutPanel9);
-            tpDirectControl.Location = new System.Drawing.Point(4, 29);
+            tpDirectControl.Location = new System.Drawing.Point(4, 24);
+            tpDirectControl.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             tpDirectControl.Name = "tpDirectControl";
-            tpDirectControl.Padding = new System.Windows.Forms.Padding(3);
-            tpDirectControl.Size = new System.Drawing.Size(676, 404);
+            tpDirectControl.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            tpDirectControl.Size = new System.Drawing.Size(591, 306);
             tpDirectControl.TabIndex = 0;
             tpDirectControl.Text = "Direct Control";
             // 
@@ -233,7 +239,7 @@
             tableLayoutPanel9.Controls.Add(cmbBoxAltitudeType, 2, 5);
             tableLayoutPanel9.Controls.Add(checkBox1, 1, 8);
             tableLayoutPanel9.Dock = System.Windows.Forms.DockStyle.Fill;
-            tableLayoutPanel9.Location = new System.Drawing.Point(3, 3);
+            tableLayoutPanel9.Location = new System.Drawing.Point(3, 2);
             tableLayoutPanel9.Margin = new System.Windows.Forms.Padding(2);
             tableLayoutPanel9.Name = "tableLayoutPanel9";
             tableLayoutPanel9.RowCount = 10;
@@ -247,17 +253,17 @@
             tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 18.2926826F));
             tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.65853667F));
             tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.097561F));
-            tableLayoutPanel9.Size = new System.Drawing.Size(670, 398);
+            tableLayoutPanel9.Size = new System.Drawing.Size(585, 302);
             tableLayoutPanel9.TabIndex = 3;
             // 
             // lblHeading
             // 
             lblHeading.AutoSize = true;
             lblHeading.Dock = System.Windows.Forms.DockStyle.Fill;
-            lblHeading.Location = new System.Drawing.Point(35, 24);
+            lblHeading.Location = new System.Drawing.Point(31, 18);
             lblHeading.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             lblHeading.Name = "lblHeading";
-            lblHeading.Size = new System.Drawing.Size(130, 72);
+            lblHeading.Size = new System.Drawing.Size(113, 55);
             lblHeading.TabIndex = 1;
             lblHeading.Text = "Heading";
             lblHeading.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -266,10 +272,10 @@
             // 
             lblAltitude.AutoSize = true;
             lblAltitude.Dock = System.Windows.Forms.DockStyle.Fill;
-            lblAltitude.Location = new System.Drawing.Point(35, 110);
+            lblAltitude.Location = new System.Drawing.Point(31, 84);
             lblAltitude.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             lblAltitude.Name = "lblAltitude";
-            lblAltitude.Size = new System.Drawing.Size(130, 72);
+            lblAltitude.Size = new System.Drawing.Size(113, 55);
             lblAltitude.TabIndex = 2;
             lblAltitude.Text = "Altitude";
             lblAltitude.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -278,10 +284,10 @@
             // 
             lblAltitudeType.AutoSize = true;
             lblAltitudeType.Dock = System.Windows.Forms.DockStyle.Fill;
-            lblAltitudeType.Location = new System.Drawing.Point(35, 196);
+            lblAltitudeType.Location = new System.Drawing.Point(31, 150);
             lblAltitudeType.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             lblAltitudeType.Name = "lblAltitudeType";
-            lblAltitudeType.Size = new System.Drawing.Size(130, 72);
+            lblAltitudeType.Size = new System.Drawing.Size(113, 55);
             lblAltitudeType.TabIndex = 3;
             lblAltitudeType.Text = "AltitudeType";
             lblAltitudeType.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -290,10 +296,10 @@
             // 
             lblSpeed.AutoSize = true;
             lblSpeed.Dock = System.Windows.Forms.DockStyle.Fill;
-            lblSpeed.Location = new System.Drawing.Point(35, 282);
+            lblSpeed.Location = new System.Drawing.Point(31, 216);
             lblSpeed.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             lblSpeed.Name = "lblSpeed";
-            lblSpeed.Size = new System.Drawing.Size(130, 72);
+            lblSpeed.Size = new System.Drawing.Size(113, 55);
             lblSpeed.TabIndex = 4;
             lblSpeed.Text = "Speed";
             lblSpeed.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -301,28 +307,28 @@
             // txtBoxHeading
             // 
             txtBoxHeading.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
-            txtBoxHeading.Location = new System.Drawing.Point(169, 26);
+            txtBoxHeading.Location = new System.Drawing.Point(148, 20);
             txtBoxHeading.Margin = new System.Windows.Forms.Padding(2);
             txtBoxHeading.Name = "txtBoxHeading";
-            txtBoxHeading.Size = new System.Drawing.Size(197, 27);
+            txtBoxHeading.Size = new System.Drawing.Size(171, 23);
             txtBoxHeading.TabIndex = 5;
             // 
             // txtBoxAltitude
             // 
             txtBoxAltitude.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
-            txtBoxAltitude.Location = new System.Drawing.Point(169, 112);
+            txtBoxAltitude.Location = new System.Drawing.Point(148, 86);
             txtBoxAltitude.Margin = new System.Windows.Forms.Padding(2);
             txtBoxAltitude.Name = "txtBoxAltitude";
-            txtBoxAltitude.Size = new System.Drawing.Size(197, 27);
+            txtBoxAltitude.Size = new System.Drawing.Size(171, 23);
             txtBoxAltitude.TabIndex = 6;
             // 
             // txtBoxSpeed
             // 
             txtBoxSpeed.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
-            txtBoxSpeed.Location = new System.Drawing.Point(169, 284);
+            txtBoxSpeed.Location = new System.Drawing.Point(148, 218);
             txtBoxSpeed.Margin = new System.Windows.Forms.Padding(2);
             txtBoxSpeed.Name = "txtBoxSpeed";
-            txtBoxSpeed.Size = new System.Drawing.Size(197, 27);
+            txtBoxSpeed.Size = new System.Drawing.Size(171, 23);
             txtBoxSpeed.TabIndex = 8;
             // 
             // cmbBoxAltitudeType
@@ -330,20 +336,32 @@
             cmbBoxAltitudeType.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
             cmbBoxAltitudeType.Cursor = System.Windows.Forms.Cursors.Hand;
             cmbBoxAltitudeType.FormattingEnabled = true;
-            cmbBoxAltitudeType.Location = new System.Drawing.Point(169, 198);
+            cmbBoxAltitudeType.Location = new System.Drawing.Point(148, 152);
             cmbBoxAltitudeType.Margin = new System.Windows.Forms.Padding(2);
             cmbBoxAltitudeType.Name = "cmbBoxAltitudeType";
-            cmbBoxAltitudeType.Size = new System.Drawing.Size(197, 28);
+            cmbBoxAltitudeType.Size = new System.Drawing.Size(171, 23);
             cmbBoxAltitudeType.TabIndex = 10;
+            // 
+            // checkBox1
+            // 
+            checkBox1.AutoSize = true;
+            checkBox1.Location = new System.Drawing.Point(32, 273);
+            checkBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            checkBox1.Name = "checkBox1";
+            checkBox1.Size = new System.Drawing.Size(82, 7);
+            checkBox1.TabIndex = 11;
+            checkBox1.Text = "checkBox1";
+            checkBox1.UseVisualStyleBackColor = true;
             // 
             // tpSTAR
             // 
             tpSTAR.BackColor = System.Drawing.Color.Silver;
             tpSTAR.Controls.Add(tableLayoutPanel3);
-            tpSTAR.Location = new System.Drawing.Point(4, 29);
+            tpSTAR.Location = new System.Drawing.Point(4, 24);
+            tpSTAR.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             tpSTAR.Name = "tpSTAR";
-            tpSTAR.Padding = new System.Windows.Forms.Padding(3);
-            tpSTAR.Size = new System.Drawing.Size(676, 404);
+            tpSTAR.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            tpSTAR.Size = new System.Drawing.Size(591, 306);
             tpSTAR.TabIndex = 1;
             tpSTAR.Text = "STAR";
             // 
@@ -358,7 +376,8 @@
             tableLayoutPanel3.Controls.Add(tableLayoutPanel4, 0, 2);
             tableLayoutPanel3.Controls.Add(tableLayoutPanel10, 0, 3);
             tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            tableLayoutPanel3.Location = new System.Drawing.Point(3, 3);
+            tableLayoutPanel3.Location = new System.Drawing.Point(3, 2);
+            tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             tableLayoutPanel3.Name = "tableLayoutPanel3";
             tableLayoutPanel3.RowCount = 5;
             tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
@@ -366,17 +385,18 @@
             tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
-            tableLayoutPanel3.Size = new System.Drawing.Size(670, 398);
+            tableLayoutPanel3.Size = new System.Drawing.Size(585, 302);
             tableLayoutPanel3.TabIndex = 1;
             // 
             // lbSTAR
             // 
             lbSTAR.Dock = System.Windows.Forms.DockStyle.Fill;
             lbSTAR.FormattingEnabled = true;
-            lbSTAR.Location = new System.Drawing.Point(371, 42);
+            lbSTAR.Location = new System.Drawing.Point(324, 32);
+            lbSTAR.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             lbSTAR.Name = "lbSTAR";
             tableLayoutPanel3.SetRowSpan(lbSTAR, 3);
-            lbSTAR.Size = new System.Drawing.Size(296, 191);
+            lbSTAR.Size = new System.Drawing.Size(258, 146);
             lbSTAR.TabIndex = 0;
             // 
             // cmbBoxSTARCollection
@@ -384,9 +404,10 @@
             cmbBoxSTARCollection.Cursor = System.Windows.Forms.Cursors.Hand;
             cmbBoxSTARCollection.Dock = System.Windows.Forms.DockStyle.Fill;
             cmbBoxSTARCollection.FormattingEnabled = true;
-            cmbBoxSTARCollection.Location = new System.Drawing.Point(3, 42);
+            cmbBoxSTARCollection.Location = new System.Drawing.Point(3, 32);
+            cmbBoxSTARCollection.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             cmbBoxSTARCollection.Name = "cmbBoxSTARCollection";
-            cmbBoxSTARCollection.Size = new System.Drawing.Size(295, 28);
+            cmbBoxSTARCollection.Size = new System.Drawing.Size(257, 23);
             cmbBoxSTARCollection.TabIndex = 1;
             // 
             // tableLayoutPanel4
@@ -398,35 +419,40 @@
             tableLayoutPanel4.Controls.Add(btnAddSTAR, 0, 0);
             tableLayoutPanel4.Controls.Add(btnRemoveSTAR, 2, 0);
             tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            tableLayoutPanel4.Location = new System.Drawing.Point(3, 121);
+            tableLayoutPanel4.Location = new System.Drawing.Point(3, 92);
+            tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             tableLayoutPanel4.Name = "tableLayoutPanel4";
             tableLayoutPanel4.RowCount = 1;
             tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            tableLayoutPanel4.Size = new System.Drawing.Size(295, 33);
+            tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            tableLayoutPanel4.Size = new System.Drawing.Size(257, 26);
             tableLayoutPanel4.TabIndex = 2;
             // 
             // btnAddSTAR
             // 
             btnAddSTAR.Cursor = System.Windows.Forms.Cursors.Hand;
             btnAddSTAR.Dock = System.Windows.Forms.DockStyle.Fill;
-            btnAddSTAR.Location = new System.Drawing.Point(3, 3);
+            btnAddSTAR.Location = new System.Drawing.Point(3, 2);
+            btnAddSTAR.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             btnAddSTAR.Name = "btnAddSTAR";
-            btnAddSTAR.Size = new System.Drawing.Size(112, 27);
+            btnAddSTAR.Size = new System.Drawing.Size(96, 22);
             btnAddSTAR.TabIndex = 0;
             btnAddSTAR.Text = "Add";
             btnAddSTAR.UseVisualStyleBackColor = true;
+            btnAddSTAR.Click += btnAddSTAR_Click;
             // 
             // btnRemoveSTAR
             // 
             btnRemoveSTAR.Cursor = System.Windows.Forms.Cursors.Hand;
             btnRemoveSTAR.Dock = System.Windows.Forms.DockStyle.Fill;
-            btnRemoveSTAR.Location = new System.Drawing.Point(180, 3);
+            btnRemoveSTAR.Location = new System.Drawing.Point(156, 2);
+            btnRemoveSTAR.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             btnRemoveSTAR.Name = "btnRemoveSTAR";
-            btnRemoveSTAR.Size = new System.Drawing.Size(112, 27);
+            btnRemoveSTAR.Size = new System.Drawing.Size(98, 22);
             btnRemoveSTAR.TabIndex = 1;
             btnRemoveSTAR.Text = "Remove";
             btnRemoveSTAR.UseVisualStyleBackColor = true;
+            btnRemoveSTAR.Click += btnRemoveSTAR_Click_1;
             // 
             // tableLayoutPanel10
             // 
@@ -442,7 +468,8 @@
             tableLayoutPanel10.Controls.Add(txtBoxStarAltitudeValue, 2, 3);
             tableLayoutPanel10.Controls.Add(cmboBoxStarAltitudeType, 2, 2);
             tableLayoutPanel10.Dock = System.Windows.Forms.DockStyle.Fill;
-            tableLayoutPanel10.Location = new System.Drawing.Point(3, 160);
+            tableLayoutPanel10.Location = new System.Drawing.Point(3, 122);
+            tableLayoutPanel10.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             tableLayoutPanel10.Name = "tableLayoutPanel10";
             tableLayoutPanel10.RowCount = 5;
             tableLayoutPanel3.SetRowSpan(tableLayoutPanel10, 2);
@@ -451,16 +478,16 @@
             tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
             tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
             tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
-            tableLayoutPanel10.Size = new System.Drawing.Size(295, 235);
+            tableLayoutPanel10.Size = new System.Drawing.Size(257, 178);
             tableLayoutPanel10.TabIndex = 3;
             // 
             // lblStarSpeedLabel
             // 
             lblStarSpeedLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             lblStarSpeedLabel.AutoSize = true;
-            lblStarSpeedLabel.Location = new System.Drawing.Point(93, 36);
+            lblStarSpeedLabel.Location = new System.Drawing.Point(85, 27);
             lblStarSpeedLabel.Name = "lblStarSpeedLabel";
-            lblStarSpeedLabel.Size = new System.Drawing.Size(51, 20);
+            lblStarSpeedLabel.Size = new System.Drawing.Size(39, 15);
             lblStarSpeedLabel.TabIndex = 0;
             lblStarSpeedLabel.Text = "Speed";
             // 
@@ -468,9 +495,9 @@
             // 
             lblSTARAltitudeType.Anchor = System.Windows.Forms.AnchorStyles.Right;
             lblSTARAltitudeType.AutoSize = true;
-            lblSTARAltitudeType.Location = new System.Drawing.Point(47, 106);
+            lblSTARAltitudeType.Location = new System.Drawing.Point(47, 80);
             lblSTARAltitudeType.Name = "lblSTARAltitudeType";
-            lblSTARAltitudeType.Size = new System.Drawing.Size(97, 20);
+            lblSTARAltitudeType.Size = new System.Drawing.Size(77, 15);
             lblSTARAltitudeType.TabIndex = 1;
             lblSTARAltitudeType.Text = "Altitude Type";
             // 
@@ -478,45 +505,49 @@
             // 
             lblSTARAltitudeValue.Anchor = System.Windows.Forms.AnchorStyles.Right;
             lblSTARAltitudeValue.AutoSize = true;
-            lblSTARAltitudeValue.Location = new System.Drawing.Point(42, 176);
+            lblSTARAltitudeValue.Location = new System.Drawing.Point(44, 133);
             lblSTARAltitudeValue.Name = "lblSTARAltitudeValue";
-            lblSTARAltitudeValue.Size = new System.Drawing.Size(102, 20);
+            lblSTARAltitudeValue.Size = new System.Drawing.Size(80, 15);
             lblSTARAltitudeValue.TabIndex = 2;
             lblSTARAltitudeValue.Text = "Altitude Value";
             // 
             // txtBoxStarSpeed
             // 
             txtBoxStarSpeed.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            txtBoxStarSpeed.Location = new System.Drawing.Point(150, 32);
+            txtBoxStarSpeed.Location = new System.Drawing.Point(130, 23);
+            txtBoxStarSpeed.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             txtBoxStarSpeed.Name = "txtBoxStarSpeed";
-            txtBoxStarSpeed.Size = new System.Drawing.Size(112, 27);
+            txtBoxStarSpeed.Size = new System.Drawing.Size(96, 23);
             txtBoxStarSpeed.TabIndex = 3;
             // 
             // txtBoxStarAltitudeValue
             // 
             txtBoxStarAltitudeValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            txtBoxStarAltitudeValue.Location = new System.Drawing.Point(150, 172);
+            txtBoxStarAltitudeValue.Location = new System.Drawing.Point(130, 129);
+            txtBoxStarAltitudeValue.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             txtBoxStarAltitudeValue.Name = "txtBoxStarAltitudeValue";
-            txtBoxStarAltitudeValue.Size = new System.Drawing.Size(112, 27);
+            txtBoxStarAltitudeValue.Size = new System.Drawing.Size(96, 23);
             txtBoxStarAltitudeValue.TabIndex = 4;
             // 
             // cmboBoxStarAltitudeType
             // 
             cmboBoxStarAltitudeType.Anchor = System.Windows.Forms.AnchorStyles.Left;
             cmboBoxStarAltitudeType.FormattingEnabled = true;
-            cmboBoxStarAltitudeType.Location = new System.Drawing.Point(150, 102);
+            cmboBoxStarAltitudeType.Location = new System.Drawing.Point(130, 76);
+            cmboBoxStarAltitudeType.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             cmboBoxStarAltitudeType.Name = "cmboBoxStarAltitudeType";
-            cmboBoxStarAltitudeType.Size = new System.Drawing.Size(112, 28);
+            cmboBoxStarAltitudeType.Size = new System.Drawing.Size(96, 23);
             cmboBoxStarAltitudeType.TabIndex = 5;
             // 
             // tpSID
             // 
             tpSID.BackColor = System.Drawing.Color.Silver;
             tpSID.Controls.Add(tableLayoutPanel5);
-            tpSID.Location = new System.Drawing.Point(4, 29);
+            tpSID.Location = new System.Drawing.Point(4, 24);
+            tpSID.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             tpSID.Name = "tpSID";
-            tpSID.Padding = new System.Windows.Forms.Padding(3);
-            tpSID.Size = new System.Drawing.Size(676, 404);
+            tpSID.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            tpSID.Size = new System.Drawing.Size(591, 306);
             tpSID.TabIndex = 2;
             tpSID.Text = "SID";
             // 
@@ -531,7 +562,8 @@
             tableLayoutPanel5.Controls.Add(tableLayoutPanel6, 0, 2);
             tableLayoutPanel5.Controls.Add(tableLayoutPanel11, 0, 3);
             tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            tableLayoutPanel5.Location = new System.Drawing.Point(3, 3);
+            tableLayoutPanel5.Location = new System.Drawing.Point(3, 2);
+            tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             tableLayoutPanel5.Name = "tableLayoutPanel5";
             tableLayoutPanel5.RowCount = 5;
             tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
@@ -539,17 +571,18 @@
             tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
-            tableLayoutPanel5.Size = new System.Drawing.Size(670, 398);
+            tableLayoutPanel5.Size = new System.Drawing.Size(585, 302);
             tableLayoutPanel5.TabIndex = 2;
             // 
             // listBoxSIDList
             // 
             listBoxSIDList.Dock = System.Windows.Forms.DockStyle.Fill;
             listBoxSIDList.FormattingEnabled = true;
-            listBoxSIDList.Location = new System.Drawing.Point(371, 42);
+            listBoxSIDList.Location = new System.Drawing.Point(324, 32);
+            listBoxSIDList.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             listBoxSIDList.Name = "listBoxSIDList";
             tableLayoutPanel5.SetRowSpan(listBoxSIDList, 3);
-            listBoxSIDList.Size = new System.Drawing.Size(296, 191);
+            listBoxSIDList.Size = new System.Drawing.Size(258, 146);
             listBoxSIDList.TabIndex = 0;
             // 
             // cmbBoxSidCollectionSelector
@@ -557,9 +590,10 @@
             cmbBoxSidCollectionSelector.Cursor = System.Windows.Forms.Cursors.Hand;
             cmbBoxSidCollectionSelector.Dock = System.Windows.Forms.DockStyle.Fill;
             cmbBoxSidCollectionSelector.FormattingEnabled = true;
-            cmbBoxSidCollectionSelector.Location = new System.Drawing.Point(3, 42);
+            cmbBoxSidCollectionSelector.Location = new System.Drawing.Point(3, 32);
+            cmbBoxSidCollectionSelector.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             cmbBoxSidCollectionSelector.Name = "cmbBoxSidCollectionSelector";
-            cmbBoxSidCollectionSelector.Size = new System.Drawing.Size(295, 28);
+            cmbBoxSidCollectionSelector.Size = new System.Drawing.Size(257, 23);
             cmbBoxSidCollectionSelector.TabIndex = 1;
             // 
             // tableLayoutPanel6
@@ -571,35 +605,40 @@
             tableLayoutPanel6.Controls.Add(btnSidAddSID, 0, 0);
             tableLayoutPanel6.Controls.Add(btnSidRemoveSID, 2, 0);
             tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            tableLayoutPanel6.Location = new System.Drawing.Point(3, 121);
+            tableLayoutPanel6.Location = new System.Drawing.Point(3, 92);
+            tableLayoutPanel6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             tableLayoutPanel6.Name = "tableLayoutPanel6";
             tableLayoutPanel6.RowCount = 1;
             tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            tableLayoutPanel6.Size = new System.Drawing.Size(295, 33);
+            tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            tableLayoutPanel6.Size = new System.Drawing.Size(257, 26);
             tableLayoutPanel6.TabIndex = 2;
             // 
             // btnSidAddSID
             // 
             btnSidAddSID.Cursor = System.Windows.Forms.Cursors.Hand;
             btnSidAddSID.Dock = System.Windows.Forms.DockStyle.Fill;
-            btnSidAddSID.Location = new System.Drawing.Point(3, 3);
+            btnSidAddSID.Location = new System.Drawing.Point(3, 2);
+            btnSidAddSID.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             btnSidAddSID.Name = "btnSidAddSID";
-            btnSidAddSID.Size = new System.Drawing.Size(112, 27);
+            btnSidAddSID.Size = new System.Drawing.Size(96, 22);
             btnSidAddSID.TabIndex = 0;
             btnSidAddSID.Text = "Add";
             btnSidAddSID.UseVisualStyleBackColor = true;
+            btnSidAddSID.Click += btnSidAddSID_Click;
             // 
             // btnSidRemoveSID
             // 
             btnSidRemoveSID.Cursor = System.Windows.Forms.Cursors.Hand;
             btnSidRemoveSID.Dock = System.Windows.Forms.DockStyle.Fill;
-            btnSidRemoveSID.Location = new System.Drawing.Point(180, 3);
+            btnSidRemoveSID.Location = new System.Drawing.Point(156, 2);
+            btnSidRemoveSID.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             btnSidRemoveSID.Name = "btnSidRemoveSID";
-            btnSidRemoveSID.Size = new System.Drawing.Size(112, 27);
+            btnSidRemoveSID.Size = new System.Drawing.Size(98, 22);
             btnSidRemoveSID.TabIndex = 1;
             btnSidRemoveSID.Text = "Remove";
             btnSidRemoveSID.UseVisualStyleBackColor = true;
+            btnSidRemoveSID.Click += btnSidRemoveSID_Click_1;
             // 
             // tableLayoutPanel11
             // 
@@ -615,7 +654,8 @@
             tableLayoutPanel11.Controls.Add(txtBoxSidAltitudeValue, 2, 3);
             tableLayoutPanel11.Controls.Add(cmbBoxSidAltitudeType, 2, 2);
             tableLayoutPanel11.Dock = System.Windows.Forms.DockStyle.Fill;
-            tableLayoutPanel11.Location = new System.Drawing.Point(3, 160);
+            tableLayoutPanel11.Location = new System.Drawing.Point(3, 122);
+            tableLayoutPanel11.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             tableLayoutPanel11.Name = "tableLayoutPanel11";
             tableLayoutPanel11.RowCount = 5;
             tableLayoutPanel5.SetRowSpan(tableLayoutPanel11, 2);
@@ -624,16 +664,16 @@
             tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
             tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
             tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
-            tableLayoutPanel11.Size = new System.Drawing.Size(295, 235);
+            tableLayoutPanel11.Size = new System.Drawing.Size(257, 178);
             tableLayoutPanel11.TabIndex = 3;
             // 
             // lblSIDSpeedLabel
             // 
             lblSIDSpeedLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             lblSIDSpeedLabel.AutoSize = true;
-            lblSIDSpeedLabel.Location = new System.Drawing.Point(93, 36);
+            lblSIDSpeedLabel.Location = new System.Drawing.Point(85, 27);
             lblSIDSpeedLabel.Name = "lblSIDSpeedLabel";
-            lblSIDSpeedLabel.Size = new System.Drawing.Size(51, 20);
+            lblSIDSpeedLabel.Size = new System.Drawing.Size(39, 15);
             lblSIDSpeedLabel.TabIndex = 0;
             lblSIDSpeedLabel.Text = "Speed";
             // 
@@ -641,9 +681,9 @@
             // 
             lblSIDAltitudeType.Anchor = System.Windows.Forms.AnchorStyles.Right;
             lblSIDAltitudeType.AutoSize = true;
-            lblSIDAltitudeType.Location = new System.Drawing.Point(47, 106);
+            lblSIDAltitudeType.Location = new System.Drawing.Point(47, 80);
             lblSIDAltitudeType.Name = "lblSIDAltitudeType";
-            lblSIDAltitudeType.Size = new System.Drawing.Size(97, 20);
+            lblSIDAltitudeType.Size = new System.Drawing.Size(77, 15);
             lblSIDAltitudeType.TabIndex = 1;
             lblSIDAltitudeType.Text = "Altitude Type";
             // 
@@ -651,45 +691,49 @@
             // 
             lblSIDAltitudeValue.Anchor = System.Windows.Forms.AnchorStyles.Right;
             lblSIDAltitudeValue.AutoSize = true;
-            lblSIDAltitudeValue.Location = new System.Drawing.Point(42, 176);
+            lblSIDAltitudeValue.Location = new System.Drawing.Point(44, 133);
             lblSIDAltitudeValue.Name = "lblSIDAltitudeValue";
-            lblSIDAltitudeValue.Size = new System.Drawing.Size(102, 20);
+            lblSIDAltitudeValue.Size = new System.Drawing.Size(80, 15);
             lblSIDAltitudeValue.TabIndex = 2;
             lblSIDAltitudeValue.Text = "Altitude Value";
             // 
             // txtBoxSidSpeed
             // 
             txtBoxSidSpeed.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            txtBoxSidSpeed.Location = new System.Drawing.Point(150, 32);
+            txtBoxSidSpeed.Location = new System.Drawing.Point(130, 23);
+            txtBoxSidSpeed.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             txtBoxSidSpeed.Name = "txtBoxSidSpeed";
-            txtBoxSidSpeed.Size = new System.Drawing.Size(112, 27);
+            txtBoxSidSpeed.Size = new System.Drawing.Size(96, 23);
             txtBoxSidSpeed.TabIndex = 3;
             // 
             // txtBoxSidAltitudeValue
             // 
             txtBoxSidAltitudeValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            txtBoxSidAltitudeValue.Location = new System.Drawing.Point(150, 172);
+            txtBoxSidAltitudeValue.Location = new System.Drawing.Point(130, 129);
+            txtBoxSidAltitudeValue.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             txtBoxSidAltitudeValue.Name = "txtBoxSidAltitudeValue";
-            txtBoxSidAltitudeValue.Size = new System.Drawing.Size(112, 27);
+            txtBoxSidAltitudeValue.Size = new System.Drawing.Size(96, 23);
             txtBoxSidAltitudeValue.TabIndex = 4;
             // 
             // cmbBoxSidAltitudeType
             // 
             cmbBoxSidAltitudeType.Anchor = System.Windows.Forms.AnchorStyles.Left;
             cmbBoxSidAltitudeType.FormattingEnabled = true;
-            cmbBoxSidAltitudeType.Location = new System.Drawing.Point(150, 102);
+            cmbBoxSidAltitudeType.Location = new System.Drawing.Point(130, 76);
+            cmbBoxSidAltitudeType.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             cmbBoxSidAltitudeType.Name = "cmbBoxSidAltitudeType";
-            cmbBoxSidAltitudeType.Size = new System.Drawing.Size(112, 28);
+            cmbBoxSidAltitudeType.Size = new System.Drawing.Size(96, 23);
             cmbBoxSidAltitudeType.TabIndex = 5;
             // 
             // tpArrival
             // 
             tpArrival.BackColor = System.Drawing.Color.Silver;
             tpArrival.Controls.Add(tableLayoutPanel1);
-            tpArrival.Location = new System.Drawing.Point(4, 29);
+            tpArrival.Location = new System.Drawing.Point(4, 24);
+            tpArrival.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             tpArrival.Name = "tpArrival";
-            tpArrival.Padding = new System.Windows.Forms.Padding(3);
-            tpArrival.Size = new System.Drawing.Size(676, 404);
+            tpArrival.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            tpArrival.Size = new System.Drawing.Size(591, 306);
             tpArrival.TabIndex = 3;
             tpArrival.Text = "Arrival";
             // 
@@ -703,7 +747,8 @@
             tableLayoutPanel1.Controls.Add(cmbBoxRunwaySelectorArrival, 0, 3);
             tableLayoutPanel1.Controls.Add(tableLayoutPanel7, 2, 1);
             tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
+            tableLayoutPanel1.Location = new System.Drawing.Point(3, 2);
+            tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 5;
             tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
@@ -711,7 +756,7 @@
             tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
-            tableLayoutPanel1.Size = new System.Drawing.Size(670, 398);
+            tableLayoutPanel1.Size = new System.Drawing.Size(585, 302);
             tableLayoutPanel1.TabIndex = 0;
             // 
             // cmbBoxAirportSelectorArrival
@@ -719,9 +764,10 @@
             cmbBoxAirportSelectorArrival.Cursor = System.Windows.Forms.Cursors.Hand;
             cmbBoxAirportSelectorArrival.Dock = System.Windows.Forms.DockStyle.Fill;
             cmbBoxAirportSelectorArrival.FormattingEnabled = true;
-            cmbBoxAirportSelectorArrival.Location = new System.Drawing.Point(3, 42);
+            cmbBoxAirportSelectorArrival.Location = new System.Drawing.Point(3, 32);
+            cmbBoxAirportSelectorArrival.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             cmbBoxAirportSelectorArrival.Name = "cmbBoxAirportSelectorArrival";
-            cmbBoxAirportSelectorArrival.Size = new System.Drawing.Size(295, 28);
+            cmbBoxAirportSelectorArrival.Size = new System.Drawing.Size(257, 23);
             cmbBoxAirportSelectorArrival.TabIndex = 0;
             // 
             // cmbBoxRunwaySelectorArrival
@@ -729,9 +775,10 @@
             cmbBoxRunwaySelectorArrival.Cursor = System.Windows.Forms.Cursors.Hand;
             cmbBoxRunwaySelectorArrival.Dock = System.Windows.Forms.DockStyle.Fill;
             cmbBoxRunwaySelectorArrival.FormattingEnabled = true;
-            cmbBoxRunwaySelectorArrival.Location = new System.Drawing.Point(3, 160);
+            cmbBoxRunwaySelectorArrival.Location = new System.Drawing.Point(3, 122);
+            cmbBoxRunwaySelectorArrival.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             cmbBoxRunwaySelectorArrival.Name = "cmbBoxRunwaySelectorArrival";
-            cmbBoxRunwaySelectorArrival.Size = new System.Drawing.Size(295, 28);
+            cmbBoxRunwaySelectorArrival.Size = new System.Drawing.Size(257, 23);
             cmbBoxRunwaySelectorArrival.TabIndex = 1;
             // 
             // tableLayoutPanel7
@@ -744,13 +791,14 @@
             tableLayoutPanel7.Controls.Add(lblWindSpeedValue, 1, 0);
             tableLayoutPanel7.Controls.Add(lblWindDirectionValue, 1, 1);
             tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            tableLayoutPanel7.Location = new System.Drawing.Point(371, 42);
+            tableLayoutPanel7.Location = new System.Drawing.Point(324, 32);
+            tableLayoutPanel7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             tableLayoutPanel7.Name = "tableLayoutPanel7";
             tableLayoutPanel7.RowCount = 2;
             tableLayoutPanel1.SetRowSpan(tableLayoutPanel7, 2);
             tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            tableLayoutPanel7.Size = new System.Drawing.Size(296, 112);
+            tableLayoutPanel7.Size = new System.Drawing.Size(258, 86);
             tableLayoutPanel7.TabIndex = 3;
             // 
             // lblWindSpeedLabel
@@ -759,7 +807,7 @@
             lblWindSpeedLabel.AutoSize = true;
             lblWindSpeedLabel.Location = new System.Drawing.Point(3, 0);
             lblWindSpeedLabel.Name = "lblWindSpeedLabel";
-            lblWindSpeedLabel.Size = new System.Drawing.Size(142, 56);
+            lblWindSpeedLabel.Size = new System.Drawing.Size(123, 43);
             lblWindSpeedLabel.TabIndex = 0;
             lblWindSpeedLabel.Text = "Wind Speed: ";
             lblWindSpeedLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -768,9 +816,9 @@
             // 
             lblWindDirectionLabel.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
             lblWindDirectionLabel.AutoSize = true;
-            lblWindDirectionLabel.Location = new System.Drawing.Point(3, 56);
+            lblWindDirectionLabel.Location = new System.Drawing.Point(3, 43);
             lblWindDirectionLabel.Name = "lblWindDirectionLabel";
-            lblWindDirectionLabel.Size = new System.Drawing.Size(142, 56);
+            lblWindDirectionLabel.Size = new System.Drawing.Size(123, 43);
             lblWindDirectionLabel.TabIndex = 1;
             lblWindDirectionLabel.Text = "Wind Direction:";
             lblWindDirectionLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -778,18 +826,18 @@
             // lblWindSpeedValue
             // 
             lblWindSpeedValue.AutoSize = true;
-            lblWindSpeedValue.Location = new System.Drawing.Point(151, 0);
+            lblWindSpeedValue.Location = new System.Drawing.Point(132, 0);
             lblWindSpeedValue.Name = "lblWindSpeedValue";
-            lblWindSpeedValue.Size = new System.Drawing.Size(36, 20);
+            lblWindSpeedValue.Size = new System.Drawing.Size(29, 15);
             lblWindSpeedValue.TabIndex = 2;
             lblWindSpeedValue.Text = "Null";
             // 
             // lblWindDirectionValue
             // 
             lblWindDirectionValue.AutoSize = true;
-            lblWindDirectionValue.Location = new System.Drawing.Point(151, 56);
+            lblWindDirectionValue.Location = new System.Drawing.Point(132, 43);
             lblWindDirectionValue.Name = "lblWindDirectionValue";
-            lblWindDirectionValue.Size = new System.Drawing.Size(36, 20);
+            lblWindDirectionValue.Size = new System.Drawing.Size(29, 15);
             lblWindDirectionValue.TabIndex = 3;
             lblWindDirectionValue.Text = "Null";
             // 
@@ -797,9 +845,10 @@
             // 
             tpDeparture.BackColor = System.Drawing.Color.Silver;
             tpDeparture.Controls.Add(tableLayoutPanel2);
-            tpDeparture.Location = new System.Drawing.Point(4, 29);
+            tpDeparture.Location = new System.Drawing.Point(4, 24);
+            tpDeparture.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             tpDeparture.Name = "tpDeparture";
-            tpDeparture.Size = new System.Drawing.Size(676, 404);
+            tpDeparture.Size = new System.Drawing.Size(591, 306);
             tpDeparture.TabIndex = 4;
             tpDeparture.Text = "Departure";
             // 
@@ -814,6 +863,7 @@
             tableLayoutPanel2.Controls.Add(tableLayoutPanel8, 2, 1);
             tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
+            tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
             tableLayoutPanel2.RowCount = 5;
             tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
@@ -821,7 +871,7 @@
             tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
-            tableLayoutPanel2.Size = new System.Drawing.Size(676, 404);
+            tableLayoutPanel2.Size = new System.Drawing.Size(591, 306);
             tableLayoutPanel2.TabIndex = 1;
             // 
             // cmbBoxAirportSelectorDeparture
@@ -829,9 +879,10 @@
             cmbBoxAirportSelectorDeparture.Cursor = System.Windows.Forms.Cursors.Hand;
             cmbBoxAirportSelectorDeparture.Dock = System.Windows.Forms.DockStyle.Fill;
             cmbBoxAirportSelectorDeparture.FormattingEnabled = true;
-            cmbBoxAirportSelectorDeparture.Location = new System.Drawing.Point(3, 43);
+            cmbBoxAirportSelectorDeparture.Location = new System.Drawing.Point(3, 32);
+            cmbBoxAirportSelectorDeparture.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             cmbBoxAirportSelectorDeparture.Name = "cmbBoxAirportSelectorDeparture";
-            cmbBoxAirportSelectorDeparture.Size = new System.Drawing.Size(298, 28);
+            cmbBoxAirportSelectorDeparture.Size = new System.Drawing.Size(259, 23);
             cmbBoxAirportSelectorDeparture.TabIndex = 0;
             // 
             // cmbBoxRunwaySelectorDeparture
@@ -839,9 +890,10 @@
             cmbBoxRunwaySelectorDeparture.Cursor = System.Windows.Forms.Cursors.Hand;
             cmbBoxRunwaySelectorDeparture.Dock = System.Windows.Forms.DockStyle.Fill;
             cmbBoxRunwaySelectorDeparture.FormattingEnabled = true;
-            cmbBoxRunwaySelectorDeparture.Location = new System.Drawing.Point(3, 163);
+            cmbBoxRunwaySelectorDeparture.Location = new System.Drawing.Point(3, 123);
+            cmbBoxRunwaySelectorDeparture.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             cmbBoxRunwaySelectorDeparture.Name = "cmbBoxRunwaySelectorDeparture";
-            cmbBoxRunwaySelectorDeparture.Size = new System.Drawing.Size(298, 28);
+            cmbBoxRunwaySelectorDeparture.Size = new System.Drawing.Size(259, 23);
             cmbBoxRunwaySelectorDeparture.TabIndex = 1;
             // 
             // tableLayoutPanel8
@@ -854,13 +906,14 @@
             tableLayoutPanel8.Controls.Add(label3, 1, 0);
             tableLayoutPanel8.Controls.Add(label4, 1, 1);
             tableLayoutPanel8.Dock = System.Windows.Forms.DockStyle.Fill;
-            tableLayoutPanel8.Location = new System.Drawing.Point(374, 43);
+            tableLayoutPanel8.Location = new System.Drawing.Point(327, 32);
+            tableLayoutPanel8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             tableLayoutPanel8.Name = "tableLayoutPanel8";
             tableLayoutPanel8.RowCount = 2;
             tableLayoutPanel2.SetRowSpan(tableLayoutPanel8, 2);
             tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            tableLayoutPanel8.Size = new System.Drawing.Size(299, 114);
+            tableLayoutPanel8.Size = new System.Drawing.Size(261, 87);
             tableLayoutPanel8.TabIndex = 3;
             // 
             // label1
@@ -869,7 +922,7 @@
             label1.AutoSize = true;
             label1.Location = new System.Drawing.Point(3, 0);
             label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(143, 57);
+            label1.Size = new System.Drawing.Size(124, 43);
             label1.TabIndex = 0;
             label1.Text = "Wind Speed: ";
             label1.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -878,9 +931,9 @@
             // 
             label2.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
             label2.AutoSize = true;
-            label2.Location = new System.Drawing.Point(3, 57);
+            label2.Location = new System.Drawing.Point(3, 43);
             label2.Name = "label2";
-            label2.Size = new System.Drawing.Size(143, 57);
+            label2.Size = new System.Drawing.Size(124, 44);
             label2.TabIndex = 1;
             label2.Text = "Wind Direction:";
             label2.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -888,39 +941,30 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new System.Drawing.Point(152, 0);
+            label3.Location = new System.Drawing.Point(133, 0);
             label3.Name = "label3";
-            label3.Size = new System.Drawing.Size(36, 20);
+            label3.Size = new System.Drawing.Size(29, 15);
             label3.TabIndex = 2;
             label3.Text = "Null";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new System.Drawing.Point(152, 57);
+            label4.Location = new System.Drawing.Point(133, 43);
             label4.Name = "label4";
-            label4.Size = new System.Drawing.Size(36, 20);
+            label4.Size = new System.Drawing.Size(29, 15);
             label4.TabIndex = 3;
             label4.Text = "Null";
             // 
-            // checkBox1
-            // 
-            checkBox1.AutoSize = true;
-            checkBox1.Location = new System.Drawing.Point(36, 357);
-            checkBox1.Name = "checkBox1";
-            checkBox1.Size = new System.Drawing.Size(101, 8);
-            checkBox1.TabIndex = 11;
-            checkBox1.Text = "checkBox1";
-            checkBox1.UseVisualStyleBackColor = true;
-            // 
             // ApplyClearanceForm
             // 
-            AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(1062, 493);
+            ClientSize = new System.Drawing.Size(931, 376);
             Controls.Add(tlpOuter);
-            MaximumSize = new System.Drawing.Size(1080, 540);
-            MinimumSize = new System.Drawing.Size(1080, 540);
+            Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            MaximumSize = new System.Drawing.Size(947, 415);
+            MinimumSize = new System.Drawing.Size(947, 415);
             Name = "ApplyClearanceForm";
             Text = "ApplyClearanceForm";
             Load += ApplyClearanceForm_Load;

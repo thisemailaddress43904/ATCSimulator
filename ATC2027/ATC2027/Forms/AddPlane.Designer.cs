@@ -45,7 +45,9 @@
             cmbBoxSelectSide = new System.Windows.Forms.ComboBox();
             label1 = new System.Windows.Forms.Label();
             txtBoxAcrossSide = new System.Windows.Forms.TextBox();
+            btnAddPlaneWithRandomAttributes = new System.Windows.Forms.Button();
             lblErrorLabel = new System.Windows.Forms.Label();
+            btnAddDeparture = new System.Windows.Forms.Button();
             tableLayoutPanel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -71,30 +73,33 @@
             tableLayoutPanel1.Controls.Add(cmbBoxSelectSide, 1, 5);
             tableLayoutPanel1.Controls.Add(label1, 0, 6);
             tableLayoutPanel1.Controls.Add(txtBoxAcrossSide, 1, 6);
-            tableLayoutPanel1.Controls.Add(lblErrorLabel, 0, 7);
+            tableLayoutPanel1.Controls.Add(btnAddPlaneWithRandomAttributes, 0, 8);
+            tableLayoutPanel1.Controls.Add(lblErrorLabel, 2, 7);
+            tableLayoutPanel1.Controls.Add(btnAddDeparture, 0, 7);
             tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
-            tableLayoutPanel1.RowCount = 9;
-            tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 4.95049524F));
-            tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.3762379F));
-            tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.3762379F));
-            tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.3762379F));
-            tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.3762379F));
-            tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.3762379F));
-            tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.3762379F));
-            tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15.8415842F));
-            tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 4.95049524F));
-            tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 12F));
+            tableLayoutPanel1.RowCount = 10;
+            tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 4.27337837F));
+            tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.683445F));
+            tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.683445F));
+            tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.683445F));
+            tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.683445F));
+            tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.683445F));
+            tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.683445F));
+            tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 13.6748095F));
+            tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 13.6781979F));
+            tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 4.27295065F));
             tableLayoutPanel1.Size = new System.Drawing.Size(270, 188);
             tableLayoutPanel1.TabIndex = 0;
+            tableLayoutPanel1.Paint += tableLayoutPanel1_Paint;
             // 
             // lblFlightNumber
             // 
             lblFlightNumber.Anchor = System.Windows.Forms.AnchorStyles.Right;
             lblFlightNumber.AutoSize = true;
-            lblFlightNumber.Location = new System.Drawing.Point(40, 13);
+            lblFlightNumber.Location = new System.Drawing.Point(40, 10);
             lblFlightNumber.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             lblFlightNumber.Name = "lblFlightNumber";
             lblFlightNumber.Size = new System.Drawing.Size(84, 15);
@@ -105,7 +110,7 @@
             // 
             lblAltitude.Anchor = System.Windows.Forms.AnchorStyles.Right;
             lblAltitude.AutoSize = true;
-            lblAltitude.Location = new System.Drawing.Point(75, 36);
+            lblAltitude.Location = new System.Drawing.Point(75, 30);
             lblAltitude.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             lblAltitude.Name = "lblAltitude";
             lblAltitude.Size = new System.Drawing.Size(49, 15);
@@ -116,7 +121,7 @@
             // 
             lblSpeed.Anchor = System.Windows.Forms.AnchorStyles.Right;
             lblSpeed.AutoSize = true;
-            lblSpeed.Location = new System.Drawing.Point(85, 59);
+            lblSpeed.Location = new System.Drawing.Point(85, 50);
             lblSpeed.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             lblSpeed.Name = "lblSpeed";
             lblSpeed.Size = new System.Drawing.Size(39, 15);
@@ -127,7 +132,7 @@
             // 
             lblHeading.Anchor = System.Windows.Forms.AnchorStyles.Right;
             lblHeading.AutoSize = true;
-            lblHeading.Location = new System.Drawing.Point(72, 82);
+            lblHeading.Location = new System.Drawing.Point(72, 70);
             lblHeading.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             lblHeading.Name = "lblHeading";
             lblHeading.Size = new System.Drawing.Size(52, 15);
@@ -137,7 +142,7 @@
             // txtBoxFlightNumber
             // 
             txtBoxFlightNumber.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            txtBoxFlightNumber.Location = new System.Drawing.Point(128, 11);
+            txtBoxFlightNumber.Location = new System.Drawing.Point(128, 10);
             txtBoxFlightNumber.Margin = new System.Windows.Forms.Padding(2);
             txtBoxFlightNumber.Name = "txtBoxFlightNumber";
             txtBoxFlightNumber.Size = new System.Drawing.Size(92, 23);
@@ -146,7 +151,7 @@
             // txtBoxAltitude
             // 
             txtBoxAltitude.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            txtBoxAltitude.Location = new System.Drawing.Point(128, 34);
+            txtBoxAltitude.Location = new System.Drawing.Point(128, 30);
             txtBoxAltitude.Margin = new System.Windows.Forms.Padding(2);
             txtBoxAltitude.Name = "txtBoxAltitude";
             txtBoxAltitude.Size = new System.Drawing.Size(92, 23);
@@ -155,7 +160,7 @@
             // txtBoxSpeed
             // 
             txtBoxSpeed.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            txtBoxSpeed.Location = new System.Drawing.Point(128, 57);
+            txtBoxSpeed.Location = new System.Drawing.Point(128, 50);
             txtBoxSpeed.Margin = new System.Windows.Forms.Padding(2);
             txtBoxSpeed.Name = "txtBoxSpeed";
             txtBoxSpeed.Size = new System.Drawing.Size(92, 23);
@@ -164,7 +169,7 @@
             // txtBoxHeading
             // 
             txtBoxHeading.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            txtBoxHeading.Location = new System.Drawing.Point(128, 80);
+            txtBoxHeading.Location = new System.Drawing.Point(128, 70);
             txtBoxHeading.Margin = new System.Windows.Forms.Padding(2);
             txtBoxHeading.Name = "txtBoxHeading";
             txtBoxHeading.Size = new System.Drawing.Size(92, 23);
@@ -173,10 +178,10 @@
             // btnAddPlane
             // 
             btnAddPlane.Dock = System.Windows.Forms.DockStyle.Fill;
-            btnAddPlane.Location = new System.Drawing.Point(128, 149);
+            btnAddPlane.Location = new System.Drawing.Point(128, 130);
             btnAddPlane.Margin = new System.Windows.Forms.Padding(2);
             btnAddPlane.Name = "btnAddPlane";
-            btnAddPlane.Size = new System.Drawing.Size(92, 25);
+            btnAddPlane.Size = new System.Drawing.Size(92, 21);
             btnAddPlane.TabIndex = 4;
             btnAddPlane.Text = "Add Plane";
             btnAddPlane.UseVisualStyleBackColor = true;
@@ -186,7 +191,7 @@
             // 
             lblAltitudeSuffix.Anchor = System.Windows.Forms.AnchorStyles.Left;
             lblAltitudeSuffix.AutoSize = true;
-            lblAltitudeSuffix.Location = new System.Drawing.Point(224, 36);
+            lblAltitudeSuffix.Location = new System.Drawing.Point(224, 30);
             lblAltitudeSuffix.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             lblAltitudeSuffix.Name = "lblAltitudeSuffix";
             lblAltitudeSuffix.Size = new System.Drawing.Size(15, 15);
@@ -197,7 +202,7 @@
             // 
             lblSpeedSuffix.Anchor = System.Windows.Forms.AnchorStyles.Left;
             lblSpeedSuffix.AutoSize = true;
-            lblSpeedSuffix.Location = new System.Drawing.Point(224, 59);
+            lblSpeedSuffix.Location = new System.Drawing.Point(224, 50);
             lblSpeedSuffix.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             lblSpeedSuffix.Name = "lblSpeedSuffix";
             lblSpeedSuffix.Size = new System.Drawing.Size(37, 15);
@@ -208,7 +213,7 @@
             // 
             lblHeadingSuffix.Anchor = System.Windows.Forms.AnchorStyles.Left;
             lblHeadingSuffix.AutoSize = true;
-            lblHeadingSuffix.Location = new System.Drawing.Point(224, 82);
+            lblHeadingSuffix.Location = new System.Drawing.Point(224, 70);
             lblHeadingSuffix.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             lblHeadingSuffix.Name = "lblHeadingSuffix";
             lblHeadingSuffix.Size = new System.Drawing.Size(12, 15);
@@ -219,7 +224,7 @@
             // 
             lblSide.Anchor = System.Windows.Forms.AnchorStyles.Right;
             lblSide.AutoSize = true;
-            lblSide.Location = new System.Drawing.Point(61, 105);
+            lblSide.Location = new System.Drawing.Point(61, 90);
             lblSide.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             lblSide.Name = "lblSide";
             lblSide.Size = new System.Drawing.Size(63, 15);
@@ -230,7 +235,7 @@
             // 
             cmbBoxSelectSide.Dock = System.Windows.Forms.DockStyle.Fill;
             cmbBoxSelectSide.FormattingEnabled = true;
-            cmbBoxSelectSide.Location = new System.Drawing.Point(128, 103);
+            cmbBoxSelectSide.Location = new System.Drawing.Point(128, 90);
             cmbBoxSelectSide.Margin = new System.Windows.Forms.Padding(2);
             cmbBoxSelectSide.Name = "cmbBoxSelectSide";
             cmbBoxSelectSide.Size = new System.Drawing.Size(92, 23);
@@ -240,7 +245,7 @@
             // 
             label1.Anchor = System.Windows.Forms.AnchorStyles.Right;
             label1.AutoSize = true;
-            label1.Location = new System.Drawing.Point(44, 128);
+            label1.Location = new System.Drawing.Point(44, 110);
             label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             label1.Name = "label1";
             label1.Size = new System.Drawing.Size(80, 15);
@@ -249,20 +254,44 @@
             // 
             // txtBoxAcrossSide
             // 
-            txtBoxAcrossSide.Location = new System.Drawing.Point(128, 126);
+            txtBoxAcrossSide.Location = new System.Drawing.Point(128, 110);
             txtBoxAcrossSide.Margin = new System.Windows.Forms.Padding(2);
             txtBoxAcrossSide.Name = "txtBoxAcrossSide";
             txtBoxAcrossSide.Size = new System.Drawing.Size(92, 23);
             txtBoxAcrossSide.TabIndex = 15;
             // 
+            // btnAddPlaneWithRandomAttributes
+            // 
+            tableLayoutPanel1.SetColumnSpan(btnAddPlaneWithRandomAttributes, 2);
+            btnAddPlaneWithRandomAttributes.Dock = System.Windows.Forms.DockStyle.Fill;
+            btnAddPlaneWithRandomAttributes.Location = new System.Drawing.Point(3, 156);
+            btnAddPlaneWithRandomAttributes.Name = "btnAddPlaneWithRandomAttributes";
+            tableLayoutPanel1.SetRowSpan(btnAddPlaneWithRandomAttributes, 2);
+            btnAddPlaneWithRandomAttributes.Size = new System.Drawing.Size(216, 29);
+            btnAddPlaneWithRandomAttributes.TabIndex = 17;
+            btnAddPlaneWithRandomAttributes.Text = "AddPlaneWithRandomAttributes";
+            btnAddPlaneWithRandomAttributes.UseVisualStyleBackColor = true;
+            btnAddPlaneWithRandomAttributes.Click += button1_Click;
+            // 
             // lblErrorLabel
             // 
             lblErrorLabel.AutoSize = true;
-            lblErrorLabel.Location = new System.Drawing.Point(2, 147);
+            lblErrorLabel.Location = new System.Drawing.Point(224, 128);
             lblErrorLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             lblErrorLabel.Name = "lblErrorLabel";
             lblErrorLabel.Size = new System.Drawing.Size(0, 15);
             lblErrorLabel.TabIndex = 16;
+            // 
+            // btnAddDeparture
+            // 
+            btnAddDeparture.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            btnAddDeparture.Location = new System.Drawing.Point(3, 131);
+            btnAddDeparture.Name = "btnAddDeparture";
+            btnAddDeparture.Size = new System.Drawing.Size(120, 19);
+            btnAddDeparture.TabIndex = 18;
+            btnAddDeparture.Text = "Add Departure";
+            btnAddDeparture.UseVisualStyleBackColor = true;
+            btnAddDeparture.Click += btnAddDeparture_Click;
             // 
             // AddPlane
             // 
@@ -301,5 +330,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtBoxAcrossSide;
         private System.Windows.Forms.Label lblErrorLabel;
+        private System.Windows.Forms.Button btnAddPlaneWithRandomAttributes;
+        private System.Windows.Forms.Button btnAddDeparture;
     }
 }
