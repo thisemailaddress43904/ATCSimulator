@@ -31,11 +31,11 @@ namespace ATC2027
         }
 
         protected override void Initialize()
-        {
+        {    
             // TODO: Add your initialization logic here
             Constants.contentManager = this.Content;
             base.Initialize();
-            Runway.runwayTexture = Content.Load<Texture2D>("images/runway");
+            TarmacStrip.Texture = Content.Load<Texture2D>("images/runway");
             STAR.texture = Content.Load<Texture2D>("images/STAR_Emblem");
             SID.texture = Content.Load<Texture2D>("images/SID_Emblem");
         }

@@ -51,6 +51,8 @@ namespace ATC2027
         }
 
         private static SpriteFont? arial_12 = null;
+        public static int targetUPS = 120;
+
         public static SpriteFont getArial_12()
         {
             if (arial_12 == null)

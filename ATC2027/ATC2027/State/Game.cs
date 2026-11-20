@@ -19,7 +19,7 @@ namespace ATC2027.State
         CollectionRing cr;
         #endregion
 
-        Airfield airfield;
+        IAirfield lhr;
 
         #region forms
         ApplyClearanceForm acf;
@@ -38,10 +38,10 @@ namespace ATC2027.State
 
         public Game(ICollection<Plane>? planeList = null)
         {
-            
+            lhr = AirfieldFactory.BuildLondonHeathrow();
             planeList ??= new List<Plane>(); 
 
-            this.cr = new CollectionRing();
+            this.cr = new CollectionRing(ref lhr);
 
             foreach (Plane plane in planeList) { cr.AddPlane(plane); }
 
@@ -51,13 +51,15 @@ namespace ATC2027.State
             foreach (var item in cr.getAircraftCollectionRingListItemsAsList())
                 statusBoardItemList.Add(item);
 
-            addPlaneForm = new AddPlane(ref cr);
+            addPlaneForm = new AddPlane(ref cr, ref lhr);
             addPlaneForm.Show();
 
-            acf = new ApplyClearanceForm(ref cr);
+            
+
+            acf = new ApplyClearanceForm(ref cr, ref lhr);
             acf.Show();
 
-            airfield = AirfieldFactory.BuildLondonHeathrow();
+            
         }
 
         public bool formShouldBeUpdated => cr.planeCollection.Values.Any(x => x.getAttributesHaveBeenUpdated());
@@ -68,7 +70,7 @@ namespace ATC2027.State
             foreach (var plane in cr.planeCollection) 
                 plane.Value.Draw(gameTime, spriteBatch);
             
-            airfield.Draw(gameTime, spriteBatch);
+            lhr.Draw(gameTime, spriteBatch);
 
             base.Draw(gameTime, spriteBatch);
         }
@@ -88,7 +90,7 @@ namespace ATC2027.State
             {
                 indexOfSelectedPlane = cr.planeCollection.Count - 1;
             }
-            airfield.Update(gameTime);    
+            lhr.Update(gameTime);    
             foreach(var plane in cr.planeCollection)
                 plane.Value.Update(gameTime);
 

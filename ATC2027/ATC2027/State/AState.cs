@@ -1,9 +1,11 @@
 ﻿using ATC2027.Controls;
 using ATC2027.Controls;
+using ATC2027.DataStructures;
 using ATC2027.Interfaces;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using SharpDX.MediaFoundation;
 using System;
 
 
@@ -12,7 +14,6 @@ namespace ATC2027.State
     public abstract class AState : IComponent, IHasDevModeDrawableString
     {
         public abstract string getName { get; }
-
         protected Tuple<Color, Color, Color> ColorScheme;
         bool leftCtrlIsDown = false;
         bool leftShiftIsDown = false;
@@ -28,20 +29,23 @@ namespace ATC2027.State
 
         public virtual void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
+
             if (Constants.DevMode)
             {
                 if (devModeText != null)
-                    devModeText.Draw(gameTime, spriteBatch);                
+                    devModeText.Draw(gameTime, spriteBatch);
             }
             try
             {
                 Constants.getGraphicsDevice().Clear(ColorScheme.Item3);
             } 
             catch (Exception ex){}
-        }
 
+            
+        }
         public virtual void Update(GameTime gameTime)
         {
+            
             /*
             #region enabling the press toggle of dev mode
             prevLeftCtrlIsDown = leftCtrlIsDown;
@@ -63,8 +67,6 @@ namespace ATC2027.State
                 if (devModeText!=null)
                     devModeText.setText(getDevModeDrawableString());
             }
-            
-
         }
 
         public abstract string getDevModeDrawableString();
