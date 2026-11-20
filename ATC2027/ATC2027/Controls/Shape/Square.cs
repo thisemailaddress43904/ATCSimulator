@@ -113,5 +113,10 @@ namespace ATC2027.Controls.Shape
         {
             this.color = color;
         }
+
+        public Rectangle GetSquareLocationAsRectangle()
+        {
+            return new Rectangle((int)base.position.X, (int)base.position.Y, lengthOfSquare, lengthOfSquare);
+        }
     }
 }
