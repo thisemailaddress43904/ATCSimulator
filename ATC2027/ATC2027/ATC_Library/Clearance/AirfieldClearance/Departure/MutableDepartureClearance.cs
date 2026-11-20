@@ -3,6 +3,7 @@ using ATC2027.ATC_Library.Clearance.AirfieldClearance.Interfaces;
 using ATC2027.ATC_Library.Clearance.Interfaces;
 using ATC2027.Clearance;
 using ATC2027.Library.FlightNumber;
+using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -52,7 +53,7 @@ namespace ATC2027.ATC_Library.Clearance.AirfieldClearance.Departure
         public override string getDevModeDrawableString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append(base.airfieldName).Append(" ").Append(base.flightNumber).Append(" cleared to ").Append("take off ").Append(runway.getShorthandName1());
+            sb.Append(base.airfieldName).Append(" ").Append(base.flightNumber).Append(" cleared to ").Append("take off ").Append(runway.getShorthandName());
 
             return sb.ToString();
         }
@@ -75,6 +76,11 @@ namespace ATC2027.ATC_Library.Clearance.AirfieldClearance.Departure
         public IRunway GetRunway()
         {
             return this.GetRunway();
+        }
+
+        public override void Update(GameTime gameTime)
+        {
+            throw new NotImplementedException();
         }
     }
 }

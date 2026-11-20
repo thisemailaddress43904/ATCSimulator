@@ -1,4 +1,5 @@
-﻿using ATC2027.Controls;
+﻿using ATC2027.ATC_Library.ControlAttribute.Heading;
+using ATC2027.Controls;
 using ATC2027.Database;
 using ATC2027.Interfaces;
 using Microsoft.Data.Sqlite;
@@ -6,6 +7,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace ATC2027.Clearance.WaypointControl
 {
@@ -60,7 +62,7 @@ namespace ATC2027.Clearance.WaypointControl
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(texture, drawingRectangle, Color.CornflowerBlue);
-            Text.StaticDraw(spriteBatch, this.name, Constants.getArial_7(), new Vector2(this.drawingRectangle.X, this.drawingRectangle.Y - Constants.getArial_7().MeasureString("!").Y), Color.Black);
+            Text.StaticDraw(spriteBatch, this.name, Constants.getArial_7(), new Vector2(this.drawingRectangle.X, this.drawingRectangle.Y - Constants.getArial_7().MeasureString("!").Y), Color.OrangeRed);
         }
         public Vector2 GetLongitudeAndLattitude()
         {
@@ -69,6 +71,24 @@ namespace ATC2027.Clearance.WaypointControl
         public SID fromString(string value)
         {
             return new SID(value);
+        }
+
+        public string getName()
+        {
+            return this.name;
+        }
+
+        public Vector2 getLocation()
+        {
+            return longitudeLatitudeLocation;
+        }
+
+        public static class Extension
+        {
+            public static SID getSidFromListByName(string name, IList<SID> list)
+            {
+                return list.Where((a) => a.name == name).First();
+            }
         }
     }
 }

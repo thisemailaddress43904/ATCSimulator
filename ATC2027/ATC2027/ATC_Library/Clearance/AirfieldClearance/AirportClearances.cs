@@ -1,6 +1,7 @@
 ﻿using ATC2027.ATC_Library.Airfield;
 using ATC2027.Clearance;
 using ATC2027.Library.FlightNumber;
+using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,5 +34,7 @@ namespace ATC2027.ATC_Library.Clearance
         {
             return this.withNoDelay;
         }
+
+        public abstract void Update(GameTime gameTime);
     }
 }

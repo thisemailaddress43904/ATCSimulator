@@ -12,8 +12,8 @@ namespace ATC2027.ATC_Library.Clearance.Interfaces
 {
     public interface INonMutableClearance : IClearance
     {
-        public Heading getTargetHeading();
-        public Altitude getTargeAltitude();
-        public Speed getTargetSpeed();
+        public Altitude getAltitude();
+        public Heading getHeading();
+        public Speed getSpeed();
     }
 }

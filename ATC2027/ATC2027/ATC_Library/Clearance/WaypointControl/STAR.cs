@@ -3,8 +3,11 @@ using ATC2027.Database;
 using ATC2027.Interfaces;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
 
 namespace ATC2027.Clearance.WaypointControl
 {
@@ -70,6 +73,19 @@ namespace ATC2027.Clearance.WaypointControl
         public STAR fromString(string value)
         {
             return new STAR(value);
+        }
+
+        internal object GetName()
+        {
+            return this.name;
+        }
+
+        public static class Extension
+        {
+            public static STAR getStarFromListByName(string name, IList<STAR> list)
+            {
+                return list.Where((a) => a.name == name).First();
+            }
         }
     }
 }

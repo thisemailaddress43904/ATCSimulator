@@ -6,6 +6,7 @@ using ATC2027.ATC_Library.ControlAttribute.Heading;
 using ATC2027.ATC_Library.ControlAttribute.Speed;
 using ATC2027.Clearance;
 using ATC2027.Library.FlightNumber;
+using Microsoft.Xna.Framework;
 using System;
 
 namespace ATC2027.ATC_Library.Clearance.AirfieldClearance.Arrival
@@ -51,21 +52,6 @@ namespace ATC2027.ATC_Library.Clearance.AirfieldClearance.Arrival
             throw new NotImplementedException();
         }
 
-        public Heading getTargetHeading()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Altitude getTargeAltitude()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Speed getTargetSpeed()
-        {
-            throw new NotImplementedException();
-        }
-
         public IRunway getRunway()
         {
             throw new NotImplementedException();
@@ -77,6 +63,26 @@ namespace ATC2027.ATC_Library.Clearance.AirfieldClearance.Arrival
         }
 
         public bool ClearedToLand()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Altitude getAltitude()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Heading getHeading()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Speed getSpeed()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void Update(GameTime gameTime)
         {
             throw new NotImplementedException();
         }

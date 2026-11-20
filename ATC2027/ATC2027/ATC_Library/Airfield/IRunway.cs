@@ -1,14 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
+using ATC2027.ATC_Library.ControlAttribute.Heading;
+using Microsoft.Xna.Framework;
 
 namespace ATC2027.ATC_Library.Airfield
 {
     public interface IRunway
     {
-        public string getShorthandName1();
-        public string? getShorthandName2();
+        IHeading getHeading();
+        public string getShorthandName();
+        public Vector2 getSpawnPoint();
     }
 }

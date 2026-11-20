@@ -4,6 +4,7 @@ using ATC2027.ATC_Library.ControlAttribute.Heading;
 using ATC2027.ATC_Library.ControlAttribute.Speed;
 using ATC2027.Clearance;
 using ATC2027.Library.FlightNumber;
+using Microsoft.Xna.Framework;
 using System;
 
 namespace ATC2027.ATC_Library.Clearance.DirectControl
@@ -27,5 +28,6 @@ namespace ATC2027.ATC_Library.Clearance.DirectControl
 
         public abstract IRunway GetExpectedRunway();
         public abstract string getDevModeDrawableString();
+        public abstract void Update(GameTime gameTime);
     }
 }

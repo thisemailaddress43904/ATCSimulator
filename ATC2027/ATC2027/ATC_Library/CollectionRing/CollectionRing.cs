@@ -1,4 +1,5 @@
-﻿using ATC2027.ATC_Library.Clearance;
+﻿using ATC2027.ATC_Library.Airfield;
+using ATC2027.ATC_Library.Clearance;
 using ATC2027.ATC_Library.Clearance.AirfieldClearance.Interfaces;
 using ATC2027.ATC_Library.Clearance.Interfaces;
 using ATC2027.ATC_Library.Plane;
@@ -13,24 +14,26 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using IUpdateable = ATC2027.Interfaces.IUpdateable;
 
 namespace ATC2027.ATC_Library.CollectionRing
 {
     public class CollectionRing : IAircraftCollectionRing, IUpdateable, IHasDevModeDrawableString
     {
-        
+        public IAirfield airfield;
         public Dictionary<string, Plane.Plane> planeCollection;
         private TimeSpan lastUpdate;
         private Plane.Plane? selectedPlane;
         public event EventHandler PlaneRemoved;
 
-        public CollectionRing()
+        public CollectionRing(ref IAirfield airfield)
         {
             planeCollection = new Dictionary<string, Plane.Plane>();
+            this.airfield = airfield;
         }
 
-        public void AddPlane(Plane.Plane plane)
+        public async void AddPlane(Plane.Plane plane)
         {
             planeCollection.Add(plane.flightNoAsStr(), plane);
             Speech.TTS.TextToSpeech.Speak(plane.getAnnouncementSpeech("tower"));
@@ -154,6 +157,30 @@ namespace ATC2027.ATC_Library.CollectionRing
 
                 if (isOutsideOfTheBounds)
                     planeCollection.Remove(kvp.Key);
+
+
+                //collision detection (n^2 time complexity where n is the number of planes)
+                //Could be made more efficient by ordering a list with a heuristic and checking if the nearest few planes collide
+
+                //list ordered by distance from selected plane (manhatten distance in 3 dimensions)
+                //    -> does selected plane collide with the first plane?
+                //        No -> neither do the others,
+                //        Yes -> there could be a double plane or more collision (that would be excedingly rare)
+                //
+                // ordering a list can be done in log n efficiency
+                //this algorithms efficiency would n * log n where n is the number of the planes in the list
+
+                foreach (var kvp2 in planeCollection)
+                {
+                    if (kvp.Key == kvp2.Key)
+                        continue;
+
+                    if (kvp2.Value.GetHitbox().Contains(kvp.Value.GetCentreOfHead()))
+                    {
+                        MessageBox.Show($"Collision between {kvp2.Key} and {kvp.Key} at {kvp2.Value.GetCentreOfHead().ToString()}", "Collision", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        Environment.Exit(0);
+                    }
+                }
             }
         }
 

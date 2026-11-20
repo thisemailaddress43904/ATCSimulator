@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace ATC2027.Clearance
 {
-    public interface IClearance : IHasDevModeDrawableString
+    public interface IClearance : IHasDevModeDrawableString, IUpdateable
     {
         public bool WithNoDelay();
         public string ToAirTrafficControllerDescription();

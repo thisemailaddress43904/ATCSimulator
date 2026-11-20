@@ -3,6 +3,7 @@ using ATC2027.ATC_Library.Clearance.Interfaces;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,7 +12,6 @@ namespace ATC2027.ATC_Library.Plane
 {
     public partial class Plane
     {
-
         public override void Update(GameTime gameTime)
         {
             //Determine draw colour of the head and tail
@@ -146,10 +146,10 @@ namespace ATC2027.ATC_Library.Plane
             if (airTimeClearance == null)
                 return;
 
-            if (airTimeClearance.getTargeAltitude() == null)
+            if (airTimeClearance.getAltitude() == null)
                 return;
 
-            float clearanceAltitude = airTimeClearance.getTargeAltitude().GetAltitudeInFeet();
+            float clearanceAltitude = airTimeClearance.getAltitude().GetAltitudeInFeet();
             float actualAltitude = this.altitude.GetAltitudeInFeet();
 
             bool clearanceAltitudeAndRealAltitudeAreDifferent = clearanceAltitude == actualAltitude;
@@ -157,7 +157,7 @@ namespace ATC2027.ATC_Library.Plane
             if (!clearanceAltitudeAndRealAltitudeAreDifferent)
             {
                 if (Math.Abs(clearanceAltitude - actualAltitude) < 1)
-                    altitude = airTimeClearance.getTargeAltitude();
+                    altitude = airTimeClearance.getAltitude();
                 else if (clearanceAltitude < actualAltitude)
                     altitude = altitude.Decrement(rateOfDescentPerPeriod);
                 else
@@ -171,9 +171,9 @@ namespace ATC2027.ATC_Library.Plane
             if (airTimeClearance == null)
                 return;
 
-            if (airTimeClearance.getTargetHeading() == null)
+            if (airTimeClearance.getHeading() == null)
                 return;
-            float clearanceHeading = airTimeClearance.getTargetHeading().GetHeadingInFloatDegrees();
+            float clearanceHeading = airTimeClearance.getHeading().GetHeadingInFloatDegrees();
             float actualHeading = this.heading.GetHeadingInFloatDegrees();
 
             bool clearanceHeadingAndHeadingAreDifferent = clearanceHeading == actualHeading;
@@ -181,7 +181,7 @@ namespace ATC2027.ATC_Library.Plane
             if (!clearanceHeadingAndHeadingAreDifferent)
             {
                 if (Math.Abs(clearanceHeading - actualHeading) < 1)
-                    heading = airTimeClearance.getTargetHeading();
+                    heading = airTimeClearance.getHeading();
                 else if (clearanceHeading < actualHeading)
                     heading = heading.Decrement(getTurningRadiusFromSpeed());
                 else
@@ -194,10 +194,10 @@ namespace ATC2027.ATC_Library.Plane
         {
             if (airTimeClearance == null)
                 return;
-            if (airTimeClearance.getTargetSpeed() == null)
+            if (airTimeClearance.getSpeed() == null)
                 return;
 
-            float clearanceSpeed = airTimeClearance.getTargetSpeed().ToKnotsFloat();
+            float clearanceSpeed = airTimeClearance.getSpeed().ToKnotsFloat();
             float actualSpeed = this.speed.ToKnotsFloat();
 
             bool clearanceSpeedAndActualSpeedAreDifferent = clearanceSpeed == actualSpeed;
@@ -205,7 +205,7 @@ namespace ATC2027.ATC_Library.Plane
             if (!clearanceSpeedAndActualSpeedAreDifferent)
             {
                 if (Math.Abs(clearanceSpeed - actualSpeed) < speedUpdateRate + 0.1)
-                    speed = airTimeClearance.getTargetSpeed();
+                    speed = airTimeClearance.getSpeed();
                 else if (clearanceSpeed < actualSpeed)
                     speed = speed.Decrement(speedUpdateRate);
                 else
@@ -223,6 +223,41 @@ namespace ATC2027.ATC_Library.Plane
         public string getDepartureFromAirspaceSpeech(string areaController)
         {
             return $"{this.flightNoAsStr} {areaController} leaving your airspace";
+        }
+
+        public Rectangle GetHitbox()
+        {
+            return this.head.GetRectangle();
+        }
+
+        public Point GetCentreOfHead()
+        {
+            Rectangle rectangle = GetHitbox();
+            return new Point(rectangle.X + head.getLength() / 2, rectangle.Y + head.getLength() / 2);
+        }
+
+        internal static IEqualityComparer<Plane> GetManhattenDistanceEqualityComparer()
+        {
+            return new ManhattenDistanceEqualityComparer();
+        }
+
+        private class ManhattenDistanceEqualityComparer : IEqualityComparer<Plane>
+        {
+            public bool Equals(Plane x, Plane y)
+            {
+                return x.GetVector3Location() == y.GetVector3Location();
+            }
+
+            public int GetHashCode([DisallowNull] Plane obj)
+            {
+                return obj.GetVector3Location().GetHashCode();
+            }
+        }
+
+        private Vector3 GetVector3Location()
+        {
+            Vector2 centreOfHead = this.head.GetCentre();
+            return new Vector3(centreOfHead.X, this.altitude.GetAltitudeInFeet(), centreOfHead.Y);
         }
     }
 }

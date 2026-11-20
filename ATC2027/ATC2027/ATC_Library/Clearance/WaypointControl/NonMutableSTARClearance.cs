@@ -6,6 +6,7 @@ using ATC2027.ATC_Library.ControlAttribute.Speed;
 using ATC2027.Clearance;
 using ATC2027.Clearance.WaypointControl;
 using ATC2027.Library.FlightNumber;
+using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 
@@ -13,16 +14,31 @@ namespace ATC2027.ATC_Library.Clearance.WaypointControl
 {
     public class NonMutableSTARClearance : AWaypointClearance, INonMutableClearance
     {
-        bool NoDelay;
-        IRunway? expectedRunway;
-        FlightNumber flightNumber;
+        private readonly bool NoDelay;
+        private readonly IRunway? expectedRunway;
+        private readonly FlightNumber flightNumber;
+        private readonly IList<STAR> starList;
+        private readonly Speed speed;
+        private readonly Altitude altitude;
 
-        public IList<STAR> starList;
-        
-        public NonMutableSTARClearance(IList<STAR>? starList = null)
+
+        public NonMutableSTARClearance(FlightNumber flightNumber, IRunway expectedRunway = null, IList<STAR>? starList = null, ISpeed speed = null, IAltitude altitude = null)
         {
+            this.flightNumber = flightNumber;
+            this.expectedRunway = expectedRunway;
             this.starList = starList;
             this.starList ??= [];
+            this.speed = (Speed)speed;
+            this.altitude = (Altitude)altitude;
+        }
+
+        public NonMutableSTARClearance(MutableSTARClearance msc)
+        {
+            this.flightNumber = msc.getFlightNumber();
+            this.expectedRunway = msc.getExpectedRunway();
+            this.starList = msc.getStarList();
+            this.speed = (Speed)msc.getSpeed();
+            this.altitude = (Altitude)msc.getAltitude();
         }
 
         public override IClearance FromAirTrafficControllerDescription(string description, bool isMutable)
@@ -49,14 +65,6 @@ namespace ATC2027.ATC_Library.Clearance.WaypointControl
         {
             return flightNumber;
         }
-        /**
-         * Might need to be deleted
-         */
-        public override void setExpectedRunway(IRunway expectedRunway, IAirfield airfield)
-        {
-            this.expectedRunway = expectedRunway;
-        }
-
         public override string ToAirTrafficControllerDescription()
         {
             throw new NotImplementedException();
@@ -73,17 +81,27 @@ namespace ATC2027.ATC_Library.Clearance.WaypointControl
             starList.Add(star);
         }
 
-        public Heading getTargetHeading()
+        public Altitude getAltitude()
+        {
+            return altitude;
+        }
+
+        public Speed getSpeed()
+        {
+            return speed;
+        }
+
+        internal IList<STAR> getStarList()
+        {
+            return starList;
+        }
+
+        public Heading getHeading()
         {
             throw new NotImplementedException();
         }
 
-        public Altitude getTargeAltitude()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Speed getTargetSpeed()
+        public override void Update(GameTime gameTime)
         {
             throw new NotImplementedException();
         }

@@ -27,6 +27,9 @@ namespace ATC2027.ATC_Library.ControlAttribute.Altitude
         {
             public static Altitude build(string text, ComboBox cmbBoxAltitudeType)
             {
+                if (text == "" && cmbBoxAltitudeType.Text == "")
+                    return null;
+
                 return new Altitude(text, cmbBoxAltitudeType);
             }
         }

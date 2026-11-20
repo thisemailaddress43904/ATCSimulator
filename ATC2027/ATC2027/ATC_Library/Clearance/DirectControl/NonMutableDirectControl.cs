@@ -5,6 +5,7 @@ using ATC2027.ATC_Library.ControlAttribute.Altitude;
 using ATC2027.ATC_Library.ControlAttribute.Heading;
 using ATC2027.ATC_Library.ControlAttribute.Speed;
 using ATC2027.Library.FlightNumber;
+using Microsoft.Xna.Framework;
 using System;
 using System.Text;
 
@@ -74,19 +75,24 @@ namespace ATC2027.Clearance.DirectControl
             return sb.ToString();
         }
 
-        public Heading getTargetHeading()
+        public Heading getHeading()
         {
             return this.heading;
         }
 
-        public Altitude getTargeAltitude()
+        public Altitude getAltitude()
         {
             return this.altitude;
         }
 
-        public Speed getTargetSpeed()
+        public Speed getSpeed()
         {
             return this.speed;
+        }
+
+        public override void Update(GameTime gameTime)
+        {
+            throw new NotImplementedException();
         }
     }
 }

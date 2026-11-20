@@ -5,6 +5,7 @@ using ATC2027.ATC_Library.ControlAttribute.Altitude;
 using ATC2027.ATC_Library.ControlAttribute.Heading;
 using ATC2027.ATC_Library.ControlAttribute.Speed;
 using ATC2027.Library.FlightNumber;
+using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Specialized;
 
@@ -13,7 +14,8 @@ namespace ATC2027.Clearance.DirectControl
     public class MutableDirectControl : DirectControl2, IMutableClearance
     {
         public MutableDirectControl(FlightNumber flightNumber, string AreaControllerIdentifier, IAltitude? altitude, IHeading heading, ISpeed speed, IRunway expectedRunway) : base(flightNumber, AreaControllerIdentifier, (Speed)speed, (Altitude)altitude, (Heading)heading, expectedRunway)
-        {}
+        {
+        }
 
         public MutableDirectControl(ADirectControl directControl) : base(directControl.GetFlightNo(), directControl.GetAirTrafficControllingTowerIdentifier(), directControl.GetSpeed(), directControl.GetAltitude(), directControl.GetHeading(), directControl.GetExpectedRunway())
         {}
@@ -62,6 +64,11 @@ namespace ATC2027.Clearance.DirectControl
         }
 
         public override string getDevModeDrawableString()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void Update(GameTime gameTime)
         {
             throw new NotImplementedException();
         }
