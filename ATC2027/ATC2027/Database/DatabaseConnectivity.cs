@@ -18,7 +18,7 @@ namespace ATC2027.Database
 
         private SqliteConnection connection;
 
-        public DatabaseConnectivity(string dbName = "locations.db")
+        public DatabaseConnectivity(string dbName = "location.db")
         {
             connection = new SqliteConnection($"Data Source={dbName}");
             connection.Open();
