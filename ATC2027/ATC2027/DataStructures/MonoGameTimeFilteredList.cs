@@ -90,15 +90,15 @@ namespace ATC2027.DataStructures
         ///<remarks>
         ///Could be made more efficient by searching from the back and removing items until 1 item no longer needs to be removed as the list is ordered
         ///</remarks>
-        public void UpdateDataStructure(TimeSpan? gameTimeElapsedTime = null)
+        public void UpdateDataStructure(TimeSpan? gameTimeTotalTime = null)
         {
-            if (gameTimeElapsedTime == null)
-                gameTimeElapsedTime = TimeSpan.Zero;
+            if (gameTimeTotalTime == null)
+                gameTimeTotalTime = TimeSpan.Zero;
 
 
-            _items = _items.Where(x => gameTimeElapsedTime - x.Item2 <= _maximumAgeOfObjectsToBeStored).ToList();
+            _items = _items.Where(x => gameTimeTotalTime - x.Item2 <= _maximumAgeOfObjectsToBeStored).ToList();
 
-            _lastUpdate = (TimeSpan)gameTimeElapsedTime;
+            _lastUpdate = (TimeSpan)gameTimeTotalTime;
         }
 
         public void AddItem(T item, TimeSpan ts)
