@@ -227,7 +227,7 @@ namespace ATC2027.ATC_Library.Plane
 
         public Rectangle GetHitbox()
         {
-            return this.head.GetRectangle();
+            return this.head.GetSquareLocationAsRectangle();
         }
 
         public Point GetCentreOfHead()
